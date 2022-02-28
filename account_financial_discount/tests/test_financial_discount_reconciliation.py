@@ -8,7 +8,7 @@ from .common import TestAccountFinancialDiscountCommon
 
 
 @freeze_time("2019-05-01")
-class TestAccountFinancialDiscountManualPayment(TestAccountFinancialDiscountCommon):
+class TestAccountFinancialDiscountReconciliation(TestAccountFinancialDiscountCommon):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
@@ -30,14 +30,6 @@ class TestAccountFinancialDiscountManualPayment(TestAccountFinancialDiscountComm
                 # "strict_match_total_amount": True,
                 "apply_financial_discounts": True,
                 "financial_discount_tolerance": 0.05,
-            }
-        )
-        cls.eur_bank_journal = cls.env["account.journal"].create(
-            {
-                "name": "Bank EUR",
-                "type": "bank",
-                "code": "BNK-EUR",
-                "currency_id": cls.eur_currency.id,
             }
         )
 
@@ -96,7 +88,12 @@ class TestAccountFinancialDiscountManualPayment(TestAccountFinancialDiscountComm
             self.reconciliation_model.financial_discount_expense_account_id.id,
         )
         self.assertEqual(write_off_vals[0].get("debit"), self.amount_untaxed_discount)
-        self.assertEqual(write_off_vals[1].get("name"), invoice_tax_line.name)
+        self.assertEqual(
+            write_off_vals[1].get("name"),
+            self.reconciliation_model.financial_discount_label
+            + " "
+            + invoice_tax_line.name,
+        )
         self.assertEqual(
             write_off_vals[1].get("account_id"), invoice_tax_line.account_id.id
         )
@@ -171,7 +168,12 @@ class TestAccountFinancialDiscountManualPayment(TestAccountFinancialDiscountComm
             self.reconciliation_model.financial_discount_revenue_account_id.id,
         )
         self.assertEqual(write_off_vals[0].get("credit"), self.amount_untaxed_discount)
-        self.assertEqual(write_off_vals[1].get("name"), vendor_bill_tax_line.name)
+        self.assertEqual(
+            write_off_vals[1].get("name"),
+            self.reconciliation_model.financial_discount_label
+            + " "
+            + vendor_bill_tax_line.name,
+        )
         self.assertEqual(
             write_off_vals[1].get("account_id"), vendor_bill_tax_line.account_id.id
         )
@@ -297,7 +299,12 @@ class TestAccountFinancialDiscountManualPayment(TestAccountFinancialDiscountComm
             self.reconciliation_model.financial_discount_expense_account_id.id,
         )
         self.assertEqual(write_off_vals[0].get("debit"), self.amount_untaxed_discount)
-        self.assertEqual(write_off_vals[1].get("name"), invoice_tax_line.name)
+        self.assertEqual(
+            write_off_vals[1].get("name"),
+            self.reconciliation_model.financial_discount_label
+            + " "
+            + invoice_tax_line.name,
+        )
         self.assertEqual(
             write_off_vals[1].get("account_id"), invoice_tax_line.account_id.id
         )
@@ -339,7 +346,12 @@ class TestAccountFinancialDiscountManualPayment(TestAccountFinancialDiscountComm
             self.reconciliation_model.financial_discount_revenue_account_id.id,
         )
         self.assertEqual(write_off_vals[0].get("credit"), self.amount_untaxed_discount)
-        self.assertEqual(write_off_vals[1].get("name"), vendor_bill_tax_line.name)
+        self.assertEqual(
+            write_off_vals[1].get("name"),
+            self.reconciliation_model.financial_discount_label
+            + " "
+            + vendor_bill_tax_line.name,
+        )
         self.assertEqual(
             write_off_vals[1].get("account_id"), vendor_bill_tax_line.account_id.id
         )
@@ -385,7 +397,12 @@ class TestAccountFinancialDiscountManualPayment(TestAccountFinancialDiscountComm
                 invoice.invoice_date,
             ),
         )
-        self.assertEqual(write_off_vals[1].get("name"), invoice_tax_line.name)
+        self.assertEqual(
+            write_off_vals[1].get("name"),
+            self.reconciliation_model.financial_discount_label
+            + " "
+            + invoice_tax_line.name,
+        )
         self.assertEqual(
             write_off_vals[1].get("account_id"), invoice_tax_line.account_id.id
         )
@@ -442,7 +459,12 @@ class TestAccountFinancialDiscountManualPayment(TestAccountFinancialDiscountComm
                 vendor_bill.invoice_date,
             ),
         )
-        self.assertEqual(write_off_vals[1].get("name"), vendor_bill_tax_line.name)
+        self.assertEqual(
+            write_off_vals[1].get("name"),
+            self.reconciliation_model.financial_discount_label
+            + " "
+            + vendor_bill_tax_line.name,
+        )
         self.assertEqual(
             write_off_vals[1].get("account_id"), vendor_bill_tax_line.account_id.id
         )
@@ -458,4 +480,3 @@ class TestAccountFinancialDiscountManualPayment(TestAccountFinancialDiscountComm
 
     # TODO add more tests with banking reconciliation:
     #  - Auto-reconcile on the model
-    #  - Test JS?
