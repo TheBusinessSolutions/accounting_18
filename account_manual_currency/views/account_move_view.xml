@@ -50,6 +50,9 @@
                 <field name="company_currency_id" invisible="1" />
                 <field name="currency_diff" invisible="1" />
             </xpath>
+            <xpath expr="//field[@name='invoice_line_ids']/tree" position="inside">
+                <field name="currency_rate" optional="show" />
+            </xpath>
         </field>
     </record>
 </odoo>

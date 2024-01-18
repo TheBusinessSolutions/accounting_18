@@ -100,10 +100,6 @@ class AccountMove(models.Model):
         self.manual_currency_rate = amount_currency
         self.line_ids._onchange_amount_currency()
 
-    @api.onchange("manual_currency_rate")
-    def _onchange_manual_currency_rate(self):
-        self.line_ids._onchange_amount_currency()
-
     @api.depends("currency_id")
     def _compute_currency(self):
         for rec in self:

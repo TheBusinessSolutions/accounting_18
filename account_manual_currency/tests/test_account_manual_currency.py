@@ -41,6 +41,7 @@ class TestAccountManualCurrency(TransactionCase):
                     "name": "Test Invoice Line",
                     "quantity": 1.0,
                     "price_unit": 100.0,
+                    "tax_ids": False,
                 },
             )
         ]
