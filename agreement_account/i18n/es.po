@@ -41,18 +41,6 @@ msgid "Agreement Types"
 msgstr "Tipos de Acuerdo"
 
 #. module: agreement_account
-#: model:ir.model.fields,field_description:agreement_account.field_account_move__display_name
-#: model:ir.model.fields,field_description:agreement_account.field_agreement__display_name
-msgid "Display Name"
-msgstr "Mostrar Nombre"
-
-#. module: agreement_account
-#: model:ir.model.fields,field_description:agreement_account.field_account_move__id
-#: model:ir.model.fields,field_description:agreement_account.field_agreement__id
-msgid "ID"
-msgstr "ID (identificación)"
-
-#. module: agreement_account
 #: model:ir.model.fields,field_description:agreement_account.field_agreement__invoice_ids
 #: model_terms:ir.ui.view,arch_db:agreement_account.agreement_form
 msgid "Invoices"
@@ -64,13 +52,16 @@ msgid "Journal Entry"
 msgstr "Entrada en Diario"
 
 #. module: agreement_account
-#: model:ir.model.fields,field_description:agreement_account.field_account_move____last_update
-#: model:ir.model.fields,field_description:agreement_account.field_agreement____last_update
-msgid "Last Modified on"
-msgstr "Última Modificación el"
-
-#. module: agreement_account
 #: model:ir.actions.act_window,name:agreement_account.account_invoice_in_invoice_refund_action
 #: model_terms:ir.ui.view,arch_db:agreement_account.agreement_form
 msgid "Vendor Bills"
 msgstr "Facturas de Vendedor"
+
+#~ msgid "Display Name"
+#~ msgstr "Mostrar Nombre"
+
+#~ msgid "ID"
+#~ msgstr "ID (identificación)"
+
+#~ msgid "Last Modified on"
+#~ msgstr "Última Modificación el"
