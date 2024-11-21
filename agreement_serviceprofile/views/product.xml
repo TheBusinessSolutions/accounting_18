@@ -12,7 +12,7 @@
                 <page
                     id="agreement"
                     string="Service"
-                    attrs="{'invisible': [('detailed_type', '!=', 'serviceprofile')]}"
+                    invisible="detailed_type != 'serviceprofile'"
                 >
                     <group>
                         <group id="agreement_left">
@@ -34,7 +34,7 @@
                 <page
                     id="agreement"
                     string="Service"
-                    attrs="{'invisible': [('detailed_type', '!=', 'serviceprofile')]}"
+                    invisible="detailed_type != 'serviceprofile'"
                 >
                     <group>
                         <group id="agreement_left">
