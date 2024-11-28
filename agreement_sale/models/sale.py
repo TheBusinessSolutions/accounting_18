@@ -21,5 +21,4 @@ class SaleOrder(models.Model):
         string="Agreement Type",
         ondelete="restrict",
         tracking=True,
-        copy=True,
     )
