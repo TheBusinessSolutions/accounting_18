@@ -23,7 +23,8 @@ class AccountPaymentRegister(models.TransientModel):
         if len(set(moves.mapped("manual_currency"))) != 1:
             raise UserError(
                 _(
-                    "You can only register payments for moves with the same manual currency."
+                    "You can only register payments for moves "
+                    "with the same manual currency."
                 )
             )
         return res

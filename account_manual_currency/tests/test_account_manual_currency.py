@@ -78,7 +78,11 @@ class TestAccountManualCurrency(TransactionCase):
         total_currency_not_manual = invoice1.total_company_currency
         self.assertAlmostEqual(
             total_currency_not_manual,
-            sum(invoice1.line_ids.filtered(lambda l: l.product_id).mapped("balance")),
+            sum(
+                invoice1.line_ids.filtered(lambda line: line.product_id).mapped(
+                    "balance"
+                )
+            ),
         )
         # Use manual currency
         with Form(invoice1) as inv:
@@ -90,7 +94,11 @@ class TestAccountManualCurrency(TransactionCase):
         self.assertNotEqual(invoice1.total_company_currency, total_currency_not_manual)
         self.assertAlmostEqual(
             invoice1.total_company_currency,
-            sum(invoice1.line_ids.filtered(lambda l: l.product_id).mapped("balance")),
+            sum(
+                invoice1.line_ids.filtered(lambda line: line.product_id).mapped(
+                    "balance"
+                )
+            ),
         )
         invoice1.action_post()
         self.assertEqual(invoice1.state, "posted")

@@ -129,7 +129,7 @@ class AccountMove(models.Model):
             # Total company currency
             node = doc.xpath("//field[@name='total_company_currency']")
             if node:
-                node[0].set("string", "Total ({})".format(company_currency_name))
+                node[0].set("string", f"Total ({company_currency_name})")
             result["arch"] = etree.tostring(doc, encoding="unicode")
         return result
 
