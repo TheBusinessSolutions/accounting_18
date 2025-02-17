@@ -1,5 +1,4 @@
 <odoo>
-
     <record id="agreement.agreement_menu" model="ir.ui.menu">
         <field name="parent_id" ref="account.account_management_menu" />
         <field name="sequence">150</field>
@@ -82,5 +81,4 @@
             </div>
         </field>
     </record>
-
 </odoo>
