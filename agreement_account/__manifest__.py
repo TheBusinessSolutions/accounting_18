@@ -5,7 +5,7 @@
 {
     "name": "Agreement Account",
     "summary": "Agreement on invoices",
-    "version": "17.0.1.0.0",
+    "version": "18.0.1.0.0",
     "category": "Contract",
     "author": "Akretion, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/agreement",

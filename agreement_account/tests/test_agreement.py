@@ -2,12 +2,13 @@
 # @author: Alexis de Lattre <alexis.delattre@akretion.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo.tests.common import TransactionCase
+from odoo.addons.base.tests.common import BaseCommon
 
 
-class TestAgreement(TransactionCase):
-    def setUp(self):
-        super().setUp()
+class TestAgreement(BaseCommon):
+    @classmethod
+    def setUpClass(self):
+        super().setUpClass()
         self.test_customer = self.env["res.partner"].create({"name": "TestCustomer"})
         self.test_agreement_sale = self.env["agreement"].create(
             {
