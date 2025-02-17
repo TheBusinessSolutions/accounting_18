@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-
     <record id="action_mrp_repair_agreement_specific" model="ir.actions.act_window">
         <field name="name">Repair Orders</field>
         <field name="type">ir.actions.act_window</field>
@@ -37,5 +36,4 @@
             </xpath>
         </field>
     </record>
-
 </odoo>
