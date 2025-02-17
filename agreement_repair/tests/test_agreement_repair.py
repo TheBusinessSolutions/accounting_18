@@ -1,13 +1,15 @@
 # Copyright (C) 2021 - TODAY, Open Source Integrators
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-import odoo.tests.common as common
 from odoo import fields
 
+from odoo.addons.base.tests.common import BaseCommon
 
-class TestAgreementRepair(common.TransactionCase):
-    def setUp(self):
-        super().setUp()
+
+class TestAgreementRepair(BaseCommon):
+    @classmethod
+    def setUpClass(self):
+        super().setUpClass()
 
         self.agreement_obj = self.env["agreement"]
         self.agreement_type_id = self.env["agreement.type"].create(
@@ -28,5 +30,5 @@ class TestAgreementRepair(common.TransactionCase):
         repair_rec = self.env.ref("repair.repair_r0")
         repair_rec.write({"agreement_id": agreement.id})
 
-        agreement._compute_repair_count()
+        agreement.invalidate_recordset(["repair_count"])
         self.assertEqual(agreement.repair_count, 1, "Wrong no of Repair Orders Count!")
