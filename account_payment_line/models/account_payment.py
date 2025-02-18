@@ -111,9 +111,7 @@ class AccountPayment(models.Model):
             self.line_payment_counterpart_ids = [(5, 0, 0)]
 
     def _prepare_move_line_default_vals(self, write_off_line_vals=None):
-        res = super(AccountPayment, self)._prepare_move_line_default_vals(
-            write_off_line_vals
-        )
+        res = super()._prepare_move_line_default_vals(write_off_line_vals)
         write_off_line_vals_list = write_off_line_vals or []
         write_off_amount_currency = sum(
             x["amount_currency"] for x in write_off_line_vals_list
@@ -237,7 +235,7 @@ class AccountPayment(models.Model):
             rec.move_id.line_ids = [
                 (0, 0, line_vals) for line_vals in rec._prepare_move_line_default_vals()
             ]
-        res = super(AccountPayment, self).action_post()
+        res = super().action_post()
         self._process_post_reconcile()
         return res
 

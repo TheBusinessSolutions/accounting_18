@@ -17,7 +17,6 @@ def post_load_hook():  # noqa: C901
             return
 
         for pay in self.with_context(skip_account_move_synchronization=True):
-
             if pay.move_id.statement_line_id:
                 continue
 
