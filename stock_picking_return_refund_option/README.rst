@@ -120,6 +120,7 @@ Contributors
 
    -  Sergio Teruel
    -  César A. Sánchez
+   -  Carlos Roca
 
 Maintainers
 -----------
