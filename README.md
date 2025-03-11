@@ -25,7 +25,7 @@ addon | version | maintainers | summary
 [account_cash_deposit](account_cash_deposit/) | 18.0.1.0.0 |  | Manage cash deposits and cash orders
 [account_fiscal_position_vat_check](account_fiscal_position_vat_check/) | 18.0.1.0.0 |  | Check VAT on invoice validation
 [account_fiscal_year](account_fiscal_year/) | 18.0.1.0.0 | [![eLBati](https://github.com/eLBati.png?size=30px)](https://github.com/eLBati) | Create Account Fiscal Year
-[account_journal_restrict_mode](account_journal_restrict_mode/) | 18.0.1.0.0 |  | Lock All Posted Entries of Journals.
+[account_journal_restrict_mode](account_journal_restrict_mode/) | 18.0.1.1.0 |  | Lock All Posted Entries of Journals.
 [account_lock_date_update](account_lock_date_update/) | 18.0.1.0.0 |  | Allow an Account adviser to update locking date without having access to all technical settings
 [account_move_name_sequence](account_move_name_sequence/) | 18.0.1.0.0 | [![alexis-via](https://github.com/alexis-via.png?size=30px)](https://github.com/alexis-via) [![moylop260](https://github.com/moylop260.png?size=30px)](https://github.com/moylop260) [![luisg123v](https://github.com/luisg123v.png?size=30px)](https://github.com/luisg123v) | Generate journal entry number from sequence
 [account_move_post_date_user](account_move_post_date_user/) | 18.0.1.0.0 | [![JordiMForgeFlow](https://github.com/JordiMForgeFlow.png?size=30px)](https://github.com/JordiMForgeFlow) | Trace journal entry posting date and user.
