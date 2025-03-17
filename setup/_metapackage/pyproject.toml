@@ -1,11 +1,12 @@
 [project]
 name = "odoo-addons-oca-account-invoicing"
-version = "18.0.20250303.0"
+version = "18.0.20250317.0"
 dependencies = [
     "odoo-addon-account_invoice_fiscal_position_update==18.0.*",
     "odoo-addon-account_invoice_refund_link==18.0.*",
     "odoo-addon-account_invoice_show_currency_rate==18.0.*",
     "odoo-addon-account_move_cancel_confirm==18.0.*",
+    "odoo-addon-partner_invoicing_mode==18.0.*",
     "odoo-addon-purchase_stock_picking_return_invoicing==18.0.*",
     "odoo-addon-sale_order_invoicing_grouping_criteria==18.0.*",
     "odoo-addon-stock_picking_return_refund_option==18.0.*",
