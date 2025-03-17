@@ -104,6 +104,27 @@ class AccountMove(models.Model):
         self.with_context(check_move_validity=False)._onchange_currency_change_rate()
         return True
 
+    @api.depends(
+        "currency_id",
+        "company_currency_id",
+        "company_id",
+        "invoice_date",
+        "manual_currency_rate",
+    )
+    def _compute_invoice_currency_rate(self):
+        res = super()._compute_invoice_currency_rate()
+        for move in self:
+            if not move.manual_currency:
+                continue
+            # Currency Rate on move use 'company_rate'
+            rate = (
+                move.manual_currency_rate
+                if move.type_currency == "company_rate"
+                else (1.0 / move.manual_currency_rate)
+            )
+            move.invoice_currency_rate = rate
+        return res
+
     @api.model
     def get_view(self, view_id=None, view_type="form", **options):
         """Change string name to company currency"""
@@ -150,7 +171,11 @@ class AccountMoveLine(models.Model):
     _inherit = "account.move.line"
 
     @api.depends(
-        "currency_id", "company_id", "move_id.date", "move_id.manual_currency_rate"
+        "currency_id",
+        "company_id",
+        "move_id.invoice_currency_rate",
+        "move_id.date",
+        "move_id.manual_currency_rate",
     )
     def _compute_currency_rate(self):
         res = super()._compute_currency_rate()
