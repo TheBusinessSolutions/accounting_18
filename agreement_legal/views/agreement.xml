@@ -1,5 +1,4 @@
 <odoo>
-
     <!-- Agreement List View-->
     <record model="ir.ui.view" id="partner_agreement_list_view">
         <field name="name">Agreement List</field>
@@ -122,12 +121,12 @@
                         <p>
                             This section (on the left) allows you to add dynamic fields inside the description and special terms.
                             <ol>
-                                <li>Select the agreement field</li>
-                                <li>Select the sub-field</li>
-                                <li>Enter the default value if the field is empty</li>
-                                <li
-                                >Copy and paste the placeholder expression in the description or the special terms</li>
-                            </ol>
+                            <li>Select the agreement field</li>
+                            <li>Select the sub-field</li>
+                            <li>Enter the default value if the field is empty</li>
+                            <li
+                            >Copy and paste the placeholder expression in the description or the special terms</li>
+                        </ol>
                         </p>
                     </group>
                     <group name="parties" string="Parties">
@@ -137,11 +136,11 @@
                                 string="Use custom content"
                             />
                         </group>
-<!--                        <group name="cust_parties">-->
-                            <p>
+                        <!--                        <group name="cust_parties">-->
+                        <p>
                                 This section (on the left) allows you to replace the default listing of the parties with custom dynamic content.
                             </p>
-<!--                        </group>-->
+                        <!--                        </group>-->
                         <group name="partner" string="Partner">
                             <field
                                 name="partner_id"
@@ -153,8 +152,8 @@
                             />
                         </group>
                         <group name="company" string="Company">
-<!--                            <div class="o_address_format">-->
-                                <field
+                            <!--                            <div class="o_address_format">-->
+                            <field
                                 name="company_id"
                                 readonly="1"
                                 context="{'show_address': 1}"
@@ -163,7 +162,7 @@
                                 colspan="2"
                                 class="o_address_format"
                             />
-<!--                            </div>-->
+                            <!--                            </div>-->
                             <field name="company_partner_id" invisible="1" />
                         </group>
                         <group name="partner_left" string="Primary Contact">
@@ -354,45 +353,45 @@
                             <p>Perhaps include invoices with total vs costs? </p>
                         </page>
                     </notebook>
-                        <separator string="Administration" />
-<!--                    <group string="Administration">-->
-                        <div name="Administration">
-                            <p class="oe_inline">Reviewed by <field
-                                name="reviewed_user_id"
-                                class="oe_inline"
-                            /> on <field name="reviewed_date" class="oe_inline" />.</p>
-                            <p>Approved by <field
-                                name="approved_user_id"
-                                class="oe_inline"
-                            /> on <field name="approved_date" class="oe_inline" />.</p>
-                        </div>
-<!--                    </group>-->
+                    <separator string="Administration" />
+                    <!--                    <group string="Administration">-->
+                    <div name="Administration">
+                        <p class="oe_inline">Reviewed by <field
+                            name="reviewed_user_id"
+                            class="oe_inline"
+                        /> on <field name="reviewed_date" class="oe_inline" />.</p>
+                        <p>Approved by <field
+                            name="approved_user_id"
+                            class="oe_inline"
+                        /> on <field name="approved_date" class="oe_inline" />.</p>
+                    </div>
+                    <!--                    </group>-->
                     <p name="footer">
                         Version: <field name="version" readonly="True" />.<field
-                            name="revision"
-                            readonly="True"
-                        />
+                        name="revision"
+                        readonly="True"
+                    />
                         |  Created By:
                         <field
-                            name="create_uid"
-                            readonly="True"
-                            invisible="parent_agreement_id != False"
-                        />
+                        name="create_uid"
+                        readonly="True"
+                        invisible="parent_agreement_id != False"
+                    />
                         <field
-                            name="create_uid_parent"
-                            invisible="parent_agreement_id == False"
-                        />
+                        name="create_uid_parent"
+                        invisible="parent_agreement_id == False"
+                    />
                         |  Created On:
                         <field
-                            name="create_date"
-                            readonly="True"
-                            invisible="parent_agreement_id != False"
-                        />
+                        name="create_date"
+                        readonly="True"
+                        invisible="parent_agreement_id != False"
+                    />
                         <field
-                            name="create_date_parent"
-                            readonly="True"
-                            invisible="parent_agreement_id == False"
-                        />
+                        name="create_date_parent"
+                        readonly="True"
+                        invisible="parent_agreement_id == False"
+                    />
                     </p>
                 </sheet>
                 <div class="oe_chatter">
@@ -422,7 +421,8 @@
                                     <div class="o_kanban_record_headings">
                                         <strong class="o_kanban_record_title">
                                             <field name="name" />
-                                        </strong><br />
+                                        </strong>
+                                        <br />
                                         <div
                                             class="o_kanban_record_subtitle text-muted"
                                         >
@@ -432,7 +432,9 @@
                                                 t-set="red"
                                             >oe_kanban_text_red</t>
                                             <div t-attf-class="#{red || ''}">
-                                                <i><field name="end_date" /></i>
+                                                <i>
+                                                    <field name="end_date" />
+                                                </i>
                                             </div>
                                         </div>
                                     </div>
@@ -457,9 +459,9 @@
                                             role="menu"
                                             aria-labelledby="dLabel"
                                         >
-                                            <li t-if="widget.editable"><a
-                                                    type="edit"
-                                                >Edit</a></li>
+                                            <li t-if="widget.editable">
+                                                <a type="edit">Edit</a>
+                                            </li>
                                             <li class="divider" />
                                             <li
                                                 class="dropdown-header"
@@ -475,8 +477,8 @@
                                 </div>
                                 <div class="o_kanban_record_body">
                                     <field name="agreement_type_id" /> - <field
-                                        name="agreement_subtype_id"
-                                    />
+                                    name="agreement_subtype_id"
+                                />
                                 </div>
                                 <div class="o_kanban_record_bottom">
                                     <div class="oe_kanban_bottom_left">
@@ -618,5 +620,4 @@
         <field name="context">{'default_is_template': True}</field>
         <field name="view_mode">tree,kanban,form</field>
     </record>
-
 </odoo>

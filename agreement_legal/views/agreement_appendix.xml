@@ -1,5 +1,4 @@
 <odoo>
-
     <!-- Agreement Appendix List View-->
     <record model="ir.ui.view" id="agreement_appendix_tree">
         <field name="name">Agreement Appendix Tree</field>
@@ -32,7 +31,9 @@
                     <field name="active" invisible="1" />
                     <div class="oe_title">
                         <label for="name" class="oe_edit_only" />
-                        <h1><field name="name" /></h1>
+                        <h1>
+                            <field name="name" />
+                        </h1>
                     </div>
                     <group>
                         <group>
@@ -67,12 +68,12 @@
                         <p>
                             This section (on the left) allows you to add dynamic fields inside the content.
                             <ol>
-                                <li>Select the appendix field</li>
-                                <li>Select the sub-field</li>
-                                <li>Enter the default value if the field is empty</li>
-                                <li
-                                >Copy and paste the placeholder expression in the content</li>
-                            </ol>
+                            <li>Select the appendix field</li>
+                            <li>Select the sub-field</li>
+                            <li>Enter the default value if the field is empty</li>
+                            <li
+                            >Copy and paste the placeholder expression in the content</li>
+                        </ol>
                         </p>
                     </group>
                 </sheet>
@@ -133,5 +134,4 @@
             </field>
         </field>
     </record>
-
 </odoo>

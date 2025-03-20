@@ -1,5 +1,4 @@
 <odoo>
-
     <!-- Agreement Stage List View-->
     <record model="ir.ui.view" id="partner_agreement_stage_list_view">
         <field name="name">Agreement Stage List</field>
@@ -29,7 +28,9 @@
                     />
                     <div class="oe_title">
                         <label for="name" class="oe_edit_only" />
-                        <h1><field name="name" /></h1>
+                        <h1>
+                            <field name="name" />
+                        </h1>
                     </div>
                     <group>
                         <field name="sequence" />
@@ -73,5 +74,4 @@
         <field name="res_model">agreement.stage</field>
         <field name="view_mode">tree,form</field>
     </record>
-
 </odoo>
