@@ -4,13 +4,13 @@
         <field name="name">Agreement Recital Tree</field>
         <field name="model">agreement.recital</field>
         <field name="arch" type="xml">
-            <tree default_order="agreement_id, sequence">
+            <list default_order="agreement_id, sequence">
                 <field name="sequence" widget="handle" />
                 <field name="name" />
                 <field name="title" />
                 <field name="agreement_id" />
                 <field name="active" column_invisible="1" />
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -101,7 +101,7 @@
     <record model="ir.actions.act_window" id="agreement_recital_action">
         <field name="name">Recitals</field>
         <field name="res_model">agreement.recital</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
     </record>
 
     <!-- Agreement Recital List View 2 (Call this view from agreement)-->
@@ -112,9 +112,9 @@
         <field name="mode">primary</field>
         <field name="priority">999</field>
         <field name="arch" type="xml">
-            <tree position="attributes">
+            <list position="attributes">
                 <attribute name="default_order">sequence</attribute>
-            </tree>
+            </list>
             <field name="agreement_id" position="attributes">
                 <attribute name="column_invisible">1</attribute>
             </field>
