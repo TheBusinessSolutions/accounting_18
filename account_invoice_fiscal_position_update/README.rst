@@ -28,10 +28,11 @@ Invoice Fiscal Position Update
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
-With this module, when a user changes the fiscal position of an invoice,
-the taxes and the accounts on all the invoice lines which have a product
-are automatically updated. The invoice lines without a product are not
-updated and a warning is displayed to the user in this case.
+This module is obsolete and no longer maintained. With this module, when
+a user changes the fiscal position of an invoice, the taxes and the
+accounts on all the invoice lines which have a product are automatically
+updated. The invoice lines without a product are not updated and a
+warning is displayed to the user in this case.
 
 **Table of contents**
 
@@ -66,23 +67,23 @@ Authors
 Contributors
 ------------
 
-- Mathieu Vatel (Julius Network Solutions)
+-  Mathieu Vatel (Julius Network Solutions)
 
-- Alexis de Lattre <alexis.delattre@akretion.com>
+-  Alexis de Lattre <alexis.delattre@akretion.com>
 
-- Mourad EL HADJ MIMOUNE <mourad.elhadj.mimoune@akretion.com>
+-  Mourad EL HADJ MIMOUNE <mourad.elhadj.mimoune@akretion.com>
 
-- Roel Adriaans <roel@road-support.nl>
+-  Roel Adriaans <roel@road-support.nl>
 
-- Marcos Oitabén <marcos.oitaben@dynapps.eu>
+-  Marcos Oitabén <marcos.oitaben@dynapps.eu>
 
-- `Tecnativa <https://www.tecnativa.com>`__:
+-  `Tecnativa <https://www.tecnativa.com>`__:
 
-     - Ernesto Tejeda
+      -  Ernesto Tejeda
 
-- `Factor Libre <https://factorlibre.com>`__:
+-  `Factor Libre <https://factorlibre.com>`__:
 
-     - Luis J. Salvatierra <luis.salvatierra@factorlibre.com>
+      -  Luis J. Salvatierra <luis.salvatierra@factorlibre.com>
 
 Maintainers
 -----------
