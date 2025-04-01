@@ -62,6 +62,7 @@ Contributors
 
   - Pedro M. Baeza
   - Víctor Martínez
+  - David Bañón Gil
 
 Maintainers
 -----------
