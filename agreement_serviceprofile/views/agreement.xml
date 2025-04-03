@@ -8,12 +8,12 @@
             <notebook position="inside">
                 <page name="serviceprofiles" string="Service Profiles">
                     <field name="serviceprofile_ids">
-                        <tree>
+                        <list>
                             <field name="name" />
                             <field name="product_id" />
                             <field name="product_variant_id" />
                             <field name="stage_id" />
-                        </tree>
+                        </list>
                         <form>
                             <group>
                                 <group>
@@ -27,13 +27,13 @@
                                     <field name="use_product_variant" />
                                     <field
                                         name="product_variant_id"
-                                        context="{'default_detailed_type': 'serviceprofile', 'default_type': 'service'}"
+                                        context="{'default_service_tracking': 'serviceprofile', 'default_type': 'service'}"
                                         invisible="not use_product_variant"
                                         required="use_product_variant"
                                     />
                                     <field
                                         name="product_id"
-                                        context="{'default_detailed_type': 'serviceprofile', 'default_type': 'service'}"
+                                        context="{'default_service_tracking': 'serviceprofile', 'default_type': 'service'}"
                                         invisible="use_product_variant"
                                         required="not use_product_variant"
                                     />

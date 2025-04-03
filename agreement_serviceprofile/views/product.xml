@@ -11,7 +11,7 @@
                 <page
                     id="agreement"
                     string="Service"
-                    invisible="detailed_type != 'serviceprofile'"
+                    invisible="service_tracking != 'serviceprofile'"
                 >
                     <group>
                         <group id="agreement_left" />
@@ -32,7 +32,7 @@
                 <page
                     id="agreement"
                     string="Service"
-                    invisible="detailed_type != 'serviceprofile'"
+                    invisible="service_tracking != 'serviceprofile'"
                 >
                     <group>
                         <group id="agreement_left" />

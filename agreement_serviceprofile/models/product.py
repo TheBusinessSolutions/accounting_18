@@ -7,14 +7,12 @@ from odoo import fields, models
 class ProductTemplate(models.Model):
     _inherit = "product.template"
 
-    detailed_type = fields.Selection(
+    service_tracking = fields.Selection(
         selection_add=[
             ("serviceprofile", "Service Profile"),
         ],
-        ondelete={"serviceprofile": "set service"},
+        ondelete={"serviceprofile": "set default"},
     )
 
-    def _detailed_type_mapping(self):
-        type_mapping = super()._detailed_type_mapping()
-        type_mapping["serviceprofile"] = "service"
-        return type_mapping
+    def _service_tracking_blacklist(self):
+        return super()._service_tracking_blacklist() + ["serviceprofile"]

@@ -32,18 +32,18 @@ class AgreementServiceProfile(models.Model):
     product_id = fields.Many2one(
         "product.template",
         "Service Product",
-        domain="[('detailed_type', '=', 'serviceprofile'), ('type', '=', 'service')]",
+        domain="[('service_tracking', '=', 'serviceprofile')]",
     )
     product_variant_id = fields.Many2one(
         "product.product",
         "Service Product Variant",
-        domain="[('detailed_type', '=', 'serviceprofile'), ('type', '=', 'service')]",
+        domain="[('service_tracking', '=', 'serviceprofile')]",
     )
     use_product_variant = fields.Boolean(default=False)
     partner_id = fields.Many2one(related="agreement_id.partner_id", string="Partner")
 
     # Used for Kanban grouped_by view
     @api.model
-    def _read_group_stage_ids(self, stages, domain, order):
+    def _read_group_stage_ids(self, stages, domain, order=None):
         stages |= stages.search([("stage_type", "=", "serviceprofile")], order=order)
         return stages
