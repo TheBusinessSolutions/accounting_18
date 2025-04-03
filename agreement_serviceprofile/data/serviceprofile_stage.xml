@@ -2,7 +2,6 @@
      # Copyright (C) 2019 Open Source Integrators
      # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 <odoo noupdate="1">
-
     <record id="servpro_stage_draft" model="agreement.stage">
         <field name="name">Draft</field>
         <field name="sequence">10</field>
@@ -39,5 +38,4 @@
         <field name="fold">True</field>
         <field name="stage_type">serviceprofile</field>
     </record>
-
 </odoo>

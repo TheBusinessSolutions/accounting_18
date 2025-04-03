@@ -1,7 +1,6 @@
 <!-- Copyright 2019 Open Source Integrators
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 <odoo>
-
     <!-- Product Template Form View -->
     <record id="product_template_form_view" model="ir.ui.view">
         <field name="name">product.template.form.view</field>
@@ -15,8 +14,7 @@
                     invisible="detailed_type != 'serviceprofile'"
                 >
                     <group>
-                        <group id="agreement_left">
-                        </group>
+                        <group id="agreement_left" />
                         <group id="agreement_right" />
                     </group>
                 </page>
@@ -37,13 +35,11 @@
                     invisible="detailed_type != 'serviceprofile'"
                 >
                     <group>
-                        <group id="agreement_left">
-                        </group>
+                        <group id="agreement_left" />
                         <group id="agreement_right" />
                     </group>
                 </page>
             </xpath>
         </field>
     </record>
-
 </odoo>

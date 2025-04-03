@@ -1,5 +1,4 @@
 <odoo>
-
     <!-- Agreement Service Profile List View-->
     <record id="agreement_serviceprofile_tree" model="ir.ui.view">
         <field name="name">Agreement Service Profile Tree</field>
@@ -67,7 +66,7 @@
                         </group>
                     </group>
                     <group string="Notes">
-                            <field name="notes" nolabel="1" widget="html" colspan="2" />
+                        <field name="notes" nolabel="1" widget="html" colspan="2" />
                     </group>
                 </sheet>
                 <div class="oe_chatter">
@@ -157,5 +156,4 @@
         sequence="20"
         action="agreement_serviceprofile_dashboard"
     />
-
 </odoo>
