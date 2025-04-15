@@ -1,4 +1,5 @@
 /** @odoo-module **/
+/* global document */
 
 import {AccountPaymentField} from "@account/components/account_payment_field/account_payment_field";
 import {_t} from "@web/core/l10n/translation";
