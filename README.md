@@ -34,6 +34,7 @@ addon | version | maintainers | summary
 [account_move_name_sequence](account_move_name_sequence/) | 18.0.1.0.0 | [![alexis-via](https://github.com/alexis-via.png?size=30px)](https://github.com/alexis-via) [![moylop260](https://github.com/moylop260.png?size=30px)](https://github.com/moylop260) [![luisg123v](https://github.com/luisg123v.png?size=30px)](https://github.com/luisg123v) | Generate journal entry number from sequence
 [account_move_post_date_user](account_move_post_date_user/) | 18.0.1.0.0 | [![JordiMForgeFlow](https://github.com/JordiMForgeFlow.png?size=30px)](https://github.com/JordiMForgeFlow) | Trace journal entry posting date and user.
 [account_usability](account_usability/) | 18.0.1.0.0 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | Adds missing menu entries for Account module and adds the option to enable Saxon Accounting
+[purchase_unreconciled](purchase_unreconciled/) | 18.0.1.0.0 | [![AaronHForgeFlow](https://github.com/AaronHForgeFlow.png?size=30px)](https://github.com/AaronHForgeFlow) | Purchase Unreconciled
 
 [//]: # (end addons)
 
