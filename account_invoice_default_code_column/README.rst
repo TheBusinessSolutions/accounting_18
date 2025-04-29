@@ -43,9 +43,14 @@ of the invoices.
 
 |image1|
 
-**With this module** .. figure:: https://raw.githubusercontent.com/OCA/account-invoicing/18.0/account_invoice_default_code_column/static/description/2_with_module.png
+**With this module**
+
+figure::
+
+|image2|
 
 .. |image1| image:: https://raw.githubusercontent.com/OCA/account-invoicing/18.0/account_invoice_default_code_column/static/description/1_without_module.png
+.. |image2| image:: https://raw.githubusercontent.com/OCA/account-invoicing/18.0/account_invoice_default_code_column/static/description/2_with_module.png
 
 **Table of contents**
 
@@ -75,6 +80,9 @@ Contributors
 
 - Sylvain LE GAL
   <`https://twitter.com/legalsylvain\\> <https://twitter.com/legalsylvain\>>`__
+- [Heliconia Solutions Pvt. Ltd.](https://www.heliconia.io)
+
+  - Bhavesh Heliconia
 
 Maintainers
 -----------
