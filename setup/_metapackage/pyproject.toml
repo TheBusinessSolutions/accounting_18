@@ -1,9 +1,10 @@
 [project]
 name = "odoo-addons-oca-account-payment"
-version = "18.0.20250308.0"
+version = "18.0.20250502.0"
 dependencies = [
     "odoo-addon-account_check_printing_report_base==18.0.*",
     "odoo-addon-account_due_list==18.0.*",
+    "odoo-addon-account_due_list_payment_mode==18.0.*",
     "odoo-addon-account_payment_promissory_note==18.0.*",
     "odoo-addon-account_payment_tier_validation==18.0.*",
 ]
