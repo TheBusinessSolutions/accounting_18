@@ -7,16 +7,14 @@ from odoo.addons.product_contract.tests.test_sale_order import TestSaleOrder
 
 class TestSaleOrderPaymentMode(TestSaleOrder):
     def setUp(self):
-        super(TestSaleOrderPaymentMode, self).setUp()
-        self.payment_mode = self.env['account.payment.mode'].search(
-            [], limit=1
-        )
+        super().setUp()
+        self.payment_mode = self.env["account.payment.mode"].search([], limit=1)
         self.sale.payment_mode_id = self.payment_mode
 
     def test_action_confirm_with_payment_mode(self):
         self.test_action_confirm()
         self.assertEqual(
-            self.sale.order_line.mapped('contract_id.payment_mode_id'),
+            self.sale.order_line.mapped("contract_id.payment_mode_id"),
             self.payment_mode,
         )
 
@@ -25,7 +23,7 @@ class TestSaleOrderPaymentMode(TestSaleOrder):
         self.sale.contract_payment_mode_id = self.contract_payment_mode_id
         self.test_action_confirm()
         self.assertEqual(
-            self.sale.order_line.mapped('contract_id.payment_mode_id'),
+            self.sale.order_line.mapped("contract_id.payment_mode_id"),
             self.payment_mode,
         )
 
@@ -35,6 +33,6 @@ class TestSaleOrderPaymentMode(TestSaleOrder):
         self.sale.company_id.specific_contract_payment_mode = True
         self.test_action_confirm()
         self.assertEqual(
-            self.sale.order_line.mapped('contract_id.payment_mode_id'),
+            self.sale.order_line.mapped("contract_id.payment_mode_id"),
             self.contract_payment_mode_id,
         )

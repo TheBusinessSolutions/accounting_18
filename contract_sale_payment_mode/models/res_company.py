@@ -5,8 +5,7 @@ from odoo import fields, models
 
 
 class ResCompany(models.Model):
-
-    _inherit = 'res.company'
+    _inherit = "res.company"
 
     specific_contract_payment_mode = fields.Boolean(
         string="Specific payment mode for contracts created from sale orders"
