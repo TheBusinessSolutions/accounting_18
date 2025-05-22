@@ -22,6 +22,7 @@ Available addons
 addon | version | maintainers | summary
 --- | --- | --- | ---
 [account_asset_management](account_asset_management/) | 18.0.1.0.1 |  | Assets Management
+[account_asset_transfer](account_asset_transfer/) | 18.0.1.0.0 | [![kittiu](https://github.com/kittiu.png?size=30px)](https://github.com/kittiu) [![Saran440](https://github.com/Saran440.png?size=30px)](https://github.com/Saran440) | Asset Transfer from AUC to Asset
 [account_cash_deposit](account_cash_deposit/) | 18.0.1.0.0 |  | Manage cash deposits and cash orders
 [account_fiscal_position_vat_check](account_fiscal_position_vat_check/) | 18.0.1.0.0 |  | Check VAT on invoice validation
 [account_fiscal_year](account_fiscal_year/) | 18.0.1.0.0 | [![eLBati](https://github.com/eLBati.png?size=30px)](https://github.com/eLBati) | Create Account Fiscal Year
