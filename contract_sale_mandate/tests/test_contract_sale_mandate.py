@@ -7,29 +7,32 @@ from odoo.addons.contract.tests.test_contract import TestContractBase
 class TestContractSaleMandate(TestContractBase):
     @classmethod
     def setUpClass(cls):
-        super(TestContractSaleMandate, cls).setUpClass()
-        cls.partner_bank = cls.env['res.partner.bank'].create({
-            'acc_number': '1234',
-            'partner_id': cls.partner.id,
-        })
-        cls.mandate = cls.env['account.banking.mandate'].create({
-            'partner_id': cls.partner.id,
-            'partner_bank_id': cls.partner_bank.id,
-            'signature_date': '2017-01-01',
-        })
-        cls.product1 = cls.env.ref('product.product_product_1')
-        cls.contract_template1 = cls.env['contract.template'].create(
-            {'name': 'Template 1'}
-        )
-        cls.sale = cls.env.ref('sale.sale_order_2')
-        cls.product1.with_context(
-            force_company=cls.sale.company_id.id).write(
+        super().setUpClass()
+        cls.partner_bank = cls.env["res.partner.bank"].create(
             {
-                'is_contract': True,
-                'default_qty': 12,
-                'recurring_rule_type': "monthlylastday",
-                'recurring_invoicing_type': "post-paid",
-                'property_contract_template_id': cls.contract_template1.id,
+                "acc_number": "1234",
+                "partner_id": cls.partner.id,
+            }
+        )
+        cls.mandate = cls.env["account.banking.mandate"].create(
+            {
+                "partner_id": cls.partner.id,
+                "partner_bank_id": cls.partner_bank.id,
+                "signature_date": "2017-01-01",
+            }
+        )
+        cls.product1 = cls.env.ref("product.product_product_1")
+        cls.contract_template1 = cls.env["contract.template"].create(
+            {"name": "Template 1"}
+        )
+        cls.sale = cls.env.ref("sale.sale_order_2")
+        cls.product1.with_context(force_company=cls.sale.company_id.id).write(
+            {
+                "is_contract": True,
+                "default_qty": 12,
+                "recurring_rule_type": "monthlylastday",
+                "recurring_invoicing_type": "post-paid",
+                "property_contract_template_id": cls.contract_template1.id,
             }
         )
         cls.sale.mandate_id = cls.mandate
@@ -49,6 +52,6 @@ class TestContractSaleMandate(TestContractBase):
         """
         self.order_line1.onchange_product()
         self.sale.action_confirm()
-        contracts = self.sale.order_line.mapped('contract_id')
+        contracts = self.sale.order_line.mapped("contract_id")
         self.assertEqual(len(contracts), 1)
         self.assertEqual(contracts[0].mandate_id, self.mandate)
