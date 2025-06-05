@@ -1,7 +1,8 @@
 [project]
 name = "odoo-addons-oca-account-reconcile"
-version = "18.0.20250605.0"
+version = "18.0.20250605.1"
 dependencies = [
+    "odoo-addon-account_move_base_import==18.0.*",
     "odoo-addon-account_reconcile_model_oca==18.0.*",
     "odoo-addon-account_reconcile_oca==18.0.*",
     "odoo-addon-account_statement_base==18.0.*",
