@@ -1,10 +1,11 @@
 [project]
 name = "odoo-addons-oca-contract"
-version = "18.0.20250604.1"
+version = "18.0.20250605.0"
 dependencies = [
     "odoo-addon-contract==18.0.*",
     "odoo-addon-contract_line_successor==18.0.*",
     "odoo-addon-contract_termination==18.0.*",
+    "odoo-addon-contract_variable_quantity==18.0.*",
     "odoo-addon-product_contract==18.0.*",
 ]
 classifiers=[
