@@ -1,6 +1,6 @@
 [project]
 name = "odoo-addons-oca-account-financial-tools"
-version = "18.0.20250710.0"
+version = "18.0.20250724.0"
 dependencies = [
     "odoo-addon-account_asset_management==18.0.*",
     "odoo-addon-account_asset_transfer==18.0.*",
@@ -23,6 +23,7 @@ dependencies = [
     "odoo-addon-account_move_template==18.0.*",
     "odoo-addon-account_netting==18.0.*",
     "odoo-addon-account_usability==18.0.*",
+    "odoo-addon-product_category_tax==18.0.*",
     "odoo-addon-purchase_unreconciled==18.0.*",
 ]
 classifiers=[
