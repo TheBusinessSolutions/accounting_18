@@ -9,6 +9,12 @@ class ProjectProject(models.Model):
 
     agreement_id = fields.Many2one("agreement", "Agreement")
 
+    def write(self, vals):
+        res = super().write(vals)
+        if "agreement_id" in vals:
+            self.agreement_id._compute_project_id()
+        return res
+
 
 class ProjectTask(models.Model):
     _inherit = "project.task"

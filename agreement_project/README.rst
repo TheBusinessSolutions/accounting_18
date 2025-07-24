@@ -84,6 +84,9 @@ Contributors
 -  Sandip Mangukiya <smangukiya@opensourceintegrators.com>
 -  Yves Goldberg <yves@ygol.com>
 -  Helly kapatel <helly.kapatel@initos.com>
+-  `APSL-Nagarro <https://www.apsl.tech>`__:
+
+   -  Antoni Marroig <amarroig@apsl.net>
 
 Other credits
 -------------
