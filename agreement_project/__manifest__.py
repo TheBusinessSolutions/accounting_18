@@ -9,7 +9,7 @@
     "author": "Open Source Integrators, "
     "Yves Goldberg (Ygol Internetwork), "
     "Odoo Community Association (OCA)",
-    "website": "https://github.com/OCA/contract",
+    "website": "https://github.com/OCA/agreement",
     "depends": ["agreement_legal", "project"],
     "data": [
         "views/agreement_view.xml",
