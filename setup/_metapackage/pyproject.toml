@@ -1,7 +1,8 @@
 [project]
 name = "odoo-addons-oca-account-financial-tools"
-version = "18.0.20250807.0"
+version = "18.0.20250807.1"
 dependencies = [
+    "odoo-addon-account_asset_compute_batch==18.0.*",
     "odoo-addon-account_asset_management==18.0.*",
     "odoo-addon-account_asset_number==18.0.*",
     "odoo-addon-account_asset_transfer==18.0.*",
