@@ -5,16 +5,15 @@ from odoo import api, fields, models
 
 
 class TransmitMethodSubstitutionRule(models.Model):
-
     _name = "transmit.method.substitution.rule"
     _description = "Transmit Method Substitution Rule"
 
     name = fields.Char(required=True)
-    domain = fields.Char(string="Domain", required=True, default="[]")
+    domain = fields.Char(required=True, default="[]")
     transmit_method_id = fields.Many2one(
         comodel_name="transmit.method", string="Transmit Method", required=True
     )
-    active = fields.Boolean(string="Active", default=True)
+    active = fields.Boolean(default=True)
     company_id = fields.Many2one(
         comodel_name="res.company",
         string="Company",
@@ -24,7 +23,7 @@ class TransmitMethodSubstitutionRule(models.Model):
     @api.model
     def get_substitution_rules_by_company(self):
         substitution_rules_by_company = {}
-        for group in self.read_group([], ["id"], ["company_id"]):
+        for group in self.read_group([], ["id:sum"], ["company_id"]):
             if group["company_id"]:
                 company_id = group["company_id"][0]
                 domain = [

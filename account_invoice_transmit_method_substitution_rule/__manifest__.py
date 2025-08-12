@@ -5,7 +5,7 @@
     "name": "Account Invoice Transmit Method Substitution Rule",
     "summary": """
         This addon allow to set substitution rules for transmit method""",
-    "version": "12.0.1.0.0",
+    "version": "18.0.1.0.0",
     "license": "AGPL-3",
     "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/account-invoicing",
