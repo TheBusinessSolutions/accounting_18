@@ -35,6 +35,7 @@ addon | version | maintainers | summary
 [account_journal_lock_date](account_journal_lock_date/) | 18.0.1.0.0 |  | Lock each journal independently
 [account_journal_restrict_mode](account_journal_restrict_mode/) | 18.0.1.1.0 |  | Lock All Posted Entries of Journals.
 [account_lock_date_update](account_lock_date_update/) | 18.0.1.0.0 |  | Allow an Account adviser to update locking date without having access to all technical settings
+[account_lock_to_date](account_lock_to_date/) | 18.0.1.0.0 |  | Allows to set an account lock date in the future.
 [account_maturity_date_default](account_maturity_date_default/) | 18.0.1.0.0 | <a href='https://github.com/victoralmau'><img src='https://github.com/victoralmau.png' width='32' height='32' style='border-radius:50%;' alt='victoralmau'/></a> | Account Maturity Date Default
 [account_move_fiscal_year](account_move_fiscal_year/) | 18.0.1.0.0 |  | Display the fiscal year on journal entries/item
 [account_move_line_purchase_info](account_move_line_purchase_info/) | 18.0.2.0.0 |  | Introduces the purchase order line to the journal items
