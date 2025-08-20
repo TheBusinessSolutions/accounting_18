@@ -105,14 +105,11 @@ class AgreementSettlementInvoiceCreateWiz(models.TransientModel):
             )
         )
         invoices = settlements.with_context(
-            partner_invoice=self.invoice_partner_id,
-            product=self.product_id,
-            journal_id=self.journal_id.id,
-            invoice_type=self.invoice_type,
-            invoice_group=self.invoice_group,
-            date_from=self.date_from,
-            date_to=self.date_to,
-        ).create_invoice()
+            default_partner_id=self.invoice_partner_id.id,
+            default_product_id=self.product_id.id,
+            default_journal_id=self.journal_id.id,
+            default_move_type=self.invoice_type,
+        )._create_invoices(self.invoice_group)
         return self.action_show_invoices(invoices)
 
     def action_show_invoices(self, invoices):

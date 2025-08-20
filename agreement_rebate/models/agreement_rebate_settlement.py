@@ -1,8 +1,7 @@
 # Copyright 2020 Tecnativa - Carlos Dauden
 # Copyright 2020 Tecnativa - Sergio Teruel
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
-from odoo import _, api, fields, models
-from odoo.exceptions import UserError
+from odoo import Command, api, fields, models
 from odoo.osv import expression
 from odoo.tools.safe_eval import safe_eval
 
@@ -66,39 +65,34 @@ class AgreementRebateSettlement(models.Model):
             "in_refund": "in_invoice",
         }.get(inv_type)
 
-    def create_invoice(self):
-        invoice_dic = {}
-        for line in self.mapped("line_ids").filtered(
-            lambda ln: ln.invoice_status == "to_invoice"
-        ):
-            key = line._get_invoice_key()
-            if key not in invoice_dic:
-                invoice_dic[key] = line._prepare_invoice()
-                invoice_dic[key]["processed_settlements"] = line.settlement_id
-                invoice_dic[key]["check_amount"] = 0.0
-            elif line.settlement_id not in invoice_dic[key]["processed_settlements"]:
-                invoice_dic[key]["invoice_origin"] = "{}, {}".format(
-                    invoice_dic[key]["invoice_origin"], line.settlement_id.name
-                )
-                invoice_dic[key]["processed_settlements"] |= line.settlement_id
-            inv_line_vals = line._prepare_invoice_line(invoice_dic[key])
-            invoice_dic[key]["invoice_line_ids"].append((0, 0, inv_line_vals))
-            invoice_dic[key]["check_amount"] += line.amount_invoiced
-        for values in invoice_dic.values():
-            values.pop("processed_settlements", None)
-            values.pop("line_ids", None)
-            if values.pop("check_amount", 0.0) < 0.0:
-                for line_vals in values["invoice_line_ids"]:
+    def _create_invoices(self, invoice_group="settlement"):
+        # Group lines to invoice
+        lines_to_invoice = self.line_ids.filtered(
+            lambda line: line.invoice_status == "to_invoice"
+        )
+        lines_by_group = lines_to_invoice.grouped(
+            lambda line: line._get_invoice_key(invoice_group)
+        )
+        # Process each group
+        invoice_vals_list = []
+        for lines in lines_by_group.values():
+            vals = lines[0]._prepare_invoice()
+            vals["invoice_line_ids"] = [
+                Command.create(line._prepare_invoice_line()) for line in lines
+            ]
+            # Reverse if the amount is negative
+            if sum(lines.mapped("amount_invoiced")) < 0.0:
+                vals["move_type"] = self._reverse_type_map(vals["move_type"])
+                for line_vals in vals["invoice_line_ids"]:
                     line_vals[2]["price_unit"] *= -1
-                values["move_type"] = self._reverse_type_map(values["move_type"])
-        invoices = self.env["account.move"].create(invoice_dic.values())
-        return invoices
+            invoice_vals_list.append(vals)
+        return self.env["account.move"].create(invoice_vals_list)
 
     def action_show_detail(self):
         target_domains = self.line_ids.mapped("target_domain")
         domain = expression.OR([safe_eval(d) for d in set(target_domains)])
         return {
-            "name": _("Details"),
+            "name": self.env._("Details"),
             "type": "ir.actions.act_window",
             "res_model": "account.invoice.report",
             "view_mode": "pivot,list",
@@ -254,103 +248,44 @@ class AgreementRebateSettlementLine(models.Model):
         """
         self.ensure_one()
         company = self.company_id or self.env.user.company_id
-        partner = self.env.context.get("partner_invoice", False)
-        if not partner:
+        partner_id = self.env.context.get("default_partner_id", False)
+        if not partner_id:
             invoice_group = self.env.context.get("invoice_group", "settlement")
             if invoice_group == "settlement":
-                partner = self.settlement_id.partner_id
+                partner_id = self.settlement_id.partner_id.id
             elif invoice_group == "partner":
-                partner = self.partner_id
+                partner_id = self.partner_id.id
             elif invoice_group == "commercial_partner":
-                partner = self.partner_id.commercial_partner_id
-        invoice_type = self.env.context.get("invoice_type", "out_invoice")
-        journal_id = (
-            self.env.context.get("journal_id")
-            or self.env["account.move"]
-            .with_company(company=company)
-            .default_get(["journal_id"])["journal_id"]
-        )
-        if not journal_id:
-            raise UserError(
-                _("Please define an accounting sales journal for this company.")
-            )
-        vinvoice = self.env["account.move"].new(
-            {
-                "company_id": company.id,
-                "partner_id": partner.id,
-                "move_type": invoice_type,
-                "journal_id": journal_id,
-            }
-        )
-        # Get partner extra fields
-        vinvoice._onchange_partner_id()
-        invoice_vals = vinvoice._convert_to_write(vinvoice._cache)
-        invoice_vals.update(
-            {
-                "ref": (self.agreement_id.name or ""),
-                "invoice_origin": self.settlement_id.name,
-                "invoice_line_ids": [],
-                "currency_id": partner.currency_id.id,
-            }
-        )
-        return invoice_vals
-
-    def _prepare_invoice_line(self, invoice_vals):
-        self.ensure_one()
-        company = self.company_id or self.env.user.company_id
-        product = self.env.context.get("product", False)
-        invoice_line_vals = {
-            "product_id": product.id,
-            "quantity": 1.0,
-            "product_uom_id": product.uom_id.id,
-            "agreement_rebate_settlement_line_ids": [(4, self.id)],
+                partner_id = self.partner_id.commercial_partner_id.id
+        return {
+            "company_id": company.id,
+            "partner_id": partner_id,
+            "move_type": self.env.context.get("default_move_type", "out_invoice"),
+            "ref": (self.agreement_id.name or ""),
+            "invoice_origin": self.settlement_id.name,
         }
-        invoice_line = (
-            self.env["account.move.line"]
-            .with_company(company=company)
-            .new(invoice_line_vals)
-        )
-        invoice_vals_new = invoice_vals.copy()
-        invoice_vals_new.pop("processed_settlements", None)
-        invoice_vals_new.pop("check_amount", None)
-        invoice = (
-            self.env["account.move"]
-            .with_company(
-                company=company,
-            )
-            .new(invoice_vals_new)
-        )
-        invoice_line.move_id = invoice
-        # Compute invoice line's name field
-        invoice_line._compute_name()
-        invoice_line_vals = invoice_line._convert_to_write(invoice_line._cache)
-        invoice_line_vals.update(
-            {
-                "name": _(
-                    "%(name)s - Period: %(date_from)s - %(date_to)s",
-                    name=invoice_line_vals["name"],
-                    date_from=self.settlement_id.date_from,
-                    date_to=self.settlement_id.date_to,
-                ),
-                "price_unit": self.amount_rebate,
-            }
-        )
-        return invoice_line_vals
 
-    def _get_invoice_key(self):
-        invoice_group = self.env.context.get("invoice_group", "settlement")
+    def _prepare_invoice_line(self):
+        self.ensure_one()
+        return {
+            "agreement_rebate_settlement_line_ids": [Command.set(self.ids)],
+            "product_id": self.env.context.get("default_product_id", False),
+            "price_unit": self.amount_rebate,
+        }
+
+    def _get_invoice_key(self, invoice_group="settlement"):
         if invoice_group == "settlement":
             return self.settlement_id.id
         if invoice_group == "partner":
-            return self.env.context.get("partner_id", self.partner_id.id)
+            return self.env.context.get("default_partner_id", self.partner_id.id)
         if invoice_group == "commercial_partner":
             return self.env.context.get(
-                "partner_id", self.partner_id.commercial_partner_id.id
+                "default_partner_id", self.partner_id.commercial_partner_id.id
             )
 
     def action_show_detail(self):
         return {
-            "name": _("Details"),
+            "name": self.env._("Details"),
             "type": "ir.actions.act_window",
             "res_model": "account.invoice.report",
             "view_mode": "pivot,list",
