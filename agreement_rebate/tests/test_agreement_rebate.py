@@ -227,6 +227,7 @@ class TestAgreementRebate(TransactionCase):
 
     def create_settlement_wizard(self, agreements=False):
         vals = {
+            "date_from": f"{fields.Date.today().year}-01-01",
             "date_to": f"{fields.Date.today().year}-12-31",
         }
         if agreements:
@@ -380,3 +381,9 @@ class TestAgreementRebate(TransactionCase):
         action = wiz_create_invoice.action_create_invoice()
         invoices = self.env["account.move"].search(action["domain"])
         self.assertEqual(invoices.partner_id, self.partner_2)
+
+        year = fields.Date.today().year
+        self.assertEqual(
+            invoices.invoice_line_ids.name,
+            f"{self.product_rappel.name} - Period: 01/01/{year} - 12/31/{year}",
+        )
