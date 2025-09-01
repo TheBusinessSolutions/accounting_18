@@ -19,12 +19,6 @@ msgid "% Dto"
 msgstr ""
 
 #. module: agreement_rebate
-#. odoo-python
-#: code:addons/agreement_rebate/models/agreement_rebate_settlement.py:0
-msgid "%(name)s - Period: %(date_from)s - %(date_to)s"
-msgstr ""
-
-#. module: agreement_rebate
 #: model_terms:ir.ui.view,arch_db:agreement_rebate.agreement_form
 msgid ""
 "<i class=\"fa fa-filter\"/>\n"
@@ -482,8 +476,8 @@ msgstr ""
 
 #. module: agreement_rebate
 #. odoo-python
-#: code:addons/agreement_rebate/models/agreement_rebate_settlement.py:0
-msgid "Please define an accounting sales journal for this company."
+#: code:addons/agreement_rebate/models/account_move_line.py:0
+msgid "Period: %s - %s"
 msgstr ""
 
 #. module: agreement_rebate
