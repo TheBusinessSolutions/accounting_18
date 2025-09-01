@@ -13,11 +13,10 @@ class AccountMove(models.Model):
         """If it is a purchase invoice, we will create a new SVL for each line with
         the sum of the value in opposite sign.
         """
-        for item in self.sudo().filtered(
-            lambda x: x.is_inbound
-            and any(line.stock_valuation_layer_ids for line in x.line_ids)
-        ):
-            for line in item.line_ids.filtered("stock_valuation_layer_ids"):
+        for rec in self.filtered(lambda rec: rec.is_purchase_document()):
+            for line in rec.line_ids:
+                if not line.stock_valuation_layer_ids:
+                    continue
                 origin_svls = line.stock_valuation_layer_ids.stock_valuation_layer_id
                 if (
                     len(
@@ -53,7 +52,7 @@ class AccountMove(models.Model):
                         origin_svl.remaining_value -= value
                         revert_svl = svls[0].copy({"value": -value})
                         revert_svl._validate_accounting_entries()
-                product = line.product_id.with_company(item.company_id.id)
+                product = line.product_id.with_company(line.company_id.id)
                 if product.cost_method == "average":
                     product.sudo().with_context(disable_auto_svl=True).write(
                         {"standard_price": product.value_svl / product.quantity_svl}
