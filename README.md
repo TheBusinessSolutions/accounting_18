@@ -22,7 +22,7 @@ Available addons
 addon | version | maintainers | summary
 --- | --- | --- | ---
 [agreement](agreement/) | 18.0.1.0.0 | <a href='https://github.com/ygol'><img src='https://github.com/ygol.png' width='32' height='32' style='border-radius:50%;' alt='ygol'/></a> <a href='https://github.com/alexis-via'><img src='https://github.com/alexis-via.png' width='32' height='32' style='border-radius:50%;' alt='alexis-via'/></a> | Adds an agreement object
-[agreement_rebate](agreement_rebate/) | 18.0.1.1.0 |  | Rebate in agreements
+[agreement_rebate](agreement_rebate/) | 18.0.1.1.1 |  | Rebate in agreements
 
 [//]: # (end addons)
 
