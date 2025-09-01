@@ -23,12 +23,6 @@ msgid "% Dto"
 msgstr "% Dto"
 
 #. module: agreement_rebate
-#. odoo-python
-#: code:addons/agreement_rebate/models/agreement_rebate_settlement.py:0
-msgid "%(name)s - Period: %(date_from)s - %(date_to)s"
-msgstr "%(name)s- Periodo:%(date_from)s-%(date_to)s"
-
-#. module: agreement_rebate
 #: model_terms:ir.ui.view,arch_db:agreement_rebate.agreement_form
 msgid ""
 "<i class=\"fa fa-filter\"/>\n"
@@ -493,9 +487,9 @@ msgstr "Período"
 
 #. module: agreement_rebate
 #. odoo-python
-#: code:addons/agreement_rebate/models/agreement_rebate_settlement.py:0
-msgid "Please define an accounting sales journal for this company."
-msgstr "Defina un diario de ventas de contabilidad para esta empresa."
+#: code:addons/agreement_rebate/models/account_move_line.py:0
+msgid "Period: %s - %s"
+msgstr ""
 
 #. module: agreement_rebate
 #: model:ir.model.fields,field_description:agreement_rebate.field_agreement_invoice_create_wiz__product_id
@@ -697,6 +691,12 @@ msgstr "Factura rectificativa de proveedor"
 #: model:ir.model.fields,field_description:agreement_rebate.field_agreement__rebate_type
 msgid "rebate type"
 msgstr "Tipo rappel"
+
+#~ msgid "%(name)s - Period: %(date_from)s - %(date_to)s"
+#~ msgstr "%(name)s- Periodo:%(date_from)s-%(date_to)s"
+
+#~ msgid "Please define an accounting sales journal for this company."
+#~ msgstr "Defina un diario de ventas de contabilidad para esta empresa."
 
 #~ msgid "Last Modified on"
 #~ msgstr "Última modificación el"
