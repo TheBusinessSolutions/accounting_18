@@ -1,9 +1,10 @@
 [project]
 name = "odoo-addons-oca-agreement"
-version = "18.0.20250203.0"
+version = "18.0.20250903.0"
 dependencies = [
     "odoo-addon-agreement==18.0.*",
     "odoo-addon-agreement_rebate==18.0.*",
+    "odoo-addon-agreement_sale==18.0.*",
 ]
 classifiers=[
     "Programming Language :: Python",
