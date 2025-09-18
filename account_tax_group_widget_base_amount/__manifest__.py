@@ -3,7 +3,7 @@
 {
     "name": "Account Tax Group Widget Base Amount",
     "summary": "Adds base amount to tax group widget",
-    "version": "16.0.1.0.0",
+    "version": "18.0.1.0.0",
     "development_status": "Beta",
     "category": "Accounting & Finance",
     "website": "https://github.com/OCA/account-invoicing",
