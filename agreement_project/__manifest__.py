@@ -4,7 +4,7 @@
 {
     "name": "Agreement - Project",
     "summary": "Link projects to an agreement",
-    "version": "17.0.1.0.0",
+    "version": "18.0.1.0.0",
     "category": "Contract",
     "author": "Open Source Integrators, "
     "Yves Goldberg (Ygol Internetwork), "

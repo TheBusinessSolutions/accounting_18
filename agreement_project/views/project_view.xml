@@ -5,9 +5,12 @@
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.edit_project" />
         <field name="arch" type="xml">
-            <field name="privacy_visibility" position="after">
+            <xpath
+                expr="//page[@name='settings']//field[@name='privacy_visibility']"
+                position="before"
+            >
                 <field name="agreement_id" domain="[('partner_id', '=', partner_id)]" />
-            </field>
+            </xpath>
         </field>
     </record>
     <record id="view_task_form2_agreement" model="ir.ui.view">
