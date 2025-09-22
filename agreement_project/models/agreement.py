@@ -8,8 +8,10 @@ class Agreement(models.Model):
     _inherit = "agreement"
 
     task_count = fields.Integer("# Tasks", compute="_compute_task_count")
-    project_id = fields.Many2one(
-        "project.project", compute="_compute_project_id", store=True
+    project_ids = fields.One2many(
+        "project.project",
+        "agreement_id",
+        string="Projects",
     )
 
     def _compute_task_count(self):
@@ -18,8 +20,3 @@ class Agreement(models.Model):
                 [("agreement_id", "=", ag.id)]
             )
             ag.task_count = count
-
-    def _compute_project_id(self):
-        for ag in self:
-            project = self.env["project.project"].search([("agreement_id", "=", ag.id)])
-            ag.project_id = project

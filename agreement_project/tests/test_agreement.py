@@ -15,4 +15,4 @@ class TestAgreement(TransactionCase):
         self.agreement_id._compute_task_count()
         self.assertEqual(self.agreement_id.task_count, 1)
         self.project_id.agreement_id = self.agreement_id2
-        self.assertEqual(self.agreement_id2.project_id, self.project_id)
+        self.assertIn(self.project_id, self.agreement_id2.project_ids)

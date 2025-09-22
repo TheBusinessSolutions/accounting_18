@@ -34,7 +34,7 @@
                 </button>
             </xpath>
             <xpath expr="//field[@name='template_id']" position="after">
-                <field name="project_id" readonly="True" />
+                <field name="project_ids" widget="many2many_tags" readonly="True" />
             </xpath>
         </field>
     </record>
