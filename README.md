@@ -36,6 +36,7 @@ addon | version | maintainers | summary
 [contract_sale](contract_sale/) | 18.0.1.0.0 |  | Contract from Sale
 [contract_sale_invoicing](contract_sale_invoicing/) | 18.0.1.0.0 |  | Include sales to invoice in contract invoice creation
 [contract_sale_mandate](contract_sale_mandate/) | 18.0.1.0.0 |  | This module manages the banking mandate from the sale order to the contract.
+[contract_sale_payment_mode](contract_sale_payment_mode/) | 18.0.1.0.0 |  | This addon manages payment mode from sale order to contract.
 [contract_sale_transmit_method](contract_sale_transmit_method/) | 18.0.1.0.0 |  | Propagate transmit method (email, post, portal, ...) from sale orders to contracts.
 [contract_termination](contract_termination/) | 18.0.1.0.0 |  | contract_termination
 [contract_transmit_method](contract_transmit_method/) | 18.0.1.1.0 |  | Set transmit method (email, post, portal, ...) in contracts and propagate it to invoices.
