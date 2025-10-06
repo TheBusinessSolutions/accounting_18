@@ -7,7 +7,4 @@ from odoo import fields, models
 class HelpdeskTicket(models.Model):
     _inherit = "helpdesk.ticket"
 
-    agreement_id = fields.Many2one(
-        "agreement",
-        string="Agreement",
-    )
+    serviceprofile_id = fields.Many2one("agreement.serviceprofile", "Service Profile")
