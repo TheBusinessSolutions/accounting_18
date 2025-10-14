@@ -37,16 +37,16 @@ the same journal is computed by a complex piece of code that guesses the
 format of the journal entry number from the number of the journal entry
 which was manually entered by the user. It has several drawbacks:
 
-- the available options for the sequence are limited,
-- it is not possible to configure the sequence in advance before the
-  deployment in production,
-- as it is error-prone, they added a *Resequence* wizard to re-generate
-  the journal entry numbers, which can be considered as illegal in many
-  countries,
-- the `piece of
-  code <https://github.com/odoo/odoo/blob/14.0/addons/account/models/sequence_mixin.py>`__
-  that handles this is not easy to understand and quite difficult to
-  debug.
+-  the available options for the sequence are limited,
+-  it is not possible to configure the sequence in advance before the
+   deployment in production,
+-  as it is error-prone, they added a *Resequence* wizard to re-generate
+   the journal entry numbers, which can be considered as illegal in many
+   countries,
+-  the `piece of
+   code <https://github.com/odoo/odoo/blob/14.0/addons/account/models/sequence_mixin.py>`__
+   that handles this is not easy to understand and quite difficult to
+   debug.
 
 Using this module, you can configure what kind of documents the gap
 sequence may be relaxed And even if you must use no-gap in your company
@@ -114,18 +114,18 @@ Authors
 Contributors
 ------------
 
-- `Akretion <https://www.akretion.com>`__:
+-  `Akretion <https://www.akretion.com>`__:
 
-  - Alexis de Lattre <alexis.delattre@akretion.com>
+   -  Alexis de Lattre <alexis.delattre@akretion.com>
 
-- `Vauxoo <https://www.vauxoo.com>`__:
+-  `Vauxoo <https://www.vauxoo.com>`__:
 
-  - Moisés López <moylop260@vauxoo.com>
-  - Francisco Luna <fluna@vauxoo.com>
+   -  Moisés López <moylop260@vauxoo.com>
+   -  Francisco Luna <fluna@vauxoo.com>
 
-- `Factor Libre <https://www.factorlibre.com>`__:
+-  `Factor Libre <https://www.factorlibre.com>`__:
 
-  - Rodrigo Bonilla Martinez <rodrigo.bonilla@factorlibre.com>
+   -  Rodrigo Bonilla Martinez <rodrigo.bonilla@factorlibre.com>
 
 Maintainers
 -----------
