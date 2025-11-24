@@ -24,6 +24,7 @@ addon | version | maintainers | summary
 [account_in_payment](account_in_payment/) | 18.0.1.0.0 |  | This module enables in-payment mode for your accounting
 [account_move_base_import](account_move_base_import/) | 18.0.1.0.0 |  | Journal Entry base import
 [account_move_reconcile_forbid_cancel](account_move_reconcile_forbid_cancel/) | 18.0.1.0.0 |  | Account Move Reconcile Forbid Cancel
+[account_partner_reconcile](account_partner_reconcile/) | 18.0.1.0.0 |  | Account Partner Reconcile
 [account_reconcile_analytic_tag](account_reconcile_analytic_tag/) | 18.0.1.0.1 | <a href='https://github.com/victoralmau'><img src='https://github.com/victoralmau.png' width='32' height='32' style='border-radius:50%;' alt='victoralmau'/></a> | Analytic tags in account reconciliation
 [account_reconcile_model_oca](account_reconcile_model_oca/) | 18.0.1.1.0 |  | This includes the logic moved from Odoo Community to Odoo Enterprise
 [account_reconcile_oca](account_reconcile_oca/) | 18.0.1.0.17 | <a href='https://github.com/etobella'><img src='https://github.com/etobella.png' width='32' height='32' style='border-radius:50%;' alt='etobella'/></a> | Reconcile addons for Odoo CE accounting
