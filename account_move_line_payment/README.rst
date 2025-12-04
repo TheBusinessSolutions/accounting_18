@@ -17,13 +17,13 @@ Register due payments
     :target: http://www.gnu.org/licenses/lgpl-3.0-standalone.html
     :alt: License: LGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Faccount--payment-lightgray.png?logo=github
-    :target: https://github.com/OCA/account-payment/tree/16.0/account_move_line_payment
+    :target: https://github.com/OCA/account-payment/tree/18.0/account_move_line_payment
     :alt: OCA/account-payment
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/account-payment-16-0/account-payment-16-0-account_move_line_payment
+    :target: https://translation.odoo-community.org/projects/account-payment-18-0/account-payment-18-0-account_move_line_payment
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/account-payment&target_branch=16.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/account-payment&target_branch=18.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
@@ -88,16 +88,13 @@ become fully matched.
 Known issues / Roadmap
 ======================
 
--  To use this new feature, you need full accounting permissions (a.k.a.
-   Bookkeeper).
--  Invoicing users should be able too.
--  A good improvement would be to display *Next due date* in invoices
-   views.
--  Also to allow somehow paying only overdue payments when using the
-   register payment wizard.
--  This feature already exists in Odoo 17 under *Invoicing >
-   Customers/Vendors > Amounts to settle*, so there's no need to
-   forward-port this module.
+- To use this new feature, you need full accounting permissions (a.k.a.
+  Bookkeeper).
+- Invoicing users should be able too.
+- A good improvement would be to display *Next due date* in invoices
+  views.
+- Also to allow somehow paying only overdue payments when using the
+  register payment wizard.
 
 Bug Tracker
 ===========
@@ -105,7 +102,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/account-payment/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/account-payment/issues/new?body=module:%20account_move_line_payment%0Aversion:%2016.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/account-payment/issues/new?body=module:%20account_move_line_payment%0Aversion:%2018.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -120,15 +117,15 @@ Authors
 Contributors
 ------------
 
--  Rafael Blasco (`Moduon <https://www.moduon.team/>`__)
--  Jairo Llopis (`Moduon <https://www.moduon.team/>`__)
+- Rafael Blasco (`Moduon <https://www.moduon.team/>`__)
+- Jairo Llopis (`Moduon <https://www.moduon.team/>`__)
 
 Other credits
 -------------
 
 The development of this module has been financially supported by:
 
--  `Moduon Team S.L. <https://www.moduon.team/>`__
+- `Moduon Team S.L. <https://www.moduon.team/>`__
 
 Maintainers
 -----------
@@ -154,6 +151,6 @@ Current `maintainers <https://odoo-community.org/page/maintainer-role>`__:
 
 |maintainer-yajo| |maintainer-rafaelbn| 
 
-This module is part of the `OCA/account-payment <https://github.com/OCA/account-payment/tree/16.0/account_move_line_payment>`_ project on GitHub.
+This module is part of the `OCA/account-payment <https://github.com/OCA/account-payment/tree/18.0/account_move_line_payment>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
