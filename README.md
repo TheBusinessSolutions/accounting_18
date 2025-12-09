@@ -21,7 +21,7 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
-[agreement](agreement/) | 18.0.1.0.1 | <a href='https://github.com/ygol'><img src='https://github.com/ygol.png' width='32' height='32' style='border-radius:50%;' alt='ygol'/></a> <a href='https://github.com/alexis-via'><img src='https://github.com/alexis-via.png' width='32' height='32' style='border-radius:50%;' alt='alexis-via'/></a> | Adds an agreement object
+[agreement](agreement/) | 18.0.1.1.0 | <a href='https://github.com/ygol'><img src='https://github.com/ygol.png' width='32' height='32' style='border-radius:50%;' alt='ygol'/></a> <a href='https://github.com/alexis-via'><img src='https://github.com/alexis-via.png' width='32' height='32' style='border-radius:50%;' alt='alexis-via'/></a> | Adds an agreement object
 [agreement_account](agreement_account/) | 18.0.1.0.2 | <a href='https://github.com/alexis-via'><img src='https://github.com/alexis-via.png' width='32' height='32' style='border-radius:50%;' alt='alexis-via'/></a> <a href='https://github.com/bealdav'><img src='https://github.com/bealdav.png' width='32' height='32' style='border-radius:50%;' alt='bealdav'/></a> | Agreement on invoices
 [agreement_helpdesk_mgmt](agreement_helpdesk_mgmt/) | 18.0.1.0.0 | <a href='https://github.com/bodedra'><img src='https://github.com/bodedra.png' width='32' height='32' style='border-radius:50%;' alt='bodedra'/></a> | Link a helpdesk ticket to an agreement
 [agreement_helpdesk_mgmt_serviceprofile](agreement_helpdesk_mgmt_serviceprofile/) | 18.0.1.0.0 | <a href='https://github.com/bodedra'><img src='https://github.com/bodedra.png' width='32' height='32' style='border-radius:50%;' alt='bodedra'/></a> | Agreement Helpdesk Mgmt
