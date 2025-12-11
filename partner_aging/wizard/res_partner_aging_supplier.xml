@@ -85,11 +85,11 @@
                 </group>
                 <footer>
                     <button
-                        name="open_supplier_aging"
-                        string="Supplier Aging"
-                        type="object"
-                        class="oe_highlight"
-                    />
+                    name="open_supplier_aging"
+                    string="Supplier Aging"
+                    type="object"
+                    class="oe_highlight"
+                />
                     or
                     <button string="Cancel" class="oe_link" special="cancel" />
                 </footer>
