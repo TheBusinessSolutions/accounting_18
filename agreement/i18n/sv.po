@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-11-04 11:20+0000\n"
+"PO-Revision-Date: 2026-01-12 12:42+0000\n"
 "Last-Translator: jakobkrabbe <jakob@syscare.se>\n"
 "Language-Team: none\n"
 "Language: sv\n"
@@ -92,7 +92,7 @@ msgstr "Avtal"
 #: model:ir.model.fields,field_description:agreement.field_res_partner__agreements_count
 #: model:ir.model.fields,field_description:agreement.field_res_users__agreements_count
 msgid "Agreements Count"
-msgstr ""
+msgstr "Antal avtal"
 
 #. module: agreement
 #: model_terms:ir.ui.view,arch_db:agreement.agreement_form
@@ -120,7 +120,7 @@ msgstr "Konfiguration"
 #. module: agreement
 #: model:ir.model,name:agreement.model_res_partner
 msgid "Contact"
-msgstr ""
+msgstr "Kontakt"
 
 #. module: agreement
 #: model:ir.model.fields,field_description:agreement.field_agreement__create_uid
