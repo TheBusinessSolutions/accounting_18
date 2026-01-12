@@ -108,6 +108,11 @@ msgid "Attachment Count"
 msgstr "Antal bifogade filer"
 
 #. module: agreement
+#: model:ir.model.fields,field_description:agreement.field_agreement__commercial_partner_id
+msgid "Commercial Entity"
+msgstr ""
+
+#. module: agreement
 #: model:ir.model.fields,field_description:agreement.field_agreement__company_id
 msgid "Company"
 msgstr "Bolag"
@@ -382,8 +387,8 @@ msgstr "Den kund eller leverantör som detta avtal avser."
 
 #. module: agreement
 #: model:ir.model.constraint,message:agreement.constraint_agreement_code_partner_company_unique
-msgid "This agreement code already exists for this partner!"
-msgstr "Denna avtalskod finns redan för denna partner!"
+msgid "This agreement code already exists for this commercial entity!"
+msgstr ""
 
 #. module: agreement
 #: model:ir.model.fields,field_description:agreement.field_agreement__name
@@ -429,3 +434,6 @@ msgstr "När avtalet upphör att gälla."
 #: model:ir.model.fields,help:agreement.field_agreement__start_date
 msgid "When the agreement starts."
 msgstr "När avtalet börjar gälla."
+
+#~ msgid "This agreement code already exists for this partner!"
+#~ msgstr "Denna avtalskod finns redan för denna partner!"

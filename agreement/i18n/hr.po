@@ -112,6 +112,11 @@ msgid "Attachment Count"
 msgstr ""
 
 #. module: agreement
+#: model:ir.model.fields,field_description:agreement.field_agreement__commercial_partner_id
+msgid "Commercial Entity"
+msgstr ""
+
+#. module: agreement
 #: model:ir.model.fields,field_description:agreement.field_agreement__company_id
 msgid "Company"
 msgstr "Tvrtka"
@@ -383,7 +388,7 @@ msgstr ""
 
 #. module: agreement
 #: model:ir.model.constraint,message:agreement.constraint_agreement_code_partner_company_unique
-msgid "This agreement code already exists for this partner!"
+msgid "This agreement code already exists for this commercial entity!"
 msgstr ""
 
 #. module: agreement

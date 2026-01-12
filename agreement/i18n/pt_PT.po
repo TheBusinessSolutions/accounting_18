@@ -111,6 +111,11 @@ msgid "Attachment Count"
 msgstr ""
 
 #. module: agreement
+#: model:ir.model.fields,field_description:agreement.field_agreement__commercial_partner_id
+msgid "Commercial Entity"
+msgstr ""
+
+#. module: agreement
 #: model:ir.model.fields,field_description:agreement.field_agreement__company_id
 msgid "Company"
 msgstr "Empresa"
@@ -383,8 +388,8 @@ msgstr "O cliente ou fornecedor com o qual este contrato está relacionado."
 
 #. module: agreement
 #: model:ir.model.constraint,message:agreement.constraint_agreement_code_partner_company_unique
-msgid "This agreement code already exists for this partner!"
-msgstr "Este código de contrato já existe para este parceiro!"
+msgid "This agreement code already exists for this commercial entity!"
+msgstr ""
 
 #. module: agreement
 #: model:ir.model.fields,field_description:agreement.field_agreement__name
@@ -430,6 +435,9 @@ msgstr "A data em que termina o contrato."
 #: model:ir.model.fields,help:agreement.field_agreement__start_date
 msgid "When the agreement starts."
 msgstr "A data em que se inicia o contrato."
+
+#~ msgid "This agreement code already exists for this partner!"
+#~ msgstr "Este código de contrato já existe para este parceiro!"
 
 #~ msgid "Last Modified on"
 #~ msgstr "Modificado em"

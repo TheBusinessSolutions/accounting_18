@@ -109,6 +109,11 @@ msgid "Attachment Count"
 msgstr "Nº de archivos adjuntos"
 
 #. module: agreement
+#: model:ir.model.fields,field_description:agreement.field_agreement__commercial_partner_id
+msgid "Commercial Entity"
+msgstr ""
+
+#. module: agreement
 #: model:ir.model.fields,field_description:agreement.field_agreement__company_id
 msgid "Company"
 msgstr "Compañía"
@@ -385,8 +390,8 @@ msgstr "El cliente o proveedor con el que está relacionado este acuerdo."
 
 #. module: agreement
 #: model:ir.model.constraint,message:agreement.constraint_agreement_code_partner_company_unique
-msgid "This agreement code already exists for this partner!"
-msgstr "¡Este código de acuerdo ya existe para este socio!"
+msgid "This agreement code already exists for this commercial entity!"
+msgstr ""
 
 #. module: agreement
 #: model:ir.model.fields,field_description:agreement.field_agreement__name
@@ -432,6 +437,9 @@ msgstr "Cuando termina el acuerdo."
 #: model:ir.model.fields,help:agreement.field_agreement__start_date
 msgid "When the agreement starts."
 msgstr "Cuando comienza el acuerdo."
+
+#~ msgid "This agreement code already exists for this partner!"
+#~ msgstr "¡Este código de acuerdo ya existe para este socio!"
 
 #~ msgid "Code"
 #~ msgstr "Código"
