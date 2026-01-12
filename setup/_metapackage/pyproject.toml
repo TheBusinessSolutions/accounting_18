@@ -1,6 +1,6 @@
 [project]
 name = "odoo-addons-oca-agreement"
-version = "18.0.20251209.0"
+version = "18.0.20260112.0"
 dependencies = [
     "odoo-addon-agreement==18.0.*",
     "odoo-addon-agreement_account==18.0.*",
@@ -8,6 +8,7 @@ dependencies = [
     "odoo-addon-agreement_helpdesk_mgmt_serviceprofile==18.0.*",
     "odoo-addon-agreement_legal==18.0.*",
     "odoo-addon-agreement_rebate==18.0.*",
+    "odoo-addon-agreement_repair==18.0.*",
     "odoo-addon-agreement_sale==18.0.*",
     "odoo-addon-agreement_serviceprofile==18.0.*",
 ]
