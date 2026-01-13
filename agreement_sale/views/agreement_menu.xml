@@ -1,15 +1,16 @@
 <odoo>
+    <!-- Agreement Type -->
     <menuitem
-        id="agreement.agreement_menu"
-        action="agreement.agreement_action"
-        parent="sale.menu_sale_config"
-        sequence="100"
+        name="Agreement Type"
+        id="agreement.agreement_type_menu_main"
+        parent="agreement.agreement_menu"
+        sequence="45"
     />
     <menuitem
         id="agreement.agreement_type_menu"
         action="agreement.agreement_type_action"
-        parent="sale.menu_sale_config"
-        sequence="101"
+        parent="agreement.agreement_type_menu_main"
+        sequence="10"
         groups="agreement.group_use_agreement_type"
     />
 </odoo>
