@@ -4,7 +4,7 @@
 {
     "name": "Agreement Rebate",
     "summary": "Rebate in agreements",
-    "version": "18.0.1.1.1",
+    "version": "18.0.1.2.0",
     "development_status": "Beta",
     "category": "Agreement",
     "website": "https://github.com/OCA/agreement",
