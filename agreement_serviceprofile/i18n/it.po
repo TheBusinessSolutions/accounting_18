@@ -192,6 +192,11 @@ msgid "Product Variant"
 msgstr "Variante prodotto"
 
 #. module: agreement_serviceprofile
+#: model:ir.model.fields,field_description:agreement_serviceprofile.field_agreement_serviceprofile__rating_ids
+msgid "Ratings"
+msgstr ""
+
+#. module: agreement_serviceprofile
 #: model_terms:ir.ui.view,arch_db:agreement_serviceprofile.product_product_form_view
 #: model_terms:ir.ui.view,arch_db:agreement_serviceprofile.product_template_form_view
 msgid "Service"
