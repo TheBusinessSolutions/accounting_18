@@ -318,6 +318,11 @@ msgid "Purchase"
 msgstr "Einkauf"
 
 #. module: agreement
+#: model:ir.model.fields,field_description:agreement.field_agreement__rating_ids
+msgid "Ratings"
+msgstr ""
+
+#. module: agreement
 #: model:ir.model.fields,field_description:agreement.field_agreement__code
 msgid "Reference"
 msgstr "Referenz"
