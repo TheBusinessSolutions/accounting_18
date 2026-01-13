@@ -309,11 +309,6 @@ msgid "Purchase"
 msgstr ""
 
 #. module: agreement
-#: model:ir.model.fields,field_description:agreement.field_agreement__rating_ids
-msgid "Ratings"
-msgstr ""
-
-#. module: agreement
 #: model:ir.model.fields,field_description:agreement.field_agreement__code
 msgid "Reference"
 msgstr ""
@@ -411,16 +406,6 @@ msgstr ""
 #. module: agreement
 #: model:res.groups,name:agreement.group_use_agreement_type
 msgid "Use agreement type"
-msgstr ""
-
-#. module: agreement
-#: model:ir.model.fields,field_description:agreement.field_agreement__website_message_ids
-msgid "Website Messages"
-msgstr ""
-
-#. module: agreement
-#: model:ir.model.fields,help:agreement.field_agreement__website_message_ids
-msgid "Website communication history"
 msgstr ""
 
 #. module: agreement
