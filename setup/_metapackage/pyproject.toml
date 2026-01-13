@@ -1,11 +1,12 @@
 [project]
 name = "odoo-addons-oca-agreement"
-version = "18.0.20260113.1"
+version = "18.0.20260113.2"
 dependencies = [
     "odoo-addon-agreement==18.0.*",
     "odoo-addon-agreement_account==18.0.*",
     "odoo-addon-agreement_helpdesk_mgmt==18.0.*",
     "odoo-addon-agreement_helpdesk_mgmt_fieldservice==18.0.*",
+    "odoo-addon-agreement_helpdesk_mgmt_sale==18.0.*",
     "odoo-addon-agreement_helpdesk_mgmt_serviceprofile==18.0.*",
     "odoo-addon-agreement_legal==18.0.*",
     "odoo-addon-agreement_project==18.0.*",
