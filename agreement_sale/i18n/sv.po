@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-11-04 11:20+0000\n"
+"PO-Revision-Date: 2026-01-14 09:58+0000\n"
 "Last-Translator: jakobkrabbe <jakob@syscare.se>\n"
 "Language-Team: none\n"
 "Language: sv\n"
@@ -25,22 +25,22 @@ msgstr "# Försäljningsorder"
 #: model:ir.model,name:agreement_sale.model_agreement
 #: model:ir.model.fields,field_description:agreement_sale.field_sale_order__agreement_id
 msgid "Agreement"
-msgstr "Överenskommelse"
+msgstr "Avtal"
 
 #. module: agreement_sale
 #: model:ir.model.fields,field_description:agreement_sale.field_sale_order__agreement_type_id
 msgid "Agreement Type"
-msgstr "Typ av överenskommelse"
+msgstr "Avtalstyp"
 
 #. module: agreement_sale
 #: model_terms:ir.ui.view,arch_db:agreement_sale.res_config_settings_view_form
 msgid "Agreement types"
-msgstr "Typer av överenskommelser"
+msgstr "Avtalstyper"
 
 #. module: agreement_sale
 #: model_terms:ir.ui.view,arch_db:agreement_sale.res_config_settings_view_form
 msgid "Agreements"
-msgstr "Överenskommelser"
+msgstr "Avtal"
 
 #. module: agreement_sale
 #: model:ir.model,name:agreement_sale.model_res_config_settings
@@ -55,7 +55,7 @@ msgstr "Ha en speciell typ av avtal som fungerar som mallar"
 #. module: agreement_sale
 #: model_terms:ir.ui.view,arch_db:agreement_sale.res_config_settings_view_form
 msgid "Manage agreements by types"
-msgstr "Hantera typer av överenskommelser"
+msgstr "Hantera avtal utifrån typer"
 
 #. module: agreement_sale
 #: model_terms:ir.ui.view,arch_db:agreement_sale.agreement_sale_order_form_view
@@ -70,9 +70,9 @@ msgstr "Säljorder"
 #. module: agreement_sale
 #: model:ir.model.fields,field_description:agreement_sale.field_res_config_settings__group_use_agreement_template
 msgid "Use agreement template"
-msgstr "Använd mallen för överenskommelse"
+msgstr "Använd avtalsmallen"
 
 #. module: agreement_sale
 #: model:ir.model.fields,field_description:agreement_sale.field_res_config_settings__group_use_agreement_type
 msgid "Use agreement types"
-msgstr "Använd typer av överenskommelse"
+msgstr "Använd avtalstyper"
