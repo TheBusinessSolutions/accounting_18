@@ -76,7 +76,7 @@ class AgreementRebateSettlement(models.Model):
         # Process each group
         invoice_vals_list = []
         for lines in lines_by_group.values():
-            vals = lines[0]._prepare_invoice()
+            vals = lines[0]._prepare_invoice(invoice_group)
             vals["invoice_line_ids"] = [
                 Command.create(line._prepare_invoice_line()) for line in lines
             ]
@@ -240,7 +240,7 @@ class AgreementRebateSettlementLine(models.Model):
             ]
         return res
 
-    def _prepare_invoice(self):
+    def _prepare_invoice(self, invoice_group="settlement"):
         """
         Prepare the dict of values to create the new invoice for a sales order.
         This method may be overridden to implement custom invoice generation
@@ -250,7 +250,6 @@ class AgreementRebateSettlementLine(models.Model):
         company = self.company_id or self.env.user.company_id
         partner_id = self.env.context.get("default_partner_id", False)
         if not partner_id:
-            invoice_group = self.env.context.get("invoice_group", "settlement")
             if invoice_group == "settlement":
                 partner_id = self.settlement_id.partner_id.id
             elif invoice_group == "partner":
@@ -274,14 +273,14 @@ class AgreementRebateSettlementLine(models.Model):
         }
 
     def _get_invoice_key(self, invoice_group="settlement"):
+        if self.env.context.get("default_partner_id"):
+            return self.env.context["default_partner_id"]
         if invoice_group == "settlement":
             return self.settlement_id.id
         if invoice_group == "partner":
-            return self.env.context.get("default_partner_id", self.partner_id.id)
+            return self.partner_id.id
         if invoice_group == "commercial_partner":
-            return self.env.context.get(
-                "default_partner_id", self.partner_id.commercial_partner_id.id
-            )
+            return self.partner_id.commercial_partner_id.id
 
     def action_show_detail(self):
         return {
