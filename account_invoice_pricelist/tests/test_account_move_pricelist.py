@@ -346,7 +346,10 @@ class TestAccountMovePricelist(common.TransactionCase):
         )
 
     def test_01_account_invoice_pricelist(self):
-        self.assertEqual(self.invoice.pricelist_id, self.sale_pricelist)
+        self.assertEqual(
+            self.invoice.pricelist_id,
+            self.invoice.partner_id.property_product_pricelist,
+        )
 
     def test_02_account_invoice_change_pricelist(self):
         self.env.user.write({"groups_id": [(5, self.group_discount.id)]})
