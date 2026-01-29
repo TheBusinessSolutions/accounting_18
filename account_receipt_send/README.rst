@@ -28,8 +28,8 @@ Receipts Print and Send
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
-Adds a button to Send and Print Receipts Adds a new mail template for
-receipts
+- Add a button to Send Receipts
+- Add a new mail template for receipts
 
 **Table of contents**
 
@@ -39,15 +39,15 @@ receipts
 Configuration
 =============
 
-1. Go to Invoicing -> Configuration and activate -> Customer Invoices ->
-   "Sale Receipt"
+1. Go to Invoicing > Configuration > Customer Invoices
+2. Activate *Sale Receipt* option
 
 Usage
 =====
 
-1. Go to Invoicing -> Customers - > Receipts -> Create a new receipt
-2. Select a customer and a product and confirm it
-3. Click Send & Print button
+1. Go to Invoicing > Customers > Receipts > Create a new receipt
+2. Fill all necessary information and confirm it
+3. Click on *Send* button
 
 Bug Tracker
 ===========

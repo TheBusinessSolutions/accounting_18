@@ -7,21 +7,13 @@ from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 
 @tagged("post_install", "-at_install")
 class TestAccountReceipt(AccountTestInvoicingCommon):
-    @classmethod
-    def setUpClass(cls, chart_template_ref=None):
-        super().setUpClass(chart_template_ref=chart_template_ref)
-        cls.in_receipt = cls.init_invoice(
-            "in_receipt", products=cls.product_a + cls.product_b
-        )
-        cls.in_receipt._post()
-        cls.out_receipt = cls.init_invoice(
-            "out_receipt", products=cls.product_a + cls.product_b
-        )
-        cls.out_receipt._post()
-
     def test_receipt_mail_template(self):
-        self.assertEqual(
-            (self.in_receipt | self.out_receipt)._get_mail_template(),
-            "account_receipt_send.email_template_edi_receipt",
-            "Mail template chosen wrong",
-        )
+        receipt_mt = self.env.ref("account_receipt_send.email_template_edi_receipt")
+        for move_type in {"out_receipt", "in_receipt"}:
+            with self.subTest(move_type=move_type):
+                receipt = self._create_invoice(move_type)
+                self.assertEqual(
+                    receipt._get_mail_template(),
+                    receipt_mt,
+                    "Mail template chosen wrong",
+                )

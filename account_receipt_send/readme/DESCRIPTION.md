@@ -1,2 +1,2 @@
-Adds a button to Send and Print Receipts Adds a new mail template for
-receipts
+- Add a button to Send Receipts
+- Add a new mail template for receipts

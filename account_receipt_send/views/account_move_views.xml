@@ -6,22 +6,22 @@
         <field name="inherit_id" ref="account.view_move_form" />
         <field name="arch" type="xml">
             <xpath
-                expr="//header/button[@name='action_register_payment']"
+                expr="//header/button[@name='action_invoice_sent'][1]"
                 position="before"
             >
                 <button
                     name="action_invoice_sent"
                     type="object"
-                    string="Send &amp; Print"
-                    attrs="{'invisible':['|', '|', ('state', '!=', 'posted'), ('is_move_sent', '=', True), ('move_type', 'not in', ('out_receipt', 'in_receipt'))]}"
+                    string="Send"
+                    invisible="state != 'posted' or is_being_sent or invoice_pdf_report_id or move_type not in ('out_receipt', 'in_receipt')"
                     class="oe_highlight"
                     data-hotkey="y"
                 />
                 <button
                     name="action_invoice_sent"
                     type="object"
-                    string="Send &amp; Print"
-                    attrs="{'invisible':['|', '|', ('state', '!=', 'posted'), ('is_move_sent', '=', False), ('move_type', 'not in', ('out_receipt', 'in_receipt'))]}"
+                    string="Send"
+                    invisible="state != 'posted' or not is_being_sent and not invoice_pdf_report_id or move_type not in ('out_receipt', 'in_receipt')"
                     data-hotkey="y"
                 />
             </xpath>
