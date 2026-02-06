@@ -21,6 +21,7 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
+[account_cash_invoice](account_cash_invoice/) | 18.0.1.0.0 |  | Pay and receive invoices from bank statements
 [account_check_printing_report_base](account_check_printing_report_base/) | 18.0.1.0.1 |  | Account Check Printing Report Base
 [account_due_list](account_due_list/) | 18.0.1.0.0 |  | List of open credits and debits, with due date
 [account_due_list_payment_mode](account_due_list_payment_mode/) | 18.0.1.0.0 |  | Payment Due List Payment Mode
