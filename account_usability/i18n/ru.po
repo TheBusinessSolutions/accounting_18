@@ -6,7 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-02-13 12:01+0000\n"
+"Last-Translator: Administrator <alexzub@tut.by>\n"
 "Language-Team: none\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -14,75 +15,76 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: account_usability
 #: model:ir.model,name:account_usability.model_account_account
 msgid "Account"
-msgstr ""
+msgstr "Счет"
 
 #. module: account_usability
 #: model:ir.model,name:account_usability.model_account_group
 msgid "Account Group"
-msgstr ""
+msgstr "Группа счетов"
 
 #. module: account_usability
 #: model:ir.actions.act_window,name:account_usability.account_group_action
 #: model:ir.ui.menu,name:account_usability.account_group_menu
 msgid "Account Groups"
-msgstr ""
+msgstr "Группы учетных записей"
 
 #. module: account_usability
 #: model:ir.model,name:account_usability.model_account_account_tag
 msgid "Account Tag"
-msgstr ""
+msgstr "Метка учетной записи"
 
 #. module: account_usability
 #: model:ir.actions.act_window,name:account_usability.account_account_tag_action
 #: model:ir.ui.menu,name:account_usability.account_tag_menu
 msgid "Account Tags"
-msgstr ""
+msgstr "Теги учетной записи"
 
 #. module: account_usability
 #: model:ir.model.fields,help:account_usability.field_account_account__group_id
 msgid "Account prefixes can determine account groups."
-msgstr ""
+msgstr "Префиксы учетных записей могут определять группы учетных записей."
 
 #. module: account_usability
 #: model:ir.model.fields,field_description:account_usability.field_account_account_tag__account_ids
 #: model:ir.model.fields,field_description:account_usability.field_account_group__account_ids
 #: model_terms:ir.ui.view,arch_db:account_usability.view_account_group_form
 msgid "Accounts"
-msgstr ""
+msgstr "Счета"
 
 #. module: account_usability
 #: model_terms:ir.ui.view,arch_db:account_usability.res_config_settings_view_form
 msgid "Anglo-Saxon Accounting"
-msgstr ""
+msgstr "Англосаксонская бухгалтерия"
 
 #. module: account_usability
 #: model:ir.ui.menu,name:account_usability.menu_accounting_statement_bank
 msgid "Bank Statements"
-msgstr ""
+msgstr "Банковские выписки"
 
 #. module: account_usability
 #: model:ir.ui.menu,name:account_usability.menu_accounting_bank_and_cash
 msgid "Bank and Cash"
-msgstr ""
+msgstr "Банк и касса"
 
 #. module: account_usability
 #: model:ir.ui.menu,name:account_usability.menu_accounting_statement_cash
 msgid "Cash Registers"
-msgstr ""
+msgstr "Кассовые аппараты"
 
 #. module: account_usability
 #: model:ir.model,name:account_usability.model_res_config_settings
 msgid "Config Settings"
-msgstr ""
+msgstr "Настройки конфигурации"
 
 #. module: account_usability
 #: model:ir.model.fields,field_description:account_usability.field_account_account__group_id
 msgid "Group"
-msgstr ""
+msgstr "Группа"
 
 #. module: account_usability
 #: model_terms:ir.ui.view,arch_db:account_usability.res_config_settings_view_form
@@ -91,6 +93,10 @@ msgid ""
 "                                invoiced to a final customer (instead of recording the cost as soon\n"
 "                                as the product is received in stock)."
 msgstr ""
+"Отразите стоимость товара в составе расходов, когда этот товар будет\n"
+"                                счет-фактуру конечному покупателю (вместо "
+"того, чтобы регистрировать стоимость сразу после того, как\n"
+"                                как только товар поступит на склад)."
 
 #. module: account_usability
 #: model:ir.model.fields,help:account_usability.field_res_config_settings__anglo_saxon_accounting
@@ -98,23 +104,25 @@ msgid ""
 "Record the cost of a good as an expense when this good is invoiced to a "
 "final customer."
 msgstr ""
+"Отразите стоимость товара в составе расходов, когда счет-фактура на этот "
+"товар будет выставлен конечному покупателю."
 
 #. module: account_usability
 #: model:ir.model,name:account_usability.model_account_tax_group
 msgid "Tax Group"
-msgstr ""
+msgstr "Налоговая группа"
 
 #. module: account_usability
 #: model:ir.model.fields,field_description:account_usability.field_account_tax_group__tax_ids
 msgid "Taxes"
-msgstr ""
+msgstr "Налоги"
 
 #. module: account_usability
 #: model:ir.ui.menu,name:account_usability.menu_account_coa_settings
 msgid "Templates"
-msgstr ""
+msgstr "Шаблоны"
 
 #. module: account_usability
 #: model:ir.model.fields,field_description:account_usability.field_res_config_settings__anglo_saxon_accounting
 msgid "Use anglo-saxon accounting"
-msgstr ""
+msgstr "Используйте англо-саксонскую бухгалтерию"
