@@ -6,7 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-02-13 12:01+0000\n"
+"Last-Translator: Administrator <alexzub@tut.by>\n"
 "Language-Team: none\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -14,19 +15,20 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: account_fiscal_year_auto_create
 #: model:ir.actions.server,name:account_fiscal_year_auto_create.cron_fiscal_year_auto_create_ir_actions_server
 msgid "Auto Create Fiscal Years"
-msgstr ""
+msgstr "Автосоздание Финансовые годы"
 
 #. module: account_fiscal_year_auto_create
 #. odoo-python
 #: code:addons/account_fiscal_year_auto_create/models/account_fiscal_year.py:0
 msgid "FY %(date_to)s - %(date_from)s"
-msgstr ""
+msgstr "FY %(date_to)s - %(date_from)s"
 
 #. module: account_fiscal_year_auto_create
 #: model:ir.model,name:account_fiscal_year_auto_create.model_account_fiscal_year
 msgid "Fiscal Year"
-msgstr ""
+msgstr "Финансовый год"
