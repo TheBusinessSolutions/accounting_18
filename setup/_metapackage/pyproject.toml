@@ -1,6 +1,6 @@
 [project]
 name = "odoo-addons-oca-contract"
-version = "18.0.20260210.0"
+version = "18.0.20260227.0"
 dependencies = [
     "odoo-addon-agreement_rebate_partner_company_group==18.0.*",
     "odoo-addon-contract==18.0.*",
@@ -17,6 +17,7 @@ dependencies = [
     "odoo-addon-contract_queue_job==18.0.*",
     "odoo-addon-contract_refund_on_stop==18.0.*",
     "odoo-addon-contract_sale==18.0.*",
+    "odoo-addon-contract_sale_generation==18.0.*",
     "odoo-addon-contract_sale_invoicing==18.0.*",
     "odoo-addon-contract_sale_mandate==18.0.*",
     "odoo-addon-contract_sale_payment_mode==18.0.*",
