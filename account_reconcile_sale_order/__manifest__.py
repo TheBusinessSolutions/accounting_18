@@ -2,8 +2,8 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl-3.0)
 
 {
-    "name": "Reconcile sale orders",
-    "summary": "Invoice and reconcile sale orders",
+    "name": "Reconcile sales orders",
+    "summary": "Invoice and reconcile sales orders",
     "version": "18.0.1.0.0",
     "development_status": "Alpha",
     "category": "Accounting",
