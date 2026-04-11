@@ -1,10 +1,6 @@
-.. image:: https://odoo-community.org/readme-banner-image
-   :target: https://odoo-community.org/get-involved?utm_source=readme
-   :alt: Odoo Community Association
-
-=====================
-Reconcile sale orders
-=====================
+======================
+Reconcile sales orders
+======================
 
 .. 
    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -17,7 +13,7 @@ Reconcile sale orders
 .. |badge1| image:: https://img.shields.io/badge/maturity-Alpha-red.png
     :target: https://odoo-community.org/page/development-status
     :alt: Alpha
-.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Faccount--reconcile-lightgray.png?logo=github
@@ -32,7 +28,7 @@ Reconcile sale orders
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
-This module allows a workflow where you don't invoice sale orders until
+This module allows a workflow where you don't invoice sales orders until
 you've received a payment.
 
 That's useful ie for webshops with non-instant payment like wire
@@ -56,7 +52,7 @@ Configuration
 To configure this module, you need to:
 
 1. Go to Invoicing/Configuration/Reconciliation Models
-2. Create a model of type *Rule to match sale orders*
+2. Create a model of type *Rule to match sales orders*
 
 Usage
 =====
@@ -64,15 +60,15 @@ Usage
 To use this module, you need to:
 
 1. Have a payment on a bank statement matching the amount of an
-   *invoicable* sale order
+   *invoiceable* sales order
 2. Enter the reconciliation screen
-3. Observe that the sale order is offered as reconciliation counterpart
-4. You can manually select and deselect sale orders in the *sale orders*
-   tab of the reconciliation widget
+3. Observe that the sales order is offered as reconciliation counterpart
+4. You can manually select and deselect sales orders in the *sales
+   orders* tab of the reconciliation widget
 
-Note the reconciliation only works if fully invoicing the sale order
+Note the reconciliation only works if fully invoicing the sales order
 yields an invoice over the order's total amount. Usually this means that
-all products in the sale order must have invoicing policy *Ordered
+all products in the sales order must have invoicing policy *Ordered
 quantities*.
 
 Bug Tracker
@@ -96,8 +92,8 @@ Authors
 Contributors
 ------------
 
-- Holger Brunn <mail@hunki-enterprises.com>
-  (https://hunki-enterprises.com)
+-  Holger Brunn <mail@hunki-enterprises.com>
+   (https://hunki-enterprises.com)
 
 Maintainers
 -----------
