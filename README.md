@@ -23,7 +23,7 @@ addon | version | maintainers | summary
 --- | --- | --- | ---
 [account_cash_invoice](account_cash_invoice/) | 18.0.1.0.0 |  | Pay and receive invoices from bank statements
 [account_check_printing_report_base](account_check_printing_report_base/) | 18.0.1.0.1 |  | Account Check Printing Report Base
-[account_due_list](account_due_list/) | 18.0.1.0.0 |  | List of open credits and debits, with due date
+[account_due_list](account_due_list/) | 18.0.1.0.1 |  | List of open credits and debits, with due date
 [account_due_list_payment_mode](account_due_list_payment_mode/) | 18.0.1.0.0 |  | Payment Due List Payment Mode
 [account_force_early_discount](account_force_early_discount/) | 18.0.1.0.0 | <a href='https://github.com/grindtildeath'><img src='https://github.com/grindtildeath.png' width='32' height='32' style='border-radius:50%;' alt='grindtildeath'/></a> | Allow forcing financial discounts for early payments
 [account_payment_credit_card](account_payment_credit_card/) | 18.0.1.0.0 | <a href='https://github.com/max3903'><img src='https://github.com/max3903.png' width='32' height='32' style='border-radius:50%;' alt='max3903'/></a> | Add support for credit card payments
