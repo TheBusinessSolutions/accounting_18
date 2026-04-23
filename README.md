@@ -23,7 +23,7 @@ addon | version | maintainers | summary
 --- | --- | --- | ---
 [account_billing](account_billing/) | 18.0.1.3.0 | <a href='https://github.com/Saran440'><img src='https://github.com/Saran440.png' width='32' height='32' style='border-radius:50%;' alt='Saran440'/></a> | Group invoice as billing before payment
 [account_global_discount](account_global_discount/) | 18.0.1.0.0 |  | Account Global Discount
-[account_invoice_auto_send_by_email](account_invoice_auto_send_by_email/) | 18.0.1.0.0 |  | Invoice with the email transmit method are send automatically.
+[account_invoice_auto_send_by_email](account_invoice_auto_send_by_email/) | 18.0.1.0.1 |  | Invoice with the email transmit method are send automatically.
 [account_invoice_check_total](account_invoice_check_total/) | 18.0.1.0.0 |  | Check if the verification total is equal to the bill's total
 [account_invoice_clearing](account_invoice_clearing/) | 18.0.1.0.1 | <a href='https://github.com/Shide'><img src='https://github.com/Shide.png' width='32' height='32' style='border-radius:50%;' alt='Shide'/></a> | Account invoice clearing wizard
 [account_invoice_crm_tag](account_invoice_crm_tag/) | 18.0.1.0.0 |  | Account Invoice CRM Tag
