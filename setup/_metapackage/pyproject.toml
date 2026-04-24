@@ -1,6 +1,6 @@
 [project]
 name = "odoo-addons-oca-account-payment"
-version = "18.0.20260330.0"
+version = "18.0.20260424.0"
 dependencies = [
     "odoo-addon-account_cash_invoice==18.0.*",
     "odoo-addon-account_check_printing_report_base==18.0.*",
@@ -10,6 +10,7 @@ dependencies = [
     "odoo-addon-account_payment_credit_card==18.0.*",
     "odoo-addon-account_payment_line==18.0.*",
     "odoo-addon-account_payment_method_base==18.0.*",
+    "odoo-addon-account_payment_multi_deduction==18.0.*",
     "odoo-addon-account_payment_notification==18.0.*",
     "odoo-addon-account_payment_promissory_note==18.0.*",
     "odoo-addon-account_payment_return==18.0.*",
