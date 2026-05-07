@@ -5,7 +5,7 @@
 
 {
     "name": "Account Invoice line with sequence number",
-    "version": "15.0.1.0.0",
+    "version": "18.0.1.0.0",
     "summary": "Adds sequence field on invoice lines to manage its order.",
     "category": "Accounting",
     "author": "Camptocamp, "
@@ -13,7 +13,7 @@
     "Serpent CS, "
     "Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/account-invoicing",
-    "data": ["views/account_invoice_view.xml", "views/report_invoice.xml"],
+    "data": ["views/account_invoice_views.xml", "views/report_invoice.xml"],
     "depends": ["account"],
     "post_init_hook": "post_init_hook",
     "license": "AGPL-3",
