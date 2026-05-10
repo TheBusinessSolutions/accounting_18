@@ -6,7 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-05-10 08:17+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: none\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -14,52 +15,53 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: account_lock_to_date
 #. odoo-python
 #: code:addons/account_lock_to_date/models/res_company.py:0
 msgid "A new Hard Lock To Date must be prior (or equal) to the previous one."
-msgstr ""
+msgstr "Nov trajni datum zaklepa mora biti pred (ali enak) predhodnemu."
 
 #. module: account_lock_to_date
 #: model:ir.model,name:account_lock_to_date.model_account_lock_exception
 msgid "Account Lock Exception"
-msgstr ""
+msgstr "Izjema pri zaklepanju"
 
 #. module: account_lock_to_date
 #: model:ir.model,name:account_lock_to_date.model_account_update_lock_to_date
 msgid "Account Update Lock_to_date"
-msgstr ""
+msgstr "Posodobi datum zaklepa"
 
 #. module: account_lock_to_date
 #: model_terms:ir.ui.view,arch_db:account_lock_to_date.account_update_lock_to_date_form_view
 msgid "Cancel"
-msgstr ""
+msgstr "Prekliči"
 
 #. module: account_lock_to_date
 #: model:ir.model,name:account_lock_to_date.model_res_company
 msgid "Companies"
-msgstr ""
+msgstr "Družbe"
 
 #. module: account_lock_to_date
 #: model:ir.model.fields,field_description:account_lock_to_date.field_account_update_lock_to_date__company_id
 msgid "Company"
-msgstr ""
+msgstr "Družba"
 
 #. module: account_lock_to_date
 #: model:ir.model.fields,field_description:account_lock_to_date.field_account_update_lock_to_date__create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Ustvaril"
 
 #. module: account_lock_to_date
 #: model:ir.model.fields,field_description:account_lock_to_date.field_account_update_lock_to_date__create_date
 msgid "Created on"
-msgstr ""
+msgstr "Ustvarjeno"
 
 #. module: account_lock_to_date
 #: model:ir.model.fields,field_description:account_lock_to_date.field_account_update_lock_to_date__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Prikazani naziv"
 
 #. module: account_lock_to_date
 #: model:ir.model.fields,field_description:account_lock_to_date.field_account_lock_exception__fiscalyear_lock_to_date
@@ -67,48 +69,48 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_lock_to_date.field_res_company__fiscalyear_lock_to_date
 #: model:ir.model.fields.selection,name:account_lock_to_date.selection__account_lock_exception__lock_date_field__fiscalyear_lock_to_date
 msgid "Global Lock To Date"
-msgstr ""
+msgstr "Globalni datum zaklepa"
 
 #. module: account_lock_to_date
 #: model:ir.model.fields,field_description:account_lock_to_date.field_res_company__hard_lock_to_date
 msgid "Hard Lock To Date"
-msgstr ""
+msgstr "Nepreklicni datum zaklepa"
 
 #. module: account_lock_to_date
 #: model:ir.model.fields,field_description:account_lock_to_date.field_account_update_lock_to_date__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: account_lock_to_date
 #: model:ir.model,name:account_lock_to_date.model_account_move
 msgid "Journal Entry"
-msgstr ""
+msgstr "Temeljnica"
 
 #. module: account_lock_to_date
 #: model:ir.model.fields,field_description:account_lock_to_date.field_account_update_lock_to_date__write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Zadnjič posodobil"
 
 #. module: account_lock_to_date
 #: model:ir.model.fields,field_description:account_lock_to_date.field_account_update_lock_to_date__write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Zadnjič posodobljeno"
 
 #. module: account_lock_to_date
 #: model:ir.model.fields,help:account_lock_to_date.field_account_update_lock_to_date__hard_lock_to_date
 #: model:ir.model.fields,help:account_lock_to_date.field_res_company__hard_lock_to_date
 msgid "Like the \"Global Lock Date\", but no exceptions are possible."
-msgstr ""
+msgstr "Kot globalni datum zaklepa, a brez izjem."
 
 #. module: account_lock_to_date
 #: model:ir.model.fields,field_description:account_lock_to_date.field_account_lock_exception__lock_date_field
 msgid "Lock Date Field"
-msgstr ""
+msgstr "Polje datuma zaklepa"
 
 #. module: account_lock_to_date
 #: model:ir.model.fields,field_description:account_lock_to_date.field_account_update_lock_to_date__hard_lock_to_date
 msgid "Lock To Date"
-msgstr ""
+msgstr "Datum zaklepa"
 
 #. module: account_lock_to_date
 #: model:ir.model.fields,help:account_lock_to_date.field_account_update_lock_to_date__fiscalyear_lock_to_date
@@ -117,12 +119,14 @@ msgid ""
 "No users can edit accounts posterior to this date. Use it for fiscal year "
 "locking for example."
 msgstr ""
+"Po tem datumu noben uporabnik ne more več urejati kontov. To lahko uporabite "
+"na primer za zaklepanje poslovnega leta."
 
 #. module: account_lock_to_date
 #. odoo-python
 #: code:addons/account_lock_to_date/models/account_lock_exception.py:0
 msgid "Operation not supported"
-msgstr ""
+msgstr "Operacija ni podprta"
 
 #. module: account_lock_to_date
 #: model:ir.model.fields,help:account_lock_to_date.field_account_update_lock_to_date__purchase_lock_to_date
@@ -131,6 +135,8 @@ msgid ""
 "Prevents creation and modification of entries in purchase journals posterior"
 " to the defined date inclusive."
 msgstr ""
+"Prepreči ustvarjanje in spreminjanje vnosov v nabavnih dnevnikih po "
+"določenem datumu, vključno z njim."
 
 #. module: account_lock_to_date
 #: model:ir.model.fields,help:account_lock_to_date.field_account_update_lock_to_date__sale_lock_to_date
@@ -139,6 +145,8 @@ msgid ""
 "Prevents creation and modification of entries in sales journals posterior to"
 " the defined date inclusive."
 msgstr ""
+"Prepreči ustvarjanje in spreminjanje vnosov v prodajnih dnevnikih po "
+"določenem datumu, vključno z njim."
 
 #. module: account_lock_to_date
 #: model:ir.model.fields,field_description:account_lock_to_date.field_account_lock_exception__purchase_lock_to_date
@@ -146,7 +154,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_lock_to_date.field_res_company__purchase_lock_to_date
 #: model:ir.model.fields.selection,name:account_lock_to_date.selection__account_lock_exception__lock_date_field__purchase_lock_to_date
 msgid "Purchase Lock To Date"
-msgstr ""
+msgstr "Datum zaklepa nabave"
 
 #. module: account_lock_to_date
 #: model:ir.model.fields,field_description:account_lock_to_date.field_account_lock_exception__sale_lock_to_date
@@ -154,18 +162,18 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_lock_to_date.field_res_company__sale_lock_to_date
 #: model:ir.model.fields.selection,name:account_lock_to_date.selection__account_lock_exception__lock_date_field__sale_lock_to_date
 msgid "Sales Lock To Date"
-msgstr ""
+msgstr "Datum zaklepa prodaje"
 
 #. module: account_lock_to_date
 #: model:ir.model.fields,help:account_lock_to_date.field_account_lock_exception__lock_date_field
 msgid "Technical field identifying the changed lock date"
-msgstr ""
+msgstr "Tehnično polje, ki označuje spremembo datuma zaklepanja"
 
 #. module: account_lock_to_date
 #. odoo-python
 #: code:addons/account_lock_to_date/models/res_company.py:0
 msgid "The Hard Lock Date cannot be removed."
-msgstr ""
+msgstr "Nepreklicni datum zaklepa ne more biti odstranjen."
 
 #. module: account_lock_to_date
 #: model:ir.model.fields,help:account_lock_to_date.field_account_lock_exception__fiscalyear_lock_to_date
@@ -173,6 +181,8 @@ msgid ""
 "The date the Global Lock To Date is set to by this exception. If the lock to"
 " date is not changed it is set to False."
 msgstr ""
+"Datum, na katerega ta izjema nastavi globalni datum zaklepa. Če datum "
+"zaklepa ni spremenjen, je nastavljeno na False."
 
 #. module: account_lock_to_date
 #: model:ir.model.fields,help:account_lock_to_date.field_account_lock_exception__purchase_lock_to_date
@@ -180,6 +190,8 @@ msgid ""
 "The date the Purchase Lock To Date is set to by this exception. If the lock "
 "to date is not changed it is set to False."
 msgstr ""
+"Datum, na katerega ta izjema nastavi datum zaklepa nabave. Če datum zaklepa "
+"ni spremenjen, je nastavljeno na False."
 
 #. module: account_lock_to_date
 #: model:ir.model.fields,help:account_lock_to_date.field_account_lock_exception__sale_lock_to_date
@@ -187,6 +199,8 @@ msgid ""
 "The date the Sale Lock To Date is set to by this exception. If the lock to "
 "date is not changed it is set to False."
 msgstr ""
+"Datum, na katerega ta izjema nastavi datum zaklepa prodaje. Če datum zaklepa "
+"ni spremenjen, je nastavljeno na False."
 
 #. module: account_lock_to_date
 #. odoo-python
@@ -195,43 +209,45 @@ msgid ""
 "There are still unposted entries in the period to date you want to hard "
 "lock. You should either post or delete them."
 msgstr ""
+"V obdobju, ki ga želite dokončno zakleniti, so še vedno prisotni ne knjiženi "
+"vnosi. Te morate vknjižiti ali izbrisati."
 
 #. module: account_lock_to_date
 #: model_terms:ir.ui.view,arch_db:account_lock_to_date.account_update_lock_to_date_form_view
 msgid "Update"
-msgstr ""
+msgstr "Posodobi"
 
 #. module: account_lock_to_date
 #: model:ir.actions.act_window,name:account_lock_to_date.account_update_lock_to_date_act_window
 #: model:ir.ui.menu,name:account_lock_to_date.account_update_lock_to_date_menu
 msgid "Update accounting lock to dates"
-msgstr ""
+msgstr "Posodobi datume zaklepa"
 
 #. module: account_lock_to_date
 #: model:ir.model.fields,field_description:account_lock_to_date.field_res_company__user_fiscalyear_lock_to_date
 msgid "User Fiscalyear Lock To Date"
-msgstr ""
+msgstr "Datum zaklepa fiskalnega leta"
 
 #. module: account_lock_to_date
 #: model:ir.model.fields,field_description:account_lock_to_date.field_res_company__user_hard_lock_to_date
 msgid "User Hard Lock To Date"
-msgstr ""
+msgstr "Datum trajnega zaklepa"
 
 #. module: account_lock_to_date
 #: model:ir.model.fields,field_description:account_lock_to_date.field_res_company__user_purchase_lock_to_date
 msgid "User Purchase Lock To Date"
-msgstr ""
+msgstr "Datum zaklepa nabave"
 
 #. module: account_lock_to_date
 #: model:ir.model.fields,field_description:account_lock_to_date.field_res_company__user_sale_lock_to_date
 msgid "User Sale Lock To Date"
-msgstr ""
+msgstr "Datum zaklepa prodaje"
 
 #. module: account_lock_to_date
 #. odoo-python
 #: code:addons/account_lock_to_date/wizards/account_update_lock_to_date.py:0
 msgid "You are not allowed to execute this action."
-msgstr ""
+msgstr "Nimate dovoljenj za izvajanje te akcije."
 
 #. module: account_lock_to_date
 #. odoo-python
@@ -240,3 +256,5 @@ msgid ""
 "You cannot add/modify entries posterior to and inclusive of: "
 "%(lock_date_info)s."
 msgstr ""
+"Vnosov po datumu, vključno z: %(lock_date_info)s, ni mogoče dodajati ali "
+"spreminjati."
