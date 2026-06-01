@@ -6,7 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-06-01 09:33+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: none\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -14,19 +15,20 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: account_fiscal_year_auto_create
 #: model:ir.actions.server,name:account_fiscal_year_auto_create.cron_fiscal_year_auto_create_ir_actions_server
 msgid "Auto Create Fiscal Years"
-msgstr ""
+msgstr "Samodejno ustvari fiskalna leta"
 
 #. module: account_fiscal_year_auto_create
 #. odoo-python
 #: code:addons/account_fiscal_year_auto_create/models/account_fiscal_year.py:0
 msgid "FY %(date_to)s - %(date_from)s"
-msgstr ""
+msgstr "FL %(date_to)s - %(date_from)s"
 
 #. module: account_fiscal_year_auto_create
 #: model:ir.model,name:account_fiscal_year_auto_create.model_account_fiscal_year
 msgid "Fiscal Year"
-msgstr ""
+msgstr "Fiskalno leto"
