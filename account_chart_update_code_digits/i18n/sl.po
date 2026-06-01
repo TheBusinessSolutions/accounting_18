@@ -6,7 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-06-01 09:32+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: none\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -14,21 +15,22 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: account_chart_update_code_digits
 #: model:ir.model.fields,field_description:account_chart_update_code_digits.field_res_company__account_code_digits
 msgid "Account Code Digits"
-msgstr ""
+msgstr "Št. znakov kode konta"
 
 #. module: account_chart_update_code_digits
 #: model:ir.model.fields,field_description:account_chart_update_code_digits.field_wizard_update_charts_accounts__code_digits
 msgid "Code Digits"
-msgstr ""
+msgstr "Znaki v kodi"
 
 #. module: account_chart_update_code_digits
 #: model:ir.model,name:account_chart_update_code_digits.model_res_company
 msgid "Companies"
-msgstr ""
+msgstr "Družbe"
 
 #. module: account_chart_update_code_digits
 #. odoo-python
@@ -38,8 +40,11 @@ msgid ""
 "digits because they are not created by the chart of accounts template. "
 "Please update them manually: %(accounts)s"
 msgstr ""
+"Naslednjih računov ni bilo mogoče samodejno posodobiti na %(digits)s mest, "
+"saj niso bili ustvarjeni s predlogo kontnega načrta. Prosimo, da jih "
+"posodobite ročno: %(accounts)s"
 
 #. module: account_chart_update_code_digits
 #: model:ir.model,name:account_chart_update_code_digits.model_wizard_update_charts_accounts
 msgid "Wizard Update Charts Accounts"
-msgstr ""
+msgstr "Čarovnik za posodobitev kontnih planov"
