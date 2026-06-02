@@ -59,7 +59,7 @@ class TestStockPickingInvoicingCommon(TestAccountMoveStockCommon):
         # Fiscal Position
         fiscal_position = cls.env["account.fiscal.position"].create(
             {
-                "name": "Test - Stock Picking Invocing",
+                "name": "Test - Stock Picking Invoicing",
                 "company_id": cls.company.id,
                 "auto_apply": 1,
             }
