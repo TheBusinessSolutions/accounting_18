@@ -58,6 +58,7 @@ addon | version | maintainers | summary
 [account_manual_currency](account_manual_currency/) | 18.0.1.0.0 |  | Allows to manual currency of Accounting
 [account_move_auto_post_ref](account_move_auto_post_ref/) | 18.0.1.0.1 | <a href='https://github.com/rafaelbn'><img src='https://github.com/rafaelbn.png' width='32' height='32' style='border-radius:50%;' alt='rafaelbn'/></a> <a href='https://github.com/yajo'><img src='https://github.com/yajo.png' width='32' height='32' style='border-radius:50%;' alt='yajo'/></a> | Propagate customer ref when auto-generating next recurring invoice
 [account_move_cancel_confirm](account_move_cancel_confirm/) | 18.0.1.0.1 | <a href='https://github.com/kittiu'><img src='https://github.com/kittiu.png' width='32' height='32' style='border-radius:50%;' alt='kittiu'/></a> | Account Move Cancel Confirm
+[account_move_pivot_view](account_move_pivot_view/) | 18.0.1.0.0 |  | Adds pivot view to Invoices (move in and move out), Refunds, and Receipts
 [account_move_tier_validation](account_move_tier_validation/) | 18.0.1.0.2 |  | Extends the functionality of Account Moves to support a tier validation process.
 [account_move_tier_validation_approver](account_move_tier_validation_approver/) | 18.0.1.0.0 |  | Account Move Tier Validation Approver
 [account_receipt_journal](account_receipt_journal/) | 18.0.1.1.0 | <a href='https://github.com/eLBati'><img src='https://github.com/eLBati.png' width='32' height='32' style='border-radius:50%;' alt='eLBati'/></a> | Define and use journals dedicated to receipts
