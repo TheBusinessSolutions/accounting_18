@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="mn_finance_insights.FinancialRatios">
+        <div class="o_fi_dashboard" t-ref="ratiosRoot">
+            <div class="o_fi_header">
+                <div class="o_fi_title">
+                    <h2><i class="fa fa-percentage me-2"/>Financial Ratios</h2>
+                    <small class="text-muted" t-if="state.data" t-esc="state.data.company_name"/>
+                </div>
+                <div class="o_fi_filters">
+                    <label>As of</label>
+                    <input type="date" t-att-value="state.options.as_of"
+                           t-on-change="(ev) => this.onFilterChange('as_of', ev)"/>
+                </div>
+            </div>
+
+            <div t-if="state.loading" class="o_fi_loading">
+                <i class="fa fa-spinner fa-spin fa-2x"/>
+                <div class="mt-2">Computing ratios…</div>
+            </div>
+
+            <t t-if="!state.loading and state.data">
+                <t t-foreach="[
+                    ['liquidity', 'Liquidity', 'fa-tint'],
+                    ['profitability', 'Profitability', 'fa-coins'],
+                    ['efficiency', 'Efficiency', 'fa-bolt'],
+                ]" t-as="group" t-key="group[0]">
+                    <div class="o_fi_ratio_group">
+                        <h4 class="o_fi_group_title">
+                            <i class="fa" t-att-class="group[2]"/>
+                            <t t-esc="group[1]"/>
+                        </h4>
+                        <div class="o_fi_ratio_grid">
+                            <t t-foreach="ratiosByGroup[group[0]] || []" t-as="r" t-key="r.key">
+                                <div class="o_fi_ratio_card" t-att-class="'health-' + r.health">
+                                    <div class="o_fi_ratio_top">
+                                        <div class="o_fi_ratio_label" t-esc="r.label"/>
+                                        <span class="o_fi_health_dot" t-att-class="'health-' + r.health"/>
+                                    </div>
+                                    <div class="o_fi_ratio_value" t-esc="formatValue(r)"/>
+                                    <div class="o_fi_ratio_formula" t-esc="r.formula"/>
+                                    <div class="o_fi_spark">
+                                        <canvas t-att-data-spark="r.key"/>
+                                    </div>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </div>
+    </t>
+
+</templates>

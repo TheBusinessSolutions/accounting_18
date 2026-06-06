@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mn_finance_insights.BurnRate">
+        <div class="o_fi_dashboard" t-ref="root">
+            <div class="o_fi_header">
+                <div class="o_fi_title">
+                    <h2><i class="fa fa-fire me-2"/>Burn Rate &amp; Runway</h2>
+                    <small class="text-muted" t-if="state.data" t-esc="state.data.company_name"/>
+                </div>
+                <div class="o_fi_filters">
+                    <label>As of</label>
+                    <input type="date" t-att-value="state.options.as_of" t-on-change="(ev) => this.onFilterChange('as_of', ev)"/>
+                </div>
+            </div>
+            <div t-if="state.loading" class="o_fi_loading"><i class="fa fa-spinner fa-spin fa-2x"/></div>
+            <t t-if="!state.loading and state.data">
+                <div class="o_fi_kpi_grid">
+                    <div class="o_fi_kpi_card kpi-cash">
+                        <div class="o_fi_kpi_label">Cash on Hand</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.cash)"/>
+                    </div>
+                    <div class="o_fi_kpi_card kpi-expenses">
+                        <div class="o_fi_kpi_label">Burn (3-mo avg)</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.burn_3) + ' / mo'"/>
+                    </div>
+                    <div class="o_fi_kpi_card kpi-expenses">
+                        <div class="o_fi_kpi_label">Burn (12-mo avg)</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.burn_12) + ' / mo'"/>
+                    </div>
+                    <div class="o_fi_kpi_card kpi-net">
+                        <div class="o_fi_kpi_label">Runway (3-mo burn)</div>
+                        <div class="o_fi_kpi_value" t-esc="formatRunway(state.data.runway_3)"/>
+                        <div class="o_fi_runway_bar">
+                            <div class="o_fi_runway_fill" t-attf-style="width:{{ runwayWidth(state.data.runway_3) }}%;"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="o_fi_chart_card">
+                    <h5>Monthly net cash change &amp; balance</h5>
+                    <div class="o_fi_chart_canvas" style="height:320px;"><canvas data-chart="burn"/></div>
+                </div>
+
+                <div class="o_fi_chart_card" style="margin-top:14px;">
+                    <h5>Scenario runway</h5>
+                    <table class="o_fi_table">
+                        <thead><tr><th>Scenario</th><th class="num">Monthly burn</th><th class="num">Runway</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>Last 3 months</strong></td>
+                                <td class="num text-danger" t-esc="formatAmount(state.data.burn_3)"/>
+                                <td class="num"><span class="o_fi_heat" t-att-class="runwayClass(state.data.runway_3)" t-esc="formatRunway(state.data.runway_3)"/></td></tr>
+                            <tr><td><strong>Last 6 months</strong></td>
+                                <td class="num text-danger" t-esc="formatAmount(state.data.burn_6)"/>
+                                <td class="num"><span class="o_fi_heat" t-att-class="runwayClass(state.data.runway_6)" t-esc="formatRunway(state.data.runway_6)"/></td></tr>
+                            <tr><td><strong>Last 12 months</strong></td>
+                                <td class="num text-danger" t-esc="formatAmount(state.data.burn_12)"/>
+                                <td class="num"><span class="o_fi_heat" t-att-class="runwayClass(state.data.runway_12)" t-esc="formatRunway(state.data.runway_12)"/></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

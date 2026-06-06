@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mn_finance_insights.VendorSpend">
+        <div class="o_fi_dashboard">
+            <div class="o_fi_header">
+                <div class="o_fi_title"><h2><i class="fa fa-truck me-2"/>Vendor Spend Analysis</h2>
+                    <small class="text-muted" t-if="state.data" t-esc="state.data.company_name"/></div>
+                <div class="o_fi_filters">
+                    <label>From</label><input type="date" t-att-value="state.options.date_from" t-on-change="(ev) => this.onFilterChange('date_from', ev)"/>
+                    <label>To</label><input type="date" t-att-value="state.options.date_to" t-on-change="(ev) => this.onFilterChange('date_to', ev)"/>
+                </div>
+            </div>
+            <div t-if="state.loading" class="o_fi_loading"><i class="fa fa-spinner fa-spin fa-2x"/></div>
+            <t t-if="!state.loading and state.data">
+                <div class="o_fi_kpi_grid">
+                    <div class="o_fi_kpi_card kpi-expenses"><div class="o_fi_kpi_label">Total Spend</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.total)"/></div>
+                    <div class="o_fi_kpi_card kpi-ap"><div class="o_fi_kpi_label">Vendor Count</div>
+                        <div class="o_fi_kpi_value" t-esc="state.data.vendor_count"/></div>
+                    <div class="o_fi_kpi_card kpi-ar"><div class="o_fi_kpi_label">Top 5 = % of spend</div>
+                        <div class="o_fi_kpi_value" t-esc="state.data.top5_pct + '%'"/></div>
+                    <div class="o_fi_kpi_card kpi-gm"><div class="o_fi_kpi_label">Top 10 = % of spend</div>
+                        <div class="o_fi_kpi_value" t-esc="state.data.top10_pct + '%'"/></div>
+                </div>
+                <div class="o_fi_chart_card">
+                    <h5>Vendors ranked by spend</h5>
+                    <table class="o_fi_table">
+                        <thead><tr><th>#</th><th>Vendor</th><th class="num">Spend</th><th class="num">% of total</th><th class="num">Cumulative %</th></tr></thead>
+                        <tbody>
+                            <t t-foreach="state.data.rows" t-as="r" t-key="r.id">
+                                <tr><td t-esc="r_index + 1"/><td><strong t-esc="r.name"/></td>
+                                    <td class="num" t-esc="formatAmount(r.amount)"/>
+                                    <td class="num" t-esc="r.pct + '%'"/>
+                                    <td class="num">
+                                        <span class="o_fi_heat" t-att-class="r.cum_pct &lt; 50 ? 'heat-bad' : (r.cum_pct &lt; 80 ? 'heat-ok' : 'heat-good')"
+                                              t-esc="r.cum_pct + '%'"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

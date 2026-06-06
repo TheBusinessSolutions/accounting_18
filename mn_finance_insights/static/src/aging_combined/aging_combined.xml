@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mn_finance_insights.AgingCombined">
+        <div class="o_fi_dashboard" t-ref="root">
+            <div class="o_fi_header">
+                <div class="o_fi_title">
+                    <h2><i class="fa fa-balance-scale me-2"/>AR &amp; AP Aging Combined</h2>
+                    <small class="text-muted" t-if="state.data" t-esc="state.data.company_name"/>
+                </div>
+                <div class="o_fi_filters">
+                    <label>As of</label>
+                    <input type="date" t-att-value="state.options.as_of" t-on-change="(ev) => this.onFilterChange('as_of', ev)"/>
+                </div>
+            </div>
+            <div t-if="state.loading" class="o_fi_loading"><i class="fa fa-spinner fa-spin fa-2x"/></div>
+            <t t-if="!state.loading and state.data">
+                <div class="o_fi_kpi_grid">
+                    <div class="o_fi_kpi_card kpi-ar"><div class="o_fi_kpi_label">Total AR (we are owed)</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.ar_total)"/></div>
+                    <div class="o_fi_kpi_card kpi-ap"><div class="o_fi_kpi_label">Total AP (we owe)</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.ap_total)"/></div>
+                    <div class="o_fi_kpi_card kpi-net"><div class="o_fi_kpi_label">Net Working Position</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.net_position)"/></div>
+                </div>
+                <div class="o_fi_chart_card">
+                    <h5>Aging buckets</h5>
+                    <div class="o_fi_chart_canvas" style="height:320px;"><canvas data-chart="aging"/></div>
+                </div>
+                <div class="o_fi_chart_card" style="margin-top:14px;">
+                    <h5>Breakdown</h5>
+                    <table class="o_fi_table">
+                        <thead><tr><th>Bucket</th><th class="num">AR</th><th class="num">AP</th><th class="num">Net</th></tr></thead>
+                        <tbody>
+                            <t t-foreach="state.data.labels" t-as="lbl" t-key="lbl_index">
+                                <tr>
+                                    <td t-esc="lbl"/>
+                                    <td class="num text-warning" t-esc="formatAmount(state.data.ar_buckets[lbl_index])"/>
+                                    <td class="num text-danger" t-esc="formatAmount(state.data.ap_buckets[lbl_index])"/>
+                                    <td class="num"><strong t-esc="formatAmount(state.data.ar_buckets[lbl_index] - state.data.ap_buckets[lbl_index])"/></td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

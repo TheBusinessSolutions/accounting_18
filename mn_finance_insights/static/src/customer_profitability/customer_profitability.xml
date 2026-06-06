@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mn_finance_insights.CustomerProfitability">
+        <div class="o_fi_dashboard">
+            <div class="o_fi_header">
+                <div class="o_fi_title">
+                    <h2><i class="fa fa-user-tag me-2"/>Customer Profitability</h2>
+                    <small class="text-muted" t-if="state.data">
+                        <t t-esc="state.data.company_name"/> · Cost of capital
+                        <t t-esc="state.data.cost_of_capital_pct"/>%
+                    </small>
+                </div>
+                <div class="o_fi_filters">
+                    <label>From</label>
+                    <input type="date" t-att-value="state.options.date_from" t-on-change="(ev) => this.onFilterChange('date_from', ev)"/>
+                    <label>To</label>
+                    <input type="date" t-att-value="state.options.date_to" t-on-change="(ev) => this.onFilterChange('date_to', ev)"/>
+                    <input type="search" placeholder="Search customer…" t-on-input="(ev) => this.onSearch(ev)" style="min-width:220px;"/>
+                </div>
+            </div>
+            <div t-if="state.loading" class="o_fi_loading"><i class="fa fa-spinner fa-spin fa-2x"/></div>
+            <t t-if="!state.loading and state.data">
+                <div class="o_fi_kpi_grid">
+                    <div class="o_fi_kpi_card kpi-revenue">
+                        <div class="o_fi_kpi_label">Total Revenue</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.totals.revenue)"/>
+                    </div>
+                    <div class="o_fi_kpi_card kpi-expenses">
+                        <div class="o_fi_kpi_label">Returns + Discounts</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.totals.returns + state.data.totals.discounts)"/>
+                    </div>
+                    <div class="o_fi_kpi_card kpi-ar">
+                        <div class="o_fi_kpi_label">AR Carrying Cost</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.totals.ar_cost)"/>
+                    </div>
+                    <div class="o_fi_kpi_card kpi-net">
+                        <div class="o_fi_kpi_label">Net Customer Profit</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.totals.net_profit)"/>
+                    </div>
+                </div>
+                <div class="o_fi_chart_card">
+                    <h5>Per customer (sorted by net profit)</h5>
+                    <div style="overflow-x:auto;">
+                        <table class="o_fi_table">
+                            <thead><tr>
+                                <th>Customer</th>
+                                <th class="num">Revenue</th>
+                                <th class="num">Returns</th>
+                                <th class="num">Discounts</th>
+                                <th class="num">COGS</th>
+                                <th class="num">AR Cost</th>
+                                <th class="num">Net Profit</th>
+                                <th class="num">Margin</th>
+                            </tr></thead>
+                            <tbody>
+                                <t t-foreach="rows" t-as="r" t-key="r.partner_id">
+                                    <tr>
+                                        <td><strong t-esc="r.name"/></td>
+                                        <td class="num" t-esc="formatAmount(r.revenue)"/>
+                                        <td class="num text-danger" t-esc="formatAmount(r.returns)"/>
+                                        <td class="num text-danger" t-esc="formatAmount(r.discounts)"/>
+                                        <td class="num text-danger" t-esc="formatAmount(r.cogs)"/>
+                                        <td class="num text-muted" t-esc="formatAmount(r.ar_cost)"/>
+                                        <td class="num"
+                                            t-att-class="r.net_profit &gt;= 0 ? 'text-success' : 'text-danger'">
+                                            <strong t-esc="formatAmount(r.net_profit)"/>
+                                        </td>
+                                        <td class="num">
+                                            <span class="o_fi_heat" t-att-class="marginClass(r.margin_pct)"
+                                                  t-esc="r.margin_pct + '%'"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

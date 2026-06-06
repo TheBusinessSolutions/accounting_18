@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mn_finance_insights.NegativeBalance">
+        <div class="o_fi_dashboard">
+            <div class="o_fi_header">
+                <div class="o_fi_title"><h2><i class="fa fa-exclamation-triangle me-2"/>Negative Balance Alerts</h2>
+                    <small class="text-muted" t-if="state.data" t-esc="state.data.company_name"/></div>
+                <div class="o_fi_filters">
+                    <label>As of</label><input type="date" t-att-value="state.options.as_of" t-on-change="(ev) => this.onFilterChange('as_of', ev)"/>
+                </div>
+            </div>
+            <div t-if="state.loading" class="o_fi_loading"><i class="fa fa-spinner fa-spin fa-2x"/></div>
+            <t t-if="!state.loading and state.data">
+                <div class="o_fi_kpi_grid">
+                    <div class="o_fi_kpi_card kpi-expenses"><div class="o_fi_kpi_label">Anomalies Found</div>
+                        <div class="o_fi_kpi_value" t-esc="state.data.count"/></div>
+                    <div class="o_fi_kpi_card kpi-ar"><div class="o_fi_kpi_label">Critical (&gt; $1k)</div>
+                        <div class="o_fi_kpi_value" t-esc="state.data.critical_count"/></div>
+                </div>
+                <div class="o_fi_chart_card">
+                    <h5>Accounts with unexpected sign</h5>
+                    <table class="o_fi_table">
+                        <thead><tr><th>Code</th><th>Account</th><th>Type</th><th>Expected</th><th class="num">Actual balance</th></tr></thead>
+                        <tbody>
+                            <tr t-if="!state.data.rows.length"><td colspan="5" class="text-center text-success" style="padding:30px;"><i class="fa fa-check-circle me-2"/>All accounts have expected signs.</td></tr>
+                            <t t-foreach="state.data.rows" t-as="r" t-key="r.id">
+                                <tr><td><span class="text-muted" t-esc="r.code"/></td>
+                                    <td><strong t-esc="r.name"/></td>
+                                    <td><small class="text-muted" t-esc="r.type"/></td>
+                                    <td><span t-esc="r.expected"/></td>
+                                    <td class="num"><span class="o_fi_heat" t-att-class="'heat-' + r.severity" t-esc="formatAmount(r.balance)"/></td></tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

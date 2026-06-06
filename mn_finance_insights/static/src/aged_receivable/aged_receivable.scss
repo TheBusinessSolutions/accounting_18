@@ -1,0 +1,18 @@
+.o_fi_dashboard {
+    .o_fi_aged_table {
+        .o_fi_partner_link {
+            color: var(--fi-accent, #6366f1);
+            font-weight: 600;
+            text-decoration: none;
+            &:hover { text-decoration: underline; }
+        }
+        .o_fi_total_row th {
+            background: rgba(99,102,241,0.06);
+            border-top: 2px solid var(--fi-accent, #6366f1);
+            font-size: 13px;
+            text-transform: none;
+            letter-spacing: 0;
+            color: var(--fi-text, #0f172a);
+        }
+    }
+}

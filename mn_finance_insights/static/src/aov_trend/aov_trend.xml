@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mn_finance_insights.AOVTrend">
+        <div class="o_fi_dashboard" t-ref="root">
+            <div class="o_fi_header">
+                <div class="o_fi_title"><h2><i class="fa fa-shopping-bag me-2"/>Average Order Value Trend</h2>
+                    <small class="text-muted" t-if="state.data" t-esc="state.data.company_name"/></div>
+                <div class="o_fi_filters">
+                    <label>As of</label><input type="date" t-att-value="state.options.as_of" t-on-change="(ev) => this.onFilterChange('as_of', ev)"/>
+                </div>
+            </div>
+            <div t-if="state.loading" class="o_fi_loading"><i class="fa fa-spinner fa-spin fa-2x"/></div>
+            <t t-if="!state.loading and state.data">
+                <div class="o_fi_kpi_grid">
+                    <div class="o_fi_kpi_card kpi-revenue"><div class="o_fi_kpi_label">12-Month Avg AOV</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.avg_aov)"/></div>
+                    <div class="o_fi_kpi_card kpi-net"><div class="o_fi_kpi_label">Latest Month AOV</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.latest_aov)"/></div>
+                    <div class="o_fi_kpi_card kpi-gm"><div class="o_fi_kpi_label">MoM Δ</div>
+                        <div class="o_fi_kpi_value" t-att-class="state.data.delta_pct &gt;= 0 ? 'text-success' : 'text-danger'"
+                            t-esc="(state.data.delta_pct &gt;= 0 ? '+' : '') + state.data.delta_pct + '%'"/></div>
+                </div>
+                <div class="o_fi_chart_card"><h5>AOV last 12 months</h5>
+                    <div class="o_fi_chart_canvas" style="height:300px;"><canvas data-chart="aov"/></div>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

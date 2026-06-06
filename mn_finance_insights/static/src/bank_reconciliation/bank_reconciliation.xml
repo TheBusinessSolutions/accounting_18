@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mn_finance_insights.BankReconciliation">
+        <div class="o_fi_dashboard">
+            <div class="o_fi_header">
+                <div class="o_fi_title"><h2><i class="fa fa-university me-2"/>Bank Reconciliation Status</h2>
+                    <small class="text-muted" t-if="state.data" t-esc="state.data.company_name"/></div>
+            </div>
+            <div t-if="state.loading" class="o_fi_loading"><i class="fa fa-spinner fa-spin fa-2x"/></div>
+            <div t-if="!state.loading and state.data" class="o_fi_chart_card">
+                <h5>Per bank account</h5>
+                <table class="o_fi_table">
+                    <thead><tr>
+                        <th>Code</th><th>Account</th>
+                        <th class="num">Total lines</th><th class="num">Reconciled</th><th class="num">Unreconciled</th>
+                        <th class="num">% Reconciled</th><th class="num">Oldest unrec.</th><th class="num">Unrec. amount</th>
+                    </tr></thead>
+                    <tbody>
+                        <t t-foreach="state.data.rows" t-as="r" t-key="r.id">
+                            <tr>
+                                <td><span class="text-muted" t-esc="r.code"/></td>
+                                <td><strong t-esc="r.name"/></td>
+                                <td class="num" t-esc="r.total"/>
+                                <td class="num text-success" t-esc="r.reconciled"/>
+                                <td class="num text-danger" t-esc="r.unreconciled"/>
+                                <td class="num">
+                                    <span class="o_fi_heat" t-att-class="r.rec_pct &gt;= 90 ? 'heat-good' : (r.rec_pct &gt;= 70 ? 'heat-ok' : 'heat-bad')"
+                                          t-esc="r.rec_pct + '%'"/>
+                                </td>
+                                <td class="num">
+                                    <t t-if="r.oldest_unreconciled_date" t-esc="r.oldest_unreconciled_days + ' days'"/>
+                                    <t t-else=""><span class="text-success">none</span></t>
+                                </td>
+                                <td class="num" t-esc="formatAmount(r.unreconciled_amount)"/>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </t>
+</templates>

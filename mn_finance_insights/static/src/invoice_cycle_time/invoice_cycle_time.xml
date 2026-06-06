@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mn_finance_insights.InvoiceCycleTime">
+        <div class="o_fi_dashboard" t-ref="root">
+            <div class="o_fi_header">
+                <div class="o_fi_title"><h2><i class="fa fa-stopwatch me-2"/>Invoice Cycle Time</h2>
+                    <small class="text-muted" t-if="state.data" t-esc="state.data.company_name"/></div>
+                <div class="o_fi_filters">
+                    <label>From</label><input type="date" t-att-value="state.options.date_from" t-on-change="(ev) => this.onFilterChange('date_from', ev)"/>
+                    <label>To</label><input type="date" t-att-value="state.options.date_to" t-on-change="(ev) => this.onFilterChange('date_to', ev)"/>
+                </div>
+            </div>
+            <div t-if="state.loading" class="o_fi_loading"><i class="fa fa-spinner fa-spin fa-2x"/></div>
+            <t t-if="!state.loading and state.data">
+                <div class="o_fi_kpi_grid">
+                    <div class="o_fi_kpi_card kpi-net"><div class="o_fi_kpi_label">Paid Invoices Analyzed</div>
+                        <div class="o_fi_kpi_value" t-esc="state.data.total"/></div>
+                    <div class="o_fi_kpi_card kpi-gm"><div class="o_fi_kpi_label">Average Days to Pay</div>
+                        <div class="o_fi_kpi_value" t-esc="state.data.avg_days + ' d'"/></div>
+                    <div class="o_fi_kpi_card kpi-cash"><div class="o_fi_kpi_label">Median</div>
+                        <div class="o_fi_kpi_value" t-esc="state.data.median_days + ' d'"/></div>
+                    <div class="o_fi_kpi_card kpi-revenue"><div class="o_fi_kpi_label">Fastest / Slowest</div>
+                        <div class="o_fi_kpi_value" t-esc="state.data.fastest + ' / ' + state.data.slowest + ' d'"/></div>
+                </div>
+                <div class="o_fi_chart_card"><h5>Distribution by bucket</h5>
+                    <div class="o_fi_chart_canvas" style="height:300px;"><canvas data-chart="cycle"/></div>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

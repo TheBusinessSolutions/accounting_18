@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mn_finance_insights.VendorPaymentSchedule">
+        <div class="o_fi_dashboard" t-ref="root">
+            <div class="o_fi_header">
+                <div class="o_fi_title"><h2><i class="fa fa-calendar-check me-2"/>Vendor Payment Schedule</h2>
+                    <small class="text-muted" t-if="state.data" t-esc="state.data.company_name"/></div>
+                <div class="o_fi_filters">
+                    <label>As of</label>
+                    <input type="date" t-att-value="state.options.as_of" t-on-change="(ev) => this.onFilterChange('as_of', ev)"/>
+                </div>
+            </div>
+            <div t-if="state.loading" class="o_fi_loading"><i class="fa fa-spinner fa-spin fa-2x"/></div>
+            <t t-if="!state.loading and state.data">
+                <div class="o_fi_kpi_grid">
+                    <div class="o_fi_kpi_card kpi-expenses"><div class="o_fi_kpi_label">Overdue AP</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.overdue)"/></div>
+                    <div class="o_fi_kpi_card kpi-ap"><div class="o_fi_kpi_label">Total Open AP</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.total)"/></div>
+                </div>
+                <div class="o_fi_chart_card"><h5>Upcoming vendor payments</h5>
+                    <div class="o_fi_chart_canvas" style="height:320px;"><canvas data-chart="vps"/></div>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

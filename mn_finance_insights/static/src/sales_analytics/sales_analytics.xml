@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="mn_finance_insights.SalesAnalytics">
+        <div class="o_fi_dashboard" t-ref="root">
+            <div class="o_fi_header">
+                <div class="o_fi_title">
+                    <h2><i class="fa fa-shopping-cart me-2"/>Sales Analytics</h2>
+                    <small class="text-muted" t-if="state.data" t-esc="state.data.company_name"/>
+                </div>
+                <div class="o_fi_filters">
+                    <label>From</label>
+                    <input type="date" t-att-value="state.options.date_from"
+                           t-on-change="(ev) => this.onFilterChange('date_from', ev)"/>
+                    <label>To</label>
+                    <input type="date" t-att-value="state.options.date_to"
+                           t-on-change="(ev) => this.onFilterChange('date_to', ev)"/>
+                </div>
+            </div>
+
+            <div t-if="state.loading" class="o_fi_loading">
+                <i class="fa fa-spinner fa-spin fa-2x"/><div class="mt-2">Loading…</div>
+            </div>
+
+            <t t-if="!state.loading and state.data">
+                <div class="o_fi_kpi_grid">
+                    <t t-foreach="[
+                        ['revenue', 'Revenue', 'fa-coins', 'kpi-revenue', true],
+                        ['invoice_count', 'Invoices', 'fa-file-invoice', 'kpi-net', false],
+                        ['refund_count', 'Refunds', 'fa-undo', 'kpi-expenses', false],
+                        ['avg_invoice', 'Avg Invoice', 'fa-calculator', 'kpi-cash', true],
+                        ['collection_rate', 'Collection Rate', 'fa-percentage', 'kpi-gm', false],
+                    ]" t-as="card" t-key="card[0]">
+                        <div class="o_fi_kpi_card" t-att-class="card[3]">
+                            <div class="o_fi_kpi_icon"><i class="fa" t-att-class="card[2]"/></div>
+                            <div class="o_fi_kpi_body">
+                                <div class="o_fi_kpi_label" t-esc="card[1]"/>
+                                <div class="o_fi_kpi_value">
+                                    <t t-if="card[0] === 'collection_rate'">
+                                        <t t-esc="state.data.kpis[card[0]].toFixed(1) + '%'"/>
+                                    </t>
+                                    <t t-elif="card[4]" t-esc="formatAmount(state.data.kpis[card[0]])"/>
+                                    <t t-else="" t-esc="state.data.kpis[card[0]]"/>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+
+                <div class="o_fi_charts_grid">
+                    <div class="o_fi_chart_card o_fi_chart_wide">
+                        <h5>Revenue trend</h5>
+                        <div class="o_fi_chart_canvas" style="height:280px;">
+                            <canvas data-chart="trend"/>
+                        </div>
+                    </div>
+                    <div class="o_fi_chart_card o_fi_chart_wide">
+                        <h5>Top 10 products by revenue</h5>
+                        <div class="o_fi_chart_canvas" style="height:340px;">
+                            <canvas data-chart="products"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="o_fi_charts_grid" style="margin-top:14px;">
+                    <div class="o_fi_chart_card">
+                        <h5>Top customers</h5>
+                        <table class="o_fi_table">
+                            <thead><tr><th>Customer</th><th class="num">Revenue</th></tr></thead>
+                            <tbody>
+                                <t t-foreach="state.data.top_customers" t-as="c" t-key="c.id">
+                                    <tr><td t-esc="c.name"/><td class="num" t-esc="formatAmount(c.amount)"/></tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="o_fi_chart_card">
+                        <h5>By salesperson</h5>
+                        <table class="o_fi_table">
+                            <thead><tr><th>Salesperson</th><th class="num">Invoices</th><th class="num">Revenue</th></tr></thead>
+                            <tbody>
+                                <t t-foreach="state.data.by_salesperson" t-as="s" t-key="s.id">
+                                    <tr><td t-esc="s.name"/><td class="num" t-esc="s.count"/><td class="num" t-esc="formatAmount(s.amount)"/></tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </t>
+        </div>
+    </t>
+
+</templates>

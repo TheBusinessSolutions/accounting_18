@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="mn_finance_insights.CashFlowForecast">
+        <div class="o_fi_dashboard">
+            <div class="o_fi_header">
+                <div class="o_fi_title">
+                    <h2><i class="fa fa-stream me-2"/>Cash Flow Forecast</h2>
+                    <small class="text-muted" t-if="state.data" t-esc="state.data.company_name"/>
+                </div>
+                <div class="o_fi_filters">
+                    <label>Starting</label>
+                    <input type="date" t-att-value="state.options.date_from"
+                           t-on-change="(ev) => this.onFilterChange('date_from', ev)"/>
+                    <label>Horizon</label>
+                    <select t-on-change="(ev) => this.onFilterChange('horizon', ev)">
+                        <option value="4"  t-att-selected="state.options.horizon === '4'  ? 'selected' : undefined">4 weeks</option>
+                        <option value="8"  t-att-selected="state.options.horizon === '8'  ? 'selected' : undefined">8 weeks</option>
+                        <option value="13" t-att-selected="state.options.horizon === '13' ? 'selected' : undefined">13 weeks</option>
+                        <option value="26" t-att-selected="state.options.horizon === '26' ? 'selected' : undefined">26 weeks</option>
+                    </select>
+                    <button class="btn btn-sm btn-primary" t-on-click="() => this.onExport()">
+                        <i class="fa fa-file-excel me-1"/>Excel
+                    </button>
+                </div>
+            </div>
+
+            <div t-if="state.loading" class="o_fi_loading">
+                <i class="fa fa-spinner fa-spin fa-2x"/>
+                <div class="mt-2">Loading forecast…</div>
+            </div>
+
+            <div t-if="!state.loading and state.data">
+                <div class="o_fi_scenario_tabs">
+                    <t t-foreach="['best','expected','worst']" t-as="sc" t-key="sc">
+                        <button class="o_fi_scenario_btn"
+                                t-att-class="state.scenario === sc ? 'active' : ''"
+                                t-on-click="() => this.onScenario(sc)">
+                            <t t-esc="sc.charAt(0).toUpperCase() + sc.slice(1)"/>
+                        </button>
+                    </t>
+                    <div class="o_fi_opening">
+                        Opening cash: <strong t-esc="formatAmount(state.data.opening_balance)"/>
+                    </div>
+                </div>
+
+                <div class="o_fi_chart_card" style="margin-bottom:14px;">
+                    <h5>Forecast — <t t-esc="state.scenario"/></h5>
+                    <div class="o_fi_chart_canvas" style="height:340px;">
+                        <canvas t-ref="cfChart"/>
+                    </div>
+                </div>
+
+                <div class="o_fi_chart_card">
+                    <h5>Weekly breakdown</h5>
+                    <div style="overflow-x:auto;">
+                        <table class="o_fi_table">
+                            <thead>
+                                <tr>
+                                    <th>Week</th><th>From</th><th>To</th>
+                                    <th class="num">Inflow</th><th class="num">Outflow</th>
+                                    <th class="num">Net</th><th class="num">Cumulative</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="state.data.scenarios[state.scenario]" t-as="row" t-key="row.week">
+                                    <tr>
+                                        <td t-esc="row.week"/>
+                                        <td t-esc="row.date_from"/>
+                                        <td t-esc="row.date_to"/>
+                                        <td class="num text-success" t-esc="formatAmount(row.inflow)"/>
+                                        <td class="num text-danger" t-esc="formatAmount(row.outflow)"/>
+                                        <td class="num" t-att-class="row.net >= 0 ? 'text-success' : 'text-danger'"
+                                            t-esc="formatAmount(row.net)"/>
+                                        <td class="num"><strong t-esc="formatAmount(row.cumulative)"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+</templates>

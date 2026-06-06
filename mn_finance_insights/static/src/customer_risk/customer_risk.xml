@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mn_finance_insights.CustomerRisk">
+        <div class="o_fi_dashboard">
+            <div class="o_fi_header">
+                <div class="o_fi_title">
+                    <h2><i class="fa fa-shield-alt me-2"/>Customer Risk Score</h2>
+                    <small class="text-muted" t-if="state.data" t-esc="state.data.company_name"/>
+                </div>
+                <div class="o_fi_filters">
+                    <label>As of</label>
+                    <input type="date" t-att-value="state.options.as_of" t-on-change="(ev) => this.onFilterChange('as_of', ev)"/>
+                    <input type="search" placeholder="Search customer…" t-on-input="(ev) => this.onSearch(ev)" style="min-width:220px;"/>
+                </div>
+            </div>
+            <div t-if="state.loading" class="o_fi_loading"><i class="fa fa-spinner fa-spin fa-2x"/></div>
+            <t t-if="!state.loading and state.data">
+                <div class="o_fi_kpi_grid">
+                    <div class="o_fi_kpi_card kpi-expenses">
+                        <div class="o_fi_kpi_label">High Risk</div>
+                        <div class="o_fi_kpi_value" t-esc="state.data.summary.high_risk"/>
+                    </div>
+                    <div class="o_fi_kpi_card kpi-ar">
+                        <div class="o_fi_kpi_label">Medium Risk</div>
+                        <div class="o_fi_kpi_value" t-esc="state.data.summary.medium_risk"/>
+                    </div>
+                    <div class="o_fi_kpi_card kpi-gm">
+                        <div class="o_fi_kpi_label">Low Risk</div>
+                        <div class="o_fi_kpi_value" t-esc="state.data.summary.low_risk"/>
+                    </div>
+                    <div class="o_fi_kpi_card kpi-net">
+                        <div class="o_fi_kpi_label">Exposure at Risk</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.summary.at_risk_exposure)"/>
+                    </div>
+                </div>
+                <div class="o_fi_chart_card">
+                    <h5>Customers by risk score (highest first)</h5>
+                    <div style="overflow-x:auto;">
+                        <table class="o_fi_table">
+                            <thead><tr>
+                                <th>Score</th>
+                                <th>Customer</th>
+                                <th class="num">Open AR</th>
+                                <th class="num">&gt; 90 days</th>
+                                <th class="num">DSO</th>
+                                <th class="num">Late %</th>
+                                <th class="num">Credit usage</th>
+                            </tr></thead>
+                            <tbody>
+                                <t t-foreach="rows" t-as="r" t-key="r.partner_id">
+                                    <tr>
+                                        <td>
+                                            <span class="o_fi_score_pill" t-att-class="'score-' + r.health">
+                                                <span class="o_fi_score_dot" t-esc="r.score"/>
+                                                <t t-esc="r.health.toUpperCase()"/>
+                                            </span>
+                                        </td>
+                                        <td><strong t-esc="r.name"/></td>
+                                        <td class="num" t-esc="formatAmount(r.ar_total)"/>
+                                        <td class="num text-danger" t-esc="formatAmount(r.ar_over_90)"/>
+                                        <td class="num" t-esc="r.dso + ' d'"/>
+                                        <td class="num" t-esc="r.late_pct + '%'"/>
+                                        <td class="num">
+                                            <t t-if="r.credit_limit &gt; 0">
+                                                <span class="o_fi_heat"
+                                                      t-att-class="r.credit_usage &lt; 70 ? 'heat-good' : (r.credit_usage &lt; 90 ? 'heat-ok' : 'heat-bad')"
+                                                      t-esc="r.credit_usage + '%'"/>
+                                            </t>
+                                            <t t-else=""><span class="text-muted">no limit</span></t>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

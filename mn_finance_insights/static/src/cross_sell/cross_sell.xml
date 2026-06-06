@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mn_finance_insights.CrossSell">
+        <div class="o_fi_dashboard">
+            <div class="o_fi_header">
+                <div class="o_fi_title"><h2><i class="fa fa-th-large me-2"/>Cross-Sell Opportunity Matrix</h2>
+                    <small class="text-muted" t-if="state.data" t-esc="state.data.company_name"/></div>
+                <div class="o_fi_filters">
+                    <label>From</label><input type="date" t-att-value="state.options.date_from" t-on-change="(ev) => this.onFilterChange('date_from', ev)"/>
+                    <label>To</label><input type="date" t-att-value="state.options.date_to" t-on-change="(ev) => this.onFilterChange('date_to', ev)"/>
+                </div>
+            </div>
+            <div t-if="state.loading" class="o_fi_loading"><i class="fa fa-spinner fa-spin fa-2x"/></div>
+            <div t-if="!state.loading and state.data" class="o_fi_chart_card">
+                <h5>Top 10 customers × top 10 products &#8212; empty cells = upsell opportunities</h5>
+                <div style="overflow-x:auto;">
+                    <t t-set="mv" t-value="maxVal()"/>
+                    <table class="o_fi_table">
+                        <thead><tr><th>Customer</th>
+                            <t t-foreach="state.data.products" t-as="p" t-key="p_index"><th class="num" style="max-width:80px;font-size:10px;" t-esc="p"/></t>
+                            <th class="num">Gaps</th></tr></thead>
+                        <tbody>
+                            <t t-foreach="state.data.rows" t-as="r" t-key="r.id">
+                                <tr><td><strong t-esc="r.name"/></td>
+                                    <t t-foreach="r.cells" t-as="v" t-key="v_index">
+                                        <td class="num">
+                                            <t t-if="v &gt; 0"><span class="o_fi_heat" t-att-class="heat(v, mv)" t-esc="formatAmount(v)"/></t>
+                                            <t t-else=""><span class="text-muted" style="opacity:0.5;">—</span></t>
+                                        </td>
+                                    </t>
+                                    <td class="num"><strong t-att-class="r.gaps &gt; 5 ? 'text-success' : 'text-muted'" t-esc="r.gaps"/></td></tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

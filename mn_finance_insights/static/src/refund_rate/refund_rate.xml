@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mn_finance_insights.RefundRate">
+        <div class="o_fi_dashboard" t-ref="root">
+            <div class="o_fi_header">
+                <div class="o_fi_title"><h2><i class="fa fa-undo me-2"/>Refund Rate Tracker</h2>
+                    <small class="text-muted" t-if="state.data" t-esc="state.data.company_name"/></div>
+                <div class="o_fi_filters">
+                    <label>From</label><input type="date" t-att-value="state.options.date_from" t-on-change="(ev) => this.onFilterChange('date_from', ev)"/>
+                    <label>To</label><input type="date" t-att-value="state.options.date_to" t-on-change="(ev) => this.onFilterChange('date_to', ev)"/>
+                </div>
+            </div>
+            <div t-if="state.loading" class="o_fi_loading"><i class="fa fa-spinner fa-spin fa-2x"/></div>
+            <t t-if="!state.loading and state.data">
+                <div class="o_fi_kpi_grid">
+                    <div class="o_fi_kpi_card kpi-revenue"><div class="o_fi_kpi_label">Gross Revenue</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.gross_revenue)"/></div>
+                    <div class="o_fi_kpi_card kpi-expenses"><div class="o_fi_kpi_label">Refunds</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.refunds)"/></div>
+                    <div class="o_fi_kpi_card kpi-net"><div class="o_fi_kpi_label">Net Revenue</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.net_revenue)"/></div>
+                    <div class="o_fi_kpi_card kpi-ar"><div class="o_fi_kpi_label">Refund Rate</div>
+                        <div class="o_fi_kpi_value" t-esc="state.data.refund_rate_pct + '%'"/></div>
+                </div>
+                <div class="o_fi_chart_card"><h5>Monthly trend</h5>
+                    <div class="o_fi_chart_canvas" style="height:320px;"><canvas data-chart="refund"/></div>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_burn_rate" model="ir.actions.client">
+            <field name="name">Burn Rate &amp; Runway</field>
+            <field name="tag">mn_finance_insights.burn_rate</field>
+        </record>
+    </data>
+</odoo>

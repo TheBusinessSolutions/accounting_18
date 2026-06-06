@@ -1,0 +1,16 @@
+/* RTL polish — keep charts/numerics LTR, flip only the surrounding chrome. */
+[dir="rtl"] {
+    .o_fi_dashboard {
+        .o_fi_filters input[type="date"],
+        .o_fi_filters select { direction: ltr; text-align: end; }
+
+        .o_fi_kpi_value,
+        .o_fi_ratio_value,
+        .o_fi_table .num { direction: ltr; unicode-bidi: plaintext; }
+
+        .o_fi_chart_canvas,
+        .o_fi_spark { direction: ltr; }
+
+        .o_fi_kpi_card .o_fi_kpi_delta i { transform: scaleX(-1); }
+    }
+}

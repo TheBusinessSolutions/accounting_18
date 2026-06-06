@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mn_finance_insights.CurrencyExposure">
+        <div class="o_fi_dashboard">
+            <div class="o_fi_header">
+                <div class="o_fi_title"><h2><i class="fa fa-globe me-2"/>Currency Exposure</h2>
+                    <small class="text-muted" t-if="state.data">
+                        <t t-esc="state.data.company_name"/> · Company currency
+                        <t t-esc="state.data.company_currency.name"/>
+                    </small>
+                </div>
+            </div>
+            <div t-if="state.loading" class="o_fi_loading"><i class="fa fa-spinner fa-spin fa-2x"/></div>
+            <div t-if="!state.loading and state.data" class="o_fi_chart_card">
+                <h5>Open balances by currency</h5>
+                <table class="o_fi_table">
+                    <thead><tr><th>Currency</th><th class="num">AR</th><th class="num">Cash</th><th class="num">AP</th>
+                        <th class="num">Net exposure</th><th class="num">Rate</th></tr></thead>
+                    <tbody>
+                        <t t-foreach="state.data.rows" t-as="r" t-key="r.currency_id">
+                            <tr><td><strong t-esc="r.code"/></td>
+                                <td class="num" t-esc="fmt(r.ar, r.symbol)"/>
+                                <td class="num" t-esc="fmt(r.cash, r.symbol)"/>
+                                <td class="num text-danger" t-esc="fmt(r.ap, r.symbol)"/>
+                                <td class="num" t-att-class="r.net &gt;= 0 ? 'text-success' : 'text-danger'">
+                                    <strong t-esc="fmt(r.net, r.symbol)"/></td>
+                                <td class="num text-muted" t-esc="r.rate.toFixed(4)"/></tr>
+                        </t>
+                        <tr t-if="!state.data.rows.length"><td colspan="6" class="text-center text-muted" style="padding:30px;">No multi-currency exposure detected.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </t>
+</templates>

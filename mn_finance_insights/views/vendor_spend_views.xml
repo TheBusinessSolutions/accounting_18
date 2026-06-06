@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_vendor_spend" model="ir.actions.client">
+            <field name="name">Vendor Spend</field>
+            <field name="tag">mn_finance_insights.vendor_spend</field>
+        </record>
+    </data>
+</odoo>

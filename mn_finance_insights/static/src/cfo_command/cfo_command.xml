@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mn_finance_insights.CFOCommand">
+        <div class="o_fi_dashboard">
+            <div class="o_fi_header">
+                <div class="o_fi_title">
+                    <h2><i class="fa fa-chart-pie me-2"/>CFO Command Center</h2>
+                    <small class="text-muted" t-if="state.data" t-esc="state.data.company_name"/>
+                </div>
+                <div class="o_fi_filters">
+                    <label>As of</label>
+                    <input type="date" t-att-value="state.options.as_of" t-on-change="(ev) => this.onFilterChange('as_of', ev)"/>
+                </div>
+            </div>
+            <div t-if="state.loading" class="o_fi_loading"><i class="fa fa-spinner fa-spin fa-2x"/></div>
+            <t t-if="!state.loading and state.data">
+                <div class="o_fi_kpi_grid">
+                    <div class="o_fi_kpi_card kpi-revenue"><div class="o_fi_kpi_label">YTD Revenue</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.kpis.revenue)"/>
+                        <div class="o_fi_kpi_delta" t-if="state.data.kpis.revenue_delta !== null"
+                             t-att-class="state.data.kpis.revenue_delta &gt;= 0 ? 'text-success' : 'text-danger'">
+                            <t t-esc="(state.data.kpis.revenue_delta &gt;= 0 ? '↑ ' : '↓ ') + Math.abs(state.data.kpis.revenue_delta) + '% vs last month'"/>
+                        </div>
+                    </div>
+                    <div class="o_fi_kpi_card kpi-expenses"><div class="o_fi_kpi_label">YTD Expenses</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.kpis.expenses)"/></div>
+                    <div class="o_fi_kpi_card kpi-net"><div class="o_fi_kpi_label">YTD Net Profit</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.kpis.net_profit)"/>
+                        <div class="o_fi_kpi_delta" t-if="state.data.kpis.net_delta !== null"
+                             t-att-class="state.data.kpis.net_delta &gt;= 0 ? 'text-success' : 'text-danger'">
+                            <t t-esc="(state.data.kpis.net_delta &gt;= 0 ? '↑ ' : '↓ ') + Math.abs(state.data.kpis.net_delta) + '%'"/>
+                        </div>
+                    </div>
+                    <div class="o_fi_kpi_card kpi-cash"><div class="o_fi_kpi_label">Cash on Hand</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.kpis.cash)"/></div>
+                    <div class="o_fi_kpi_card kpi-ar"><div class="o_fi_kpi_label">Accounts Receivable</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.kpis.ar)"/></div>
+                    <div class="o_fi_kpi_card kpi-ap"><div class="o_fi_kpi_label">Accounts Payable</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.kpis.ap)"/></div>
+                    <div class="o_fi_kpi_card kpi-gm"><div class="o_fi_kpi_label">Gross Margin</div>
+                        <div class="o_fi_kpi_value" t-esc="formatPct(state.data.kpis.gross_margin_pct)"/></div>
+                    <div class="o_fi_kpi_card kpi-nm"><div class="o_fi_kpi_label">Net Margin</div>
+                        <div class="o_fi_kpi_value" t-esc="formatPct(state.data.kpis.net_margin_pct)"/></div>
+                </div>
+                <div class="o_fi_chart_card">
+                    <h5>Executive summary</h5>
+                    <p t-if="state.data.kpis.high_risk_customers &gt; 0" class="text-danger">
+                        <i class="fa fa-exclamation-triangle me-2"/>
+                        <strong t-esc="state.data.kpis.high_risk_customers"/> high-risk customers require follow-up.
+                    </p>
+                    <p t-else="" class="text-success"><i class="fa fa-check-circle me-2"/>No high-risk customers detected.</p>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

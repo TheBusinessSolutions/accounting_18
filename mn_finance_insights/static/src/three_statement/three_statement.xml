@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mn_finance_insights.ThreeStatement">
+        <div class="o_fi_dashboard">
+            <div class="o_fi_header">
+                <div class="o_fi_title">
+                    <h2><i class="fa fa-layer-group me-2"/>Three-Statement Linked View</h2>
+                    <small class="text-muted" t-if="state.data" t-esc="state.data.company_name"/>
+                </div>
+                <div class="o_fi_filters">
+                    <label>From</label>
+                    <input type="date" t-att-value="state.options.date_from" t-on-change="(ev) => this.onFilterChange('date_from', ev)"/>
+                    <label>To</label>
+                    <input type="date" t-att-value="state.options.date_to" t-on-change="(ev) => this.onFilterChange('date_to', ev)"/>
+                </div>
+            </div>
+            <div t-if="state.loading" class="o_fi_loading"><i class="fa fa-spinner fa-spin fa-2x"/></div>
+            <div t-if="!state.loading and state.data" class="o_fi_charts_grid" style="grid-template-columns: 1fr 1fr 1fr;">
+                <!-- P&L -->
+                <div class="o_fi_chart_card">
+                    <h5>Profit &amp; Loss</h5>
+                    <table class="o_fi_table">
+                        <tr><td>Revenue</td><td class="num text-success"><strong t-esc="formatAmount(state.data.pnl.revenue)"/></td></tr>
+                        <tr><td class="text-muted">COGS</td><td class="num text-danger" t-esc="formatAmount(state.data.pnl.cogs)"/></tr>
+                        <tr><td><strong>Gross Profit</strong></td><td class="num"><strong t-esc="formatAmount(state.data.pnl.gross_profit)"/></td></tr>
+                        <tr><td class="text-muted small">Gross Margin</td><td class="num text-muted small" t-esc="pct(state.data.pnl.gross_margin_pct)"/></tr>
+                        <tr><td class="text-muted">Operating Expenses</td><td class="num text-danger" t-esc="formatAmount(state.data.pnl.opex)"/></tr>
+                        <tr><td class="text-muted">Depreciation</td><td class="num text-danger" t-esc="formatAmount(state.data.pnl.depreciation)"/></tr>
+                        <tr style="background:rgba(99,102,241,0.06);">
+                            <td><strong>NET INCOME</strong></td>
+                            <td class="num" t-att-class="state.data.pnl.net_income &gt;= 0 ? 'text-success' : 'text-danger'">
+                                <strong t-esc="formatAmount(state.data.pnl.net_income)"/>
+                            </td>
+                        </tr>
+                        <tr><td class="text-muted small">Net Margin</td><td class="num text-muted small" t-esc="pct(state.data.pnl.net_margin_pct)"/></tr>
+                    </table>
+                </div>
+                <!-- Cash -->
+                <div class="o_fi_chart_card">
+                    <h5>Cash Flow</h5>
+                    <table class="o_fi_table">
+                        <tr><td>Opening Cash</td><td class="num" t-esc="formatAmount(state.data.cash.opening)"/></tr>
+                        <tr><td>Closing Cash</td><td class="num"><strong t-esc="formatAmount(state.data.cash.closing)"/></td></tr>
+                        <tr style="background:rgba(99,102,241,0.06);">
+                            <td><strong>Net Change</strong></td>
+                            <td class="num" t-att-class="state.data.cash.net_change &gt;= 0 ? 'text-success' : 'text-danger'">
+                                <strong t-esc="formatAmount(state.data.cash.net_change)"/>
+                            </td>
+                        </tr>
+                    </table>
+                    <p class="text-muted small mt-3">
+                        Cash movements include all posted journal entries hitting the cash accounts.
+                    </p>
+                </div>
+                <!-- Balance Sheet -->
+                <div class="o_fi_chart_card">
+                    <h5>Balance Sheet</h5>
+                    <table class="o_fi_table">
+                        <tr><td class="text-muted">Current Assets</td><td class="num" t-esc="formatAmount(state.data.balance_sheet.current_assets)"/></tr>
+                        <tr><td class="text-muted">Non-Current Assets</td><td class="num" t-esc="formatAmount(state.data.balance_sheet.non_current_assets)"/></tr>
+                        <tr><td><strong>Total Assets</strong></td><td class="num"><strong t-esc="formatAmount(state.data.balance_sheet.total_assets)"/></td></tr>
+                        <tr><td class="text-muted">Current Liabilities</td><td class="num" t-esc="formatAmount(state.data.balance_sheet.current_liab)"/></tr>
+                        <tr><td class="text-muted">Non-Current Liabilities</td><td class="num" t-esc="formatAmount(state.data.balance_sheet.non_current_liab)"/></tr>
+                        <tr><td><strong>Total Liabilities</strong></td><td class="num"><strong t-esc="formatAmount(state.data.balance_sheet.total_liab)"/></td></tr>
+                        <tr><td><strong>Equity</strong></td><td class="num"><strong t-esc="formatAmount(state.data.balance_sheet.equity)"/></td></tr>
+                        <tr style="background:rgba(99,102,241,0.06);">
+                            <td>Check (should be 0)</td>
+                            <td class="num small"
+                                t-att-class="Math.abs(state.data.balance_sheet.balance_diff) &lt; 0.01 ? 'text-success' : 'text-danger'"
+                                t-esc="formatAmount(state.data.balance_sheet.balance_diff)"/>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

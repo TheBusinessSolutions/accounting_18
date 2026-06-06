@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_payment_method_mix" model="ir.actions.client">
+            <field name="name">Payment Method Mix</field>
+            <field name="tag">mn_finance_insights.payment_method_mix</field>
+        </record>
+    </data>
+</odoo>

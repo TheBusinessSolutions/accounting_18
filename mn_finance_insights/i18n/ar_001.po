@@ -1,0 +1,51 @@
+# Arabic (modern, ar_001) — identical to ar.po. Odoo Online and many MENA
+# customers use the ar_001 locale. We ship both so menus render either way.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"PO-Revision-Date: 2026-06-01 00:00+0000\n"
+"Last-Translator: Moaz Nabil <moaaznaabilali@gmail.com>\n"
+"Language: ar_001\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5);\n"
+
+#. module: mn_finance_insights
+#: model:ir.ui.menu,name:mn_finance_insights.menu_finance_insights_root
+msgid "Finance Insights"
+msgstr "تحليلات مالية"
+
+#. module: mn_finance_insights
+#: model:ir.ui.menu,name:mn_finance_insights.menu_finance_dashboard
+msgid "Executive Dashboard"
+msgstr "لوحة المؤشرات التنفيذية"
+
+#. module: mn_finance_insights
+#: model:ir.ui.menu,name:mn_finance_insights.menu_cash_flow_forecast
+#: model:ir.actions.client,name:mn_finance_insights.action_cash_flow_forecast
+msgid "Cash Flow Forecast"
+msgstr "توقعات التدفق النقدي"
+
+#. module: mn_finance_insights
+#: model:ir.ui.menu,name:mn_finance_insights.menu_aged_receivable
+#: model:ir.actions.client,name:mn_finance_insights.action_aged_receivable
+msgid "Aged Receivable"
+msgstr "أعمار الذمم المدينة"
+
+#. module: mn_finance_insights
+#: model:ir.ui.menu,name:mn_finance_insights.menu_financial_ratios
+#: model:ir.actions.client,name:mn_finance_insights.action_financial_ratios
+msgid "Financial Ratios"
+msgstr "النسب المالية"
+
+#. module: mn_finance_insights
+#: model:ir.actions.client,name:mn_finance_insights.action_finance_dashboard
+msgid "Executive Finance Dashboard"
+msgstr "لوحة المؤشرات المالية التنفيذية"
+
+#. module: mn_finance_insights
+#: model:ir.actions.report,name:mn_finance_insights.action_report_statement_of_account
+msgid "Statement of Account"
+msgstr "كشف الحساب"

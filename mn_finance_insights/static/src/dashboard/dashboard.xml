@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="mn_finance_insights.FinanceDashboard">
+        <div class="o_fi_dashboard">
+            <!-- header / filters -->
+            <div class="o_fi_header">
+                <div class="o_fi_title">
+                    <h2><i class="fa fa-chart-line me-2"/>Executive Finance Dashboard</h2>
+                    <small class="text-muted" t-if="state.data" t-esc="state.data.company_name"/>
+                </div>
+                <div class="o_fi_filters">
+                    <label>From</label>
+                    <input type="date" t-att-value="state.options.date_from"
+                           t-on-change="(ev) => this.onFilterChange('date_from', ev)"/>
+                    <label>To</label>
+                    <input type="date" t-att-value="state.options.date_to"
+                           t-on-change="(ev) => this.onFilterChange('date_to', ev)"/>
+                    <label>Compare</label>
+                    <select t-on-change="(ev) => this.onFilterChange('compare', ev)">
+                        <option value="">— none —</option>
+                        <option value="previous_year"
+                                t-att-selected="state.options.compare === 'previous_year' ? 'selected' : undefined">
+                            Previous year
+                        </option>
+                        <option value="previous_period"
+                                t-att-selected="state.options.compare === 'previous_period' ? 'selected' : undefined">
+                            Previous period
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- loading -->
+            <div t-if="state.loading" class="o_fi_loading">
+                <i class="fa fa-spinner fa-spin fa-2x"/>
+                <div class="mt-2">Loading dashboard…</div>
+            </div>
+
+            <!-- KPI grid -->
+            <div t-if="!state.loading and state.data" class="o_fi_kpi_grid">
+                <t t-foreach="[
+                    ['revenue','Revenue','fa-arrow-up','kpi-revenue'],
+                    ['expenses','Expenses','fa-arrow-down','kpi-expenses'],
+                    ['net_profit','Net Profit','fa-coins','kpi-net'],
+                    ['cash','Cash on Hand','fa-wallet','kpi-cash'],
+                    ['accounts_receivable','Accounts Receivable','fa-file-invoice-dollar','kpi-ar'],
+                    ['accounts_payable','Accounts Payable','fa-money-bill-wave','kpi-ap'],
+                    ['gross_margin_pct','Gross Margin','fa-percent','kpi-gm'],
+                    ['net_margin_pct','Net Margin','fa-percentage','kpi-nm'],
+                ]" t-as="card" t-key="card[0]">
+                    <div class="o_fi_kpi_card" t-att-class="card[3]"
+                         t-on-click="() => this.onDrillDown(card[0])">
+                        <div class="o_fi_kpi_icon"><i class="fa" t-att-class="card[2]"/></div>
+                        <div class="o_fi_kpi_body">
+                            <div class="o_fi_kpi_label" t-esc="card[1]"/>
+                            <div class="o_fi_kpi_value">
+                                <t t-if="card[0].endsWith('_pct')"
+                                   t-esc="formatPct(state.data.kpis[card[0]])"/>
+                                <t t-else=""
+                                   t-esc="formatAmount(state.data.kpis[card[0]])"/>
+                            </div>
+                            <div t-if="state.data.kpis.compare and ['revenue','expenses','net_profit'].includes(card[0])"
+                                 class="o_fi_kpi_delta">
+                                <t t-set="deltaKey" t-value="card[0] + '_delta_pct'"/>
+                                <t t-set="delta" t-value="state.data.kpis.compare[deltaKey]"/>
+                                <span t-if="delta !== null and delta !== undefined"
+                                      t-att-class="delta >= 0 ? 'text-success' : 'text-danger'">
+                                    <i t-att-class="delta >= 0 ? 'fa fa-caret-up' : 'fa fa-caret-down'"/>
+                                    <t t-esc="formatPct(Math.abs(delta))"/>
+                                </span>
+                                <small class="text-muted ms-1"
+                                       t-esc="state.data.kpis.compare.label"/>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </div>
+
+            <!-- charts grid -->
+            <div t-if="!state.loading and state.data" class="o_fi_charts_grid">
+                <div class="o_fi_chart_card o_fi_chart_wide">
+                    <h5>Revenue vs Expenses — last 12 months</h5>
+                    <div class="o_fi_chart_canvas">
+                        <canvas t-ref="chartRevExp"/>
+                    </div>
+                </div>
+                <div class="o_fi_chart_card">
+                    <h5>Cash Trend</h5>
+                    <div class="o_fi_chart_canvas">
+                        <canvas t-ref="chartCash"/>
+                    </div>
+                </div>
+                <div class="o_fi_chart_card">
+                    <h5>Top 5 Customers</h5>
+                    <div class="o_fi_chart_canvas">
+                        <canvas t-ref="chartCustomers"/>
+                    </div>
+                </div>
+                <div class="o_fi_chart_card">
+                    <h5>Accounts Receivable Aging</h5>
+                    <div class="o_fi_chart_canvas">
+                        <canvas t-ref="chartAging"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+</templates>

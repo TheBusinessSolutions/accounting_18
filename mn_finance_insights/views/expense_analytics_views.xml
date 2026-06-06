@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_expense_analytics" model="ir.actions.client">
+            <field name="name">Expense Analytics</field>
+            <field name="tag">mn_finance_insights.expense_analytics</field>
+        </record>
+    </data>
+</odoo>

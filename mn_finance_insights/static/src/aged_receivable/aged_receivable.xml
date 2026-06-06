@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="mn_finance_insights.AgedReceivable">
+        <div class="o_fi_dashboard">
+            <div class="o_fi_header">
+                <div class="o_fi_title">
+                    <h2><i class="fa fa-clock me-2"/>Aged Receivable</h2>
+                    <small class="text-muted" t-if="state.data" t-esc="state.data.company_name"/>
+                </div>
+                <div class="o_fi_filters">
+                    <label>As of</label>
+                    <input type="date" t-att-value="state.options.as_of"
+                           t-on-change="(ev) => this.onFilterChange('as_of', ev)"/>
+                    <input type="search" placeholder="Search customer…"
+                           t-on-input="(ev) => this.onSearch(ev)" style="min-width:220px;"/>
+                    <button class="btn btn-sm btn-primary" t-on-click="() => this.onExport()">
+                        <i class="fa fa-file-excel me-1"/>Excel
+                    </button>
+                </div>
+            </div>
+
+            <div t-if="state.loading" class="o_fi_loading">
+                <i class="fa fa-spinner fa-spin fa-2x"/>
+                <div class="mt-2">Loading aged receivable…</div>
+            </div>
+
+            <div t-if="!state.loading and state.data" class="o_fi_chart_card">
+                <div style="overflow-x:auto;">
+                    <table class="o_fi_table o_fi_aged_table">
+                        <thead>
+                            <tr>
+                                <th>Customer</th>
+                                <t t-foreach="state.data.buckets" t-as="b" t-key="b_index">
+                                    <th class="num" t-esc="b.label"/>
+                                </t>
+                                <th class="num">Total</th>
+                                <th class="num">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="filteredRows" t-as="row" t-key="row.partner_id">
+                                <tr>
+                                    <td>
+                                        <a href="#" t-on-click.prevent="() => this.onDrillDown(row.partner_id)"
+                                           class="o_fi_partner_link">
+                                            <t t-esc="row.partner_name"/>
+                                        </a>
+                                    </td>
+                                    <t t-foreach="row.bucket_amounts" t-as="amt" t-key="amt_index">
+                                        <td class="num" t-att-class="amt_index >= 4 ? 'text-danger' : ''"
+                                            t-esc="formatAmount(amt)"/>
+                                    </t>
+                                    <td class="num"><strong t-esc="formatAmount(row.total)"/></td>
+                                    <td class="num">
+                                        <button class="btn btn-sm btn-light"
+                                                t-on-click="() => this.onSendStatement(row.partner_id)"
+                                                title="Send statement">
+                                            <i class="fa fa-paper-plane"/>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                        <tfoot>
+                            <tr class="o_fi_total_row">
+                                <th>Total</th>
+                                <t t-foreach="state.data.bucket_totals" t-as="bt" t-key="bt_index">
+                                    <th class="num" t-esc="formatAmount(bt)"/>
+                                </t>
+                                <th class="num" t-esc="formatAmount(state.data.grand_total)"/>
+                                <th/>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </t>
+
+</templates>

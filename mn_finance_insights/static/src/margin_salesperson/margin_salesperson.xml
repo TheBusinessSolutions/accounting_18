@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mn_finance_insights.MarginSalesperson">
+        <div class="o_fi_dashboard">
+            <div class="o_fi_header">
+                <div class="o_fi_title"><h2><i class="fa fa-user-tie me-2"/>Margin by Salesperson</h2>
+                    <small class="text-muted" t-if="state.data" t-esc="state.data.company_name"/></div>
+                <div class="o_fi_filters">
+                    <label>From</label><input type="date" t-att-value="state.options.date_from" t-on-change="(ev) => this.onFilterChange('date_from', ev)"/>
+                    <label>To</label><input type="date" t-att-value="state.options.date_to" t-on-change="(ev) => this.onFilterChange('date_to', ev)"/>
+                </div>
+            </div>
+            <div t-if="state.loading" class="o_fi_loading"><i class="fa fa-spinner fa-spin fa-2x"/></div>
+            <t t-if="!state.loading and state.data">
+                <div class="o_fi_kpi_grid">
+                    <div class="o_fi_kpi_card kpi-revenue"><div class="o_fi_kpi_label">Total Revenue</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.totals.revenue)"/></div>
+                    <div class="o_fi_kpi_card kpi-expenses"><div class="o_fi_kpi_label">Total COGS</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.totals.cogs)"/></div>
+                    <div class="o_fi_kpi_card kpi-net"><div class="o_fi_kpi_label">Total Margin</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.totals.margin)"/></div>
+                </div>
+                <div class="o_fi_chart_card">
+                    <h5>Salespeople ranked by margin</h5>
+                    <table class="o_fi_table">
+                        <thead><tr><th>Salesperson</th><th class="num">Invoices</th><th class="num">Revenue</th>
+                            <th class="num">COGS</th><th class="num">Margin</th><th class="num">Margin %</th></tr></thead>
+                        <tbody>
+                            <t t-foreach="state.data.rows" t-as="r" t-key="r.id">
+                                <tr>
+                                    <td><strong t-esc="r.name"/></td>
+                                    <td class="num" t-esc="r.count"/>
+                                    <td class="num" t-esc="formatAmount(r.revenue)"/>
+                                    <td class="num text-danger" t-esc="formatAmount(r.cogs)"/>
+                                    <td class="num"><strong t-esc="formatAmount(r.margin)"/></td>
+                                    <td class="num">
+                                        <span class="o_fi_heat" t-att-class="marginClass(r.margin_pct)" t-esc="r.margin_pct + '%'"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

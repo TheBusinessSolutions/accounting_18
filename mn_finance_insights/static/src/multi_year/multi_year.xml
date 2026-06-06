@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mn_finance_insights.MultiYear">
+        <div class="o_fi_dashboard" t-ref="root">
+            <div class="o_fi_header">
+                <div class="o_fi_title"><h2><i class="fa fa-history me-2"/>Multi-Year Comparison</h2>
+                    <small class="text-muted" t-if="state.data" t-esc="state.data.company_name"/></div>
+                <div class="o_fi_filters">
+                    <label>Year</label>
+                    <input type="number" t-att-value="state.options.year" t-on-change="(ev) => this.onFilterChange('year', ev)" style="width:100px;"/>
+                </div>
+            </div>
+            <div t-if="state.loading" class="o_fi_loading"><i class="fa fa-spinner fa-spin fa-2x"/></div>
+            <t t-if="!state.loading and state.data">
+                <div class="o_fi_chart_card" style="margin-bottom:14px;">
+                    <h5>Revenue vs Expense vs Net &#8212; 3 years</h5>
+                    <div class="o_fi_chart_canvas" style="height:340px;"><canvas data-chart="my"/></div>
+                </div>
+                <div class="o_fi_chart_card">
+                    <table class="o_fi_table">
+                        <thead><tr><th>Year</th><th class="num">Revenue</th><th class="num">YoY %</th>
+                            <th class="num">Expense</th><th class="num">Net</th><th class="num">Net YoY %</th>
+                            <th class="num">GM %</th><th class="num">NM %</th></tr></thead>
+                        <tbody>
+                            <t t-foreach="state.data.years" t-as="y" t-key="y.year">
+                                <tr><td><strong t-esc="y.year"/></td>
+                                    <td class="num" t-esc="formatAmount(y.revenue)"/>
+                                    <td class="num" t-att-class="(y.rev_delta &gt;= 0 ? 'text-success' : 'text-danger')" t-esc="formatDelta(y.rev_delta)"/>
+                                    <td class="num text-danger" t-esc="formatAmount(y.expense)"/>
+                                    <td class="num"><strong t-esc="formatAmount(y.net)"/></td>
+                                    <td class="num" t-att-class="(y.net_delta &gt;= 0 ? 'text-success' : 'text-danger')" t-esc="formatDelta(y.net_delta)"/>
+                                    <td class="num" t-esc="y.gm_pct + '%'"/>
+                                    <td class="num" t-esc="y.nm_pct + '%'"/></tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

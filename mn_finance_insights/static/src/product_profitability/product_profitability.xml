@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mn_finance_insights.ProductProfitability">
+        <div class="o_fi_dashboard">
+            <div class="o_fi_header">
+                <div class="o_fi_title">
+                    <h2><i class="fa fa-tag me-2"/>Product Profitability Trend</h2>
+                    <small class="text-muted" t-if="state.data">
+                        <t t-esc="state.data.company_name"/> ·
+                        <strong class="text-danger" t-esc="state.data.alert_count"/>
+                        margin-erosion alerts (threshold <t t-esc="state.data.erosion_threshold"/>%)
+                    </small>
+                </div>
+                <div class="o_fi_filters">
+                    <label>As of</label>
+                    <input type="date" t-att-value="state.options.as_of" t-on-change="(ev) => this.onFilterChange('as_of', ev)"/>
+                    <label>Threshold %</label>
+                    <input type="number" step="0.5" t-att-value="state.options.erosion_threshold" t-on-change="(ev) => this.onFilterChange('erosion_threshold', ev)" style="width:90px;"/>
+                    <input type="search" placeholder="Search product…" t-on-input="(ev) => this.onSearch(ev)" style="min-width:200px;"/>
+                    <button t-on-click="() => this.onToggleAlerts()">
+                        <t t-if="state.showAlertsOnly">All products</t>
+                        <t t-else="">Alerts only</t>
+                    </button>
+                </div>
+            </div>
+            <div t-if="state.loading" class="o_fi_loading"><i class="fa fa-spinner fa-spin fa-2x"/></div>
+            <div t-if="!state.loading and state.data" class="o_fi_chart_card">
+                <h5>Top products — last 12 months</h5>
+                <div style="overflow-x:auto;">
+                    <table class="o_fi_table">
+                        <thead><tr>
+                            <th></th>
+                            <th>Product</th>
+                            <th class="num">12-mo Revenue</th>
+                            <th class="num">12-mo Margin</th>
+                            <th>Margin trend</th>
+                            <th class="num">Latest</th>
+                            <th class="num">vs trail-avg</th>
+                        </tr></thead>
+                        <tbody>
+                            <t t-foreach="rows" t-as="r" t-key="r.product_id">
+                                <tr>
+                                    <td>
+                                        <i t-if="r.alert" class="fa fa-exclamation-triangle text-danger" title="Margin erosion alert"/>
+                                    </td>
+                                    <td><strong t-esc="r.name"/></td>
+                                    <td class="num" t-esc="formatAmount(r.total_revenue)"/>
+                                    <td class="num">
+                                        <span class="o_fi_heat" t-att-class="marginClass(r.total_margin)" t-esc="r.total_margin + '%'"/>
+                                    </td>
+                                    <td>
+                                        <svg width="110" height="24" style="display:block;">
+                                            <path t-att-d="sparklinePath(r.margin_series)" fill="none"
+                                                  stroke-width="2"
+                                                  t-att-stroke="r.alert ? '#ef4444' : '#6366f1'"/>
+                                        </svg>
+                                    </td>
+                                    <td class="num">
+                                        <t t-if="r.last_margin !== null" t-esc="r.last_margin + '%'"/>
+                                        <t t-else="">—</t>
+                                    </td>
+                                    <td class="num">
+                                        <t t-if="r.erosion !== null">
+                                            <span t-att-class="r.erosion &gt; 0 ? 'text-danger' : 'text-success'">
+                                                <t t-if="r.erosion &gt; 0">−</t>
+                                                <t t-else="">+</t>
+                                                <t t-esc="Math.abs(r.erosion) + ' pts'"/>
+                                            </span>
+                                        </t>
+                                        <t t-else="">—</t>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

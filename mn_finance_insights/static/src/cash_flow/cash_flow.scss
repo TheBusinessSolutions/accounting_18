@@ -1,0 +1,54 @@
+.o_fi_dashboard {
+    .o_fi_scenario_tabs {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        margin-bottom: 14px;
+        flex-wrap: wrap;
+    }
+    .o_fi_scenario_btn {
+        padding: 8px 18px;
+        border-radius: 999px;
+        border: 1px solid var(--fi-border, rgba(15,23,42,0.06));
+        background: var(--fi-card, #fff);
+        color: var(--fi-text, #0f172a);
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 140ms;
+
+        &:hover { transform: translateY(-1px); }
+        &.active {
+            background: var(--fi-accent, #6366f1);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 6px 16px rgba(99,102,241,0.35);
+        }
+    }
+    .o_fi_opening {
+        margin-inline-start: auto;
+        color: var(--fi-muted, #64748b);
+        font-size: 14px;
+    }
+
+    .o_fi_table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        font-size: 13px;
+
+        th, td {
+            padding: 10px 12px;
+            text-align: start;
+            border-bottom: 1px solid var(--fi-border, rgba(15,23,42,0.06));
+        }
+        th {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--fi-muted, #64748b);
+            font-weight: 600;
+        }
+        td.num, th.num { text-align: end; font-feature-settings: "tnum" 1; }
+        tbody tr:hover { background: rgba(99,102,241,0.04); }
+    }
+}

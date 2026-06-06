@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mn_finance_insights.LateInvoices">
+        <div class="o_fi_dashboard">
+            <div class="o_fi_header">
+                <div class="o_fi_title"><h2><i class="fa fa-exclamation-circle me-2"/>Late Invoice Tracker</h2>
+                    <small class="text-muted" t-if="state.data" t-esc="state.data.company_name"/></div>
+                <div class="o_fi_filters">
+                    <label>As of</label>
+                    <input type="date" t-att-value="state.options.as_of" t-on-change="(ev) => this.onFilterChange('as_of', ev)"/>
+                </div>
+            </div>
+            <div t-if="state.loading" class="o_fi_loading"><i class="fa fa-spinner fa-spin fa-2x"/></div>
+            <t t-if="!state.loading and state.data">
+                <div class="o_fi_kpi_grid">
+                    <div class="o_fi_kpi_card kpi-ar"><div class="o_fi_kpi_label">Total Overdue</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.total_overdue)"/></div>
+                    <div class="o_fi_kpi_card kpi-expenses"><div class="o_fi_kpi_label">&gt; 60 Days Overdue</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.over_60_overdue)"/></div>
+                    <div class="o_fi_kpi_card kpi-net"><div class="o_fi_kpi_label">Late Invoices</div>
+                        <div class="o_fi_kpi_value" t-esc="state.data.count"/></div>
+                    <div class="o_fi_kpi_card kpi-expenses"><div class="o_fi_kpi_label">Critical (&gt; 60 d)</div>
+                        <div class="o_fi_kpi_value" t-esc="state.data.count_critical"/></div>
+                </div>
+                <div class="o_fi_chart_card">
+                    <h5>Overdue invoices (sorted by oldest)</h5>
+                    <table class="o_fi_table">
+                        <thead><tr><th>Invoice</th><th>Customer</th><th>Due date</th><th class="num">Days late</th><th class="num">Outstanding</th></tr></thead>
+                        <tbody>
+                            <t t-foreach="state.data.rows" t-as="r" t-key="r.id">
+                                <tr>
+                                    <td><a href="#" t-on-click.prevent="() => this.openInvoice(r.id)" style="color:var(--fi-accent);text-decoration:none;font-weight:600;" t-esc="r.name"/></td>
+                                    <td t-esc="r.partner_name"/>
+                                    <td t-esc="r.date_due"/>
+                                    <td class="num"><span class="o_fi_heat" t-att-class="'heat-' + r.severity" t-esc="r.days_late + ' d'"/></td>
+                                    <td class="num"><strong t-esc="formatAmount(r.residual)"/></td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

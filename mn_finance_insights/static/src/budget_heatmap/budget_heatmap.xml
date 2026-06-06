@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mn_finance_insights.BudgetHeatmap">
+        <div class="o_fi_dashboard">
+            <div class="o_fi_header">
+                <div class="o_fi_title">
+                    <h2><i class="fa fa-th me-2"/>Budget vs Actual</h2>
+                    <small class="text-muted" t-if="state.data" t-esc="state.data.company_name"/>
+                </div>
+                <div class="o_fi_filters">
+                    <label>Year</label>
+                    <input type="number" t-att-value="state.options.year" t-on-change="(ev) => this.onFilterChange('year', ev)" style="width:100px;"/>
+                </div>
+            </div>
+            <div t-if="state.loading" class="o_fi_loading"><i class="fa fa-spinner fa-spin fa-2x"/></div>
+            <div t-if="!state.loading and state.data" class="o_fi_chart_card">
+                <h5>Variance heatmap — variance % vs budget per month</h5>
+                <div style="overflow-x:auto;">
+                    <table class="o_fi_table">
+                        <thead>
+                            <tr>
+                                <th>Account</th>
+                                <t t-foreach="state.data.months" t-as="m" t-key="m_index">
+                                    <th class="num" t-esc="m"/>
+                                </t>
+                                <th class="num">Actual Total</th>
+                                <th class="num">Budget Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="state.data.rows" t-as="row" t-key="row.id">
+                                <tr>
+                                    <td>
+                                        <span class="text-muted me-2" t-esc="row.code"/>
+                                        <strong t-esc="row.name"/>
+                                        <span t-if="row.is_income" class="text-success ms-2" style="font-size:11px;">INCOME</span>
+                                    </td>
+                                    <t t-foreach="row.variances" t-as="v" t-key="v_index">
+                                        <td class="num">
+                                            <span class="o_fi_heat" t-att-class="cellClass(v, row.is_income)"
+                                                  t-esc="cellFmt(v)"/>
+                                        </td>
+                                    </t>
+                                    <td class="num"><strong t-esc="formatAmount(row.total_actual)"/></td>
+                                    <td class="num text-muted" t-esc="formatAmount(row.total_budget)"/>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

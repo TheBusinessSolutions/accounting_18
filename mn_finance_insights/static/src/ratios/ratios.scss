@@ -1,0 +1,72 @@
+.o_fi_dashboard {
+    .o_fi_ratio_group {
+        margin-bottom: 22px;
+    }
+    .o_fi_group_title {
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--fi-muted, #64748b);
+        margin: 14px 0 10px;
+        i { margin-inline-end: 6px; }
+    }
+    .o_fi_ratio_grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+        @media (max-width: 1200px) { grid-template-columns: repeat(2, 1fr); }
+        @media (max-width: 600px)  { grid-template-columns: 1fr; }
+    }
+    .o_fi_ratio_card {
+        background: var(--fi-card, #fff);
+        border: 1px solid var(--fi-border, rgba(15,23,42,0.06));
+        border-radius: 14px;
+        padding: 14px 16px;
+        box-shadow: var(--fi-shadow, 0 1px 2px rgba(15,23,42,0.04), 0 8px 24px rgba(15,23,42,0.06));
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        transition: transform 140ms, box-shadow 140ms;
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 2px 6px rgba(15,23,42,0.06), 0 16px 32px rgba(15,23,42,0.08);
+        }
+
+        &.health-good { border-top: 3px solid #10b981; }
+        &.health-ok   { border-top: 3px solid #f59e0b; }
+        &.health-bad  { border-top: 3px solid #ef4444; }
+    }
+    .o_fi_ratio_top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .o_fi_ratio_label {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--fi-muted, #64748b);
+    }
+    .o_fi_health_dot {
+        width: 10px; height: 10px;
+        border-radius: 50%;
+        display: inline-block;
+        &.health-good { background: #10b981; box-shadow: 0 0 0 4px rgba(16,185,129,0.18); }
+        &.health-ok   { background: #f59e0b; box-shadow: 0 0 0 4px rgba(245,158,11,0.18); }
+        &.health-bad  { background: #ef4444; box-shadow: 0 0 0 4px rgba(239,68,68,0.18); }
+    }
+    .o_fi_ratio_value {
+        font-size: 26px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+    }
+    .o_fi_ratio_formula {
+        font-size: 11px;
+        color: var(--fi-muted, #64748b);
+    }
+    .o_fi_spark {
+        height: 44px;
+        margin-top: 6px;
+    }
+}

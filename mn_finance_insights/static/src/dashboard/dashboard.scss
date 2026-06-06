@@ -1,0 +1,181 @@
+/* Executive Finance Dashboard — modern, glassy, light/dark friendly, RTL-aware */
+
+.o_fi_dashboard {
+    --fi-bg: #f6f7fb;
+    --fi-card: #ffffff;
+    --fi-border: rgba(15, 23, 42, 0.06);
+    --fi-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px rgba(15, 23, 42, 0.06);
+    --fi-text: #0f172a;
+    --fi-muted: #64748b;
+    --fi-accent: #6366f1;
+
+    padding: 20px 24px 40px;
+    background: var(--fi-bg);
+    min-height: 100%;
+    color: var(--fi-text);
+    font-feature-settings: "tnum" 1;
+
+    .o_fi_header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 16px;
+        margin-bottom: 18px;
+        flex-wrap: wrap;
+
+        .o_fi_title h2 {
+            margin: 0;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+        .o_fi_filters {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+
+            label {
+                margin: 0;
+                font-size: 12px;
+                color: var(--fi-muted);
+                text-transform: uppercase;
+                letter-spacing: 0.04em;
+            }
+            input, select {
+                background: var(--fi-card);
+                border: 1px solid var(--fi-border);
+                border-radius: 8px;
+                padding: 6px 10px;
+                font-size: 14px;
+                color: var(--fi-text);
+                box-shadow: var(--fi-shadow);
+                outline: none;
+                transition: border-color 120ms;
+                &:focus { border-color: var(--fi-accent); }
+            }
+        }
+    }
+
+    .o_fi_loading {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 80px 0;
+        color: var(--fi-muted);
+    }
+
+    .o_fi_kpi_grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+        margin-bottom: 18px;
+        @media (max-width: 1200px) { grid-template-columns: repeat(2, 1fr); }
+        @media (max-width: 600px)  { grid-template-columns: 1fr; }
+    }
+
+    .o_fi_kpi_card {
+        background: var(--fi-card);
+        border: 1px solid var(--fi-border);
+        border-radius: 14px;
+        padding: 16px 18px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        box-shadow: var(--fi-shadow);
+        cursor: pointer;
+        transition: transform 140ms, box-shadow 140ms;
+        position: relative;
+        overflow: hidden;
+
+        &::after {
+            content: "";
+            position: absolute;
+            inset-inline-start: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--fi-accent);
+            opacity: 0.85;
+        }
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 2px 6px rgba(15,23,42,0.06), 0 16px 32px rgba(15,23,42,0.08);
+        }
+
+        .o_fi_kpi_icon {
+            width: 44px; height: 44px;
+            border-radius: 12px;
+            display: grid; place-items: center;
+            background: rgba(99,102,241,0.12);
+            color: var(--fi-accent);
+            font-size: 18px;
+        }
+        .o_fi_kpi_label {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: var(--fi-muted);
+            letter-spacing: 0.05em;
+        }
+        .o_fi_kpi_value {
+            font-size: 22px;
+            font-weight: 700;
+            margin-top: 2px;
+            letter-spacing: -0.01em;
+        }
+        .o_fi_kpi_delta {
+            margin-top: 4px;
+            font-size: 12px;
+        }
+
+        &.kpi-revenue  { &::after { background: #10b981; } .o_fi_kpi_icon { background: rgba(16,185,129,0.12); color: #10b981; } }
+        &.kpi-expenses { &::after { background: #ef4444; } .o_fi_kpi_icon { background: rgba(239,68,68,0.12);  color: #ef4444; } }
+        &.kpi-net      { &::after { background: #6366f1; } .o_fi_kpi_icon { background: rgba(99,102,241,0.12); color: #6366f1; } }
+        &.kpi-cash     { &::after { background: #3b82f6; } .o_fi_kpi_icon { background: rgba(59,130,246,0.12); color: #3b82f6; } }
+        &.kpi-ar       { &::after { background: #f59e0b; } .o_fi_kpi_icon { background: rgba(245,158,11,0.12); color: #f59e0b; } }
+        &.kpi-ap       { &::after { background: #f97316; } .o_fi_kpi_icon { background: rgba(249,115,22,0.12); color: #f97316; } }
+        &.kpi-gm       { &::after { background: #14b8a6; } .o_fi_kpi_icon { background: rgba(20,184,166,0.12); color: #14b8a6; } }
+        &.kpi-nm       { &::after { background: #8b5cf6; } .o_fi_kpi_icon { background: rgba(139,92,246,0.12); color: #8b5cf6; } }
+    }
+
+    .o_fi_charts_grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        @media (max-width: 1200px) { grid-template-columns: 1fr 1fr; }
+        @media (max-width: 800px)  { grid-template-columns: 1fr; }
+    }
+
+    .o_fi_chart_card {
+        background: var(--fi-card);
+        border: 1px solid var(--fi-border);
+        border-radius: 14px;
+        padding: 16px;
+        box-shadow: var(--fi-shadow);
+
+        h5 {
+            margin: 0 0 10px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--fi-muted);
+        }
+        .o_fi_chart_canvas {
+            position: relative;
+            height: 240px;
+        }
+        &.o_fi_chart_wide {
+            grid-column: span 3;
+            .o_fi_chart_canvas { height: 280px; }
+            @media (max-width: 1200px) { grid-column: span 2; }
+            @media (max-width: 800px)  { grid-column: span 1; }
+        }
+    }
+}
+
+/* RTL: flip the colored side-bar */
+[dir="rtl"] .o_fi_dashboard .o_fi_kpi_card::after {
+    inset-inline-start: auto;
+    inset-inline-end: 0;
+}

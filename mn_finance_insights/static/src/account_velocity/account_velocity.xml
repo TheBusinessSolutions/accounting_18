@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mn_finance_insights.AccountVelocity">
+        <div class="o_fi_dashboard">
+            <div class="o_fi_header">
+                <div class="o_fi_title"><h2><i class="fa fa-tachometer-alt me-2"/>Account Movement Velocity</h2>
+                    <small class="text-muted" t-if="state.data" t-esc="state.data.company_name"/></div>
+                <div class="o_fi_filters">
+                    <label>As of</label><input type="date" t-att-value="state.options.as_of" t-on-change="(ev) => this.onFilterChange('as_of', ev)"/>
+                </div>
+            </div>
+            <div t-if="state.loading" class="o_fi_loading"><i class="fa fa-spinner fa-spin fa-2x"/></div>
+            <t t-if="!state.loading and state.data">
+                <div class="o_fi_kpi_grid">
+                    <div class="o_fi_kpi_card kpi-revenue"><div class="o_fi_kpi_label">Hot accounts (&gt; +30% activity)</div>
+                        <div class="o_fi_kpi_value" t-esc="state.data.hot_count"/></div>
+                    <div class="o_fi_kpi_card kpi-cash"><div class="o_fi_kpi_label">Cold accounts (&gt; -30% activity)</div>
+                        <div class="o_fi_kpi_value" t-esc="state.data.cold_count"/></div>
+                </div>
+                <div class="o_fi_chart_card">
+                    <h5>Last 3 months vs prior 3 months</h5>
+                    <table class="o_fi_table">
+                        <thead><tr><th>Code</th><th>Account</th><th class="num">Last 3 mo</th>
+                            <th class="num">Prior 3 mo</th><th class="num">Δ %</th><th>Trend</th></tr></thead>
+                        <tbody>
+                            <t t-foreach="state.data.rows" t-as="r" t-key="r.id">
+                                <tr><td><span class="text-muted" t-esc="r.code"/></td>
+                                    <td><strong t-esc="r.name"/></td>
+                                    <td class="num" t-esc="r.recent"/>
+                                    <td class="num text-muted" t-esc="r.prior"/>
+                                    <td class="num" t-att-class="r.delta_pct &gt;= 0 ? 'text-success' : 'text-danger'"
+                                        t-esc="(r.delta_pct &gt;= 0 ? '+' : '') + r.delta_pct + '%'"/>
+                                    <td><span class="o_fi_heat" t-att-class="r.trend === 'hot' ? 'heat-good' : (r.trend === 'cold' ? 'heat-bad' : 'heat-ok')" t-esc="r.trend.toUpperCase()"/></td></tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

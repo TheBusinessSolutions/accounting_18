@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mn_finance_insights.AcquisitionVelocity">
+        <div class="o_fi_dashboard" t-ref="root">
+            <div class="o_fi_header">
+                <div class="o_fi_title"><h2><i class="fa fa-user-plus me-2"/>Customer Acquisition Velocity</h2>
+                    <small class="text-muted" t-if="state.data" t-esc="state.data.company_name"/></div>
+                <div class="o_fi_filters">
+                    <label>As of</label><input type="date" t-att-value="state.options.as_of" t-on-change="(ev) => this.onFilterChange('as_of', ev)"/>
+                </div>
+            </div>
+            <div t-if="state.loading" class="o_fi_loading"><i class="fa fa-spinner fa-spin fa-2x"/></div>
+            <t t-if="!state.loading and state.data">
+                <div class="o_fi_kpi_grid">
+                    <div class="o_fi_kpi_card kpi-revenue"><div class="o_fi_kpi_label">New Customers (12 mo)</div>
+                        <div class="o_fi_kpi_value" t-esc="state.data.total_new"/></div>
+                    <div class="o_fi_kpi_card kpi-gm"><div class="o_fi_kpi_label">Avg / Month</div>
+                        <div class="o_fi_kpi_value" t-esc="state.data.avg_monthly"/></div>
+                </div>
+                <div class="o_fi_chart_card"><h5>New customers + first-month revenue (last 12 months)</h5>
+                    <div class="o_fi_chart_canvas" style="height:320px;"><canvas data-chart="acq"/></div>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

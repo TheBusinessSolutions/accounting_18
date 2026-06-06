@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mn_finance_insights.CustomerLTV">
+        <div class="o_fi_dashboard">
+            <div class="o_fi_header">
+                <div class="o_fi_title"><h2><i class="fa fa-medal me-2"/>Customer Lifetime Value</h2>
+                    <small class="text-muted" t-if="state.data" t-esc="state.data.company_name"/></div>
+                <div class="o_fi_filters">
+                    <input type="search" placeholder="Search customer..." t-on-input="(ev) => this.onSearch(ev)" style="min-width:220px;"/>
+                </div>
+            </div>
+            <div t-if="state.loading" class="o_fi_loading"><i class="fa fa-spinner fa-spin fa-2x"/></div>
+            <t t-if="!state.loading and state.data">
+                <div class="o_fi_kpi_grid">
+                    <div class="o_fi_kpi_card kpi-revenue"><div class="o_fi_kpi_label">Total LTV (all time)</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.total_ltv)"/></div>
+                    <div class="o_fi_kpi_card kpi-net"><div class="o_fi_kpi_label">Customers</div>
+                        <div class="o_fi_kpi_value" t-esc="state.data.customer_count"/></div>
+                    <div class="o_fi_kpi_card kpi-gm"><div class="o_fi_kpi_label">Avg LTV / customer</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.avg_ltv)"/></div>
+                </div>
+                <div class="o_fi_chart_card"><h5>Customers ranked by LTV</h5>
+                    <table class="o_fi_table">
+                        <thead><tr><th>#</th><th>Customer</th><th class="num">LTV</th><th class="num">Invoices</th>
+                            <th class="num">Avg Invoice</th><th>First</th><th>Last</th><th class="num">Tenure (days)</th></tr></thead>
+                        <tbody>
+                            <t t-foreach="rows" t-as="r" t-key="r.id">
+                                <tr><td t-esc="r_index + 1"/><td><strong t-esc="r.name"/></td>
+                                    <td class="num"><strong t-esc="formatAmount(r.ltv)"/></td>
+                                    <td class="num" t-esc="r.invoices"/>
+                                    <td class="num" t-esc="formatAmount(r.avg_invoice)"/>
+                                    <td t-esc="r.first_date"/><td t-esc="r.last_date"/>
+                                    <td class="num" t-esc="r.tenure_days"/></tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

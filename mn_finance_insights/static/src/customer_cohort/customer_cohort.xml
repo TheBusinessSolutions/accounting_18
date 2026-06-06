@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mn_finance_insights.CustomerCohort">
+        <div class="o_fi_dashboard">
+            <div class="o_fi_header">
+                <div class="o_fi_title"><h2><i class="fa fa-users me-2"/>Customer Cohort Analysis</h2>
+                    <small class="text-muted" t-if="state.data" t-esc="state.data.company_name"/></div>
+                <div class="o_fi_filters">
+                    <label>As of</label><input type="date" t-att-value="state.options.as_of" t-on-change="(ev) => this.onFilterChange('as_of', ev)"/>
+                </div>
+            </div>
+            <div t-if="state.loading" class="o_fi_loading"><i class="fa fa-spinner fa-spin fa-2x"/></div>
+            <div t-if="!state.loading and state.data" class="o_fi_chart_card">
+                <h5>Revenue per cohort × months since acquisition</h5>
+                <div style="overflow-x:auto;">
+                    <table class="o_fi_table">
+                        <thead><tr>
+                            <th>Cohort</th><th class="num">Customers</th>
+                            <t t-foreach="state.data.month_labels" t-as="m" t-key="m_index"><th class="num" t-esc="m"/></t>
+                        </tr></thead>
+                        <tbody>
+                            <t t-set="maxv" t-value="maxVal()"/>
+                            <t t-foreach="state.data.rows" t-as="r" t-key="r.cohort">
+                                <tr><td><strong t-esc="r.cohort"/></td>
+                                    <td class="num" t-esc="r.customers"/>
+                                    <t t-foreach="r.values" t-as="v" t-key="v_index">
+                                        <td class="num">
+                                            <t t-if="v &gt; 0"><span class="o_fi_heat" t-att-class="heat(v, maxv)" t-esc="formatAmount(v)"/></t>
+                                            <t t-else=""><span class="text-muted">—</span></t>
+                                        </td>
+                                    </t>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

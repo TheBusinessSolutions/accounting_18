@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mn_finance_insights.WorkingCapital">
+        <div class="o_fi_dashboard" t-ref="root">
+            <div class="o_fi_header">
+                <div class="o_fi_title">
+                    <h2><i class="fa fa-sync me-2"/>Working Capital Cycle (CCC)</h2>
+                    <small class="text-muted" t-if="state.data" t-esc="state.data.company_name"/>
+                </div>
+                <div class="o_fi_filters">
+                    <label>As of</label>
+                    <input type="date" t-att-value="state.options.as_of" t-on-change="(ev) => this.onFilterChange('as_of', ev)"/>
+                </div>
+            </div>
+            <div t-if="state.loading" class="o_fi_loading"><i class="fa fa-spinner fa-spin fa-2x"/></div>
+            <t t-if="!state.loading and state.data">
+                <div class="o_fi_kpi_grid">
+                    <div class="o_fi_kpi_card kpi-ar">
+                        <div class="o_fi_kpi_label">DSO — Days Sales Outstanding</div>
+                        <div class="o_fi_kpi_value" t-esc="state.data.current.dso + ' d'"/>
+                    </div>
+                    <div class="o_fi_kpi_card kpi-cash">
+                        <div class="o_fi_kpi_label">DIO — Days Inventory Outstanding</div>
+                        <div class="o_fi_kpi_value" t-esc="state.data.current.dio + ' d'"/>
+                    </div>
+                    <div class="o_fi_kpi_card kpi-gm">
+                        <div class="o_fi_kpi_label">DPO — Days Payables Outstanding</div>
+                        <div class="o_fi_kpi_value" t-esc="state.data.current.dpo + ' d'"/>
+                    </div>
+                    <div class="o_fi_kpi_card kpi-net">
+                        <div class="o_fi_kpi_label">CCC — Cash Conversion Cycle</div>
+                        <div class="o_fi_kpi_value">
+                            <span class="o_fi_heat" t-att-class="cccClass(state.data.current.ccc)" t-esc="state.data.current.ccc + ' d'"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="o_fi_chart_card">
+                    <h5>12-month trend — DSO + DIO − DPO = CCC</h5>
+                    <div class="o_fi_chart_canvas" style="height:340px;"><canvas data-chart="ccc"/></div>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

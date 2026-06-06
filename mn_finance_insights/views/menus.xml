@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem id="menu_finance_insights_root" name="Finance Insights"
+                  web_icon="mn_finance_insights,static/description/icon.png"
+                  sequence="20" groups="group_finance_insights_user"/>
+
+        <menuitem id="menu_dashboards" name="Dashboards" parent="menu_finance_insights_root" sequence="10"/>
+        <menuitem id="menu_cfo_command" name="CFO Command Center" parent="menu_dashboards" action="action_cfo_command" sequence="5"/>
+        <menuitem id="menu_finance_dashboard" name="Executive Dashboard" parent="menu_dashboards" action="action_finance_dashboard" sequence="10"/>
+        <menuitem id="menu_sales_analytics" name="Sales Analytics" parent="menu_dashboards" action="action_sales_analytics" sequence="20"/>
+        <menuitem id="menu_expense_analytics" name="Expense Analytics" parent="menu_dashboards" action="action_expense_analytics" sequence="30"/>
+        <menuitem id="menu_daily_sales" name="Daily Sales Snapshot" parent="menu_dashboards" action="action_daily_sales" sequence="35"/>
+        <menuitem id="menu_three_statement" name="Three-Statement View" parent="menu_dashboards" action="action_three_statement" sequence="40"/>
+        <menuitem id="menu_multi_year" name="Multi-Year Comparison" parent="menu_dashboards" action="action_multi_year" sequence="45"/>
+        <menuitem id="menu_pl_forecast" name="P&amp;L Forecast" parent="menu_dashboards" action="action_pl_forecast" sequence="46"/>
+        <menuitem id="menu_analytic_pl" name="Analytic / Cost Center P&amp;L" parent="menu_dashboards" action="action_analytic_pl" sequence="47"/>
+        <menuitem id="menu_tax_dashboard" name="Tax &amp; VAT Dashboard" parent="menu_dashboards" action="action_tax_dashboard" sequence="50"/>
+        <menuitem id="menu_income_expense_donut" name="Income vs Expense Breakdown" parent="menu_dashboards" action="action_income_expense_donut" sequence="60"/>
+
+        <menuitem id="menu_cash" name="Cash" parent="menu_finance_insights_root" sequence="20"/>
+        <menuitem id="menu_cash_position" name="Cash Position 360" parent="menu_cash" action="action_cash_position" sequence="10"/>
+        <menuitem id="menu_cash_flow_forecast" name="Cash Flow Forecast" parent="menu_cash" action="action_cash_flow_forecast" sequence="20"/>
+        <menuitem id="menu_receivables_forecast" name="Receivables Forecast" parent="menu_cash" action="action_receivables_forecast" sequence="25"/>
+        <menuitem id="menu_vendor_payment_schedule" name="Vendor Payment Schedule" parent="menu_cash" action="action_vendor_payment_schedule" sequence="27"/>
+        <menuitem id="menu_free_cash_flow" name="Free Cash Flow" parent="menu_cash" action="action_free_cash_flow" sequence="28"/>
+        <menuitem id="menu_burn_rate" name="Burn Rate &amp; Runway" parent="menu_cash" action="action_burn_rate" sequence="30"/>
+        <menuitem id="menu_liquidity_stress" name="Liquidity Stress Test" parent="menu_cash" action="action_liquidity_stress" sequence="35"/>
+        <menuitem id="menu_cash_efficiency" name="Cash Conversion Efficiency" parent="menu_cash" action="action_cash_efficiency" sequence="37"/>
+        <menuitem id="menu_payment_method_mix" name="Payment Method Mix" parent="menu_cash" action="action_payment_method_mix" sequence="38"/>
+        <menuitem id="menu_bank_reconciliation" name="Bank Reconciliation Status" parent="menu_cash" action="action_bank_reconciliation" sequence="40"/>
+        <menuitem id="menu_currency_exposure" name="Currency Exposure" parent="menu_cash" action="action_currency_exposure" sequence="50"/>
+
+        <menuitem id="menu_customers" name="Customers" parent="menu_finance_insights_root" sequence="30"/>
+        <menuitem id="menu_customer_profitability" name="Customer Profitability" parent="menu_customers" action="action_customer_profitability" sequence="10"/>
+        <menuitem id="menu_customer_ltv" name="Customer Lifetime Value" parent="menu_customers" action="action_customer_ltv" sequence="12"/>
+        <menuitem id="menu_customer_cohort" name="Customer Cohort Analysis" parent="menu_customers" action="action_customer_cohort" sequence="13"/>
+        <menuitem id="menu_customer_concentration" name="Customer Concentration" parent="menu_customers" action="action_customer_concentration" sequence="15"/>
+        <menuitem id="menu_customer_churn" name="Customer Churn Risk" parent="menu_customers" action="action_customer_churn" sequence="17"/>
+        <menuitem id="menu_customer_risk" name="Customer Risk Score" parent="menu_customers" action="action_customer_risk" sequence="20"/>
+        <menuitem id="menu_aging_combined" name="AR &amp; AP Aging" parent="menu_customers" action="action_aging_combined" sequence="25"/>
+        <menuitem id="menu_aged_receivable" name="Aged Receivable" parent="menu_customers" action="action_aged_receivable" sequence="30"/>
+        <menuitem id="menu_late_invoices" name="Late Invoice Tracker" parent="menu_customers" action="action_late_invoices" sequence="35"/>
+        <menuitem id="menu_invoice_cycle_time" name="Invoice Cycle Time" parent="menu_customers" action="action_invoice_cycle_time" sequence="37"/>
+        <menuitem id="menu_days_to_pay" name="Days to Pay Analytics" parent="menu_customers" action="action_days_to_pay" sequence="40"/>
+        <menuitem id="menu_refund_rate" name="Refund Rate Tracker" parent="menu_customers" action="action_refund_rate" sequence="45"/>
+        <menuitem id="menu_recurring_revenue" name="Recurring Revenue Tracker" parent="menu_customers" action="action_recurring_revenue" sequence="50"/>
+        <menuitem id="menu_top_discounts" name="Top Discount Recipients" parent="menu_customers" action="action_top_discounts" sequence="55"/>
+        <menuitem id="menu_cross_sell" name="Cross-Sell Opportunity Matrix" parent="menu_customers" action="action_cross_sell" sequence="60"/>
+        <menuitem id="menu_acquisition_velocity" name="Customer Acquisition Velocity" parent="menu_customers" action="action_acquisition_velocity" sequence="65"/>
+        <menuitem id="menu_aov_trend" name="Average Order Value Trend" parent="menu_customers" action="action_aov_trend" sequence="70"/>
+
+        <menuitem id="menu_vendors" name="Vendors" parent="menu_finance_insights_root" sequence="35"/>
+        <menuitem id="menu_vendor_spend" name="Vendor Spend Analysis" parent="menu_vendors" action="action_vendor_spend" sequence="10"/>
+        <menuitem id="menu_vendor_concentration" name="Vendor Concentration" parent="menu_vendors" action="action_vendor_concentration" sequence="20"/>
+        <menuitem id="menu_vendor_reliability" name="Vendor Reliability Score" parent="menu_vendors" action="action_vendor_reliability" sequence="30"/>
+
+        <menuitem id="menu_performance" name="Performance" parent="menu_finance_insights_root" sequence="40"/>
+        <menuitem id="menu_product_profitability" name="Product Profitability" parent="menu_performance" action="action_product_profitability" sequence="10"/>
+        <menuitem id="menu_margin_salesperson" name="Margin by Salesperson" parent="menu_performance" action="action_margin_salesperson" sequence="15"/>
+        <menuitem id="menu_margin_stability" name="Gross Margin Stability" parent="menu_performance" action="action_margin_stability" sequence="17"/>
+        <menuitem id="menu_pricing_power" name="Pricing Power Index" parent="menu_performance" action="action_pricing_power" sequence="18"/>
+        <menuitem id="menu_budget_heatmap" name="Budget vs Actual" parent="menu_performance" action="action_budget_heatmap" sequence="20"/>
+        <menuitem id="menu_working_capital" name="Working Capital Cycle" parent="menu_performance" action="action_working_capital" sequence="30"/>
+        <menuitem id="menu_financial_ratios" name="Financial Ratios" parent="menu_performance" action="action_financial_ratios" sequence="40"/>
+
+        <menuitem id="menu_audit" name="Audit" parent="menu_finance_insights_root" sequence="50"/>
+        <menuitem id="menu_journal_audit" name="Journal Audit Trail" parent="menu_audit" action="action_journal_audit" sequence="10"/>
+        <menuitem id="menu_top_movements" name="Top Account Movements" parent="menu_audit" action="action_top_movements" sequence="20"/>
+        <menuitem id="menu_negative_balance" name="Negative Balance Alerts" parent="menu_audit" action="action_negative_balance" sequence="30"/>
+        <menuitem id="menu_anomalous_transactions" name="Anomalous Transactions" parent="menu_audit" action="action_anomalous_transactions" sequence="40"/>
+        <menuitem id="menu_credit_notes_audit" name="Credit Notes Audit" parent="menu_audit" action="action_credit_notes_audit" sequence="50"/>
+        <menuitem id="menu_account_velocity" name="Account Movement Velocity" parent="menu_audit" action="action_account_velocity" sequence="60"/>
+        <menuitem id="menu_tax_reconciliation" name="Tax Reconciliation Audit" parent="menu_audit" action="action_tax_reconciliation" sequence="65"/>
+        <menuitem id="menu_year_end_checklist" name="Year-End Checklist" parent="menu_audit" action="action_year_end_checklist" sequence="70"/>
+    </data>
+</odoo>

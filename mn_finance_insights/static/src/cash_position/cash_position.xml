@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mn_finance_insights.CashPosition">
+        <div class="o_fi_dashboard" t-ref="root">
+            <div class="o_fi_header">
+                <div class="o_fi_title">
+                    <h2><i class="fa fa-water me-2"/>Cash Position 360</h2>
+                    <small class="text-muted" t-if="state.data" t-esc="state.data.company_name"/>
+                </div>
+                <div class="o_fi_filters">
+                    <label>From</label>
+                    <input type="date" t-att-value="state.options.date_from" t-on-change="(ev) => this.onFilterChange('date_from', ev)"/>
+                    <label>To</label>
+                    <input type="date" t-att-value="state.options.date_to" t-on-change="(ev) => this.onFilterChange('date_to', ev)"/>
+                </div>
+            </div>
+            <div t-if="state.loading" class="o_fi_loading"><i class="fa fa-spinner fa-spin fa-2x"/></div>
+            <t t-if="!state.loading and state.data">
+                <div class="o_fi_chart_card" style="margin-bottom:14px;">
+                    <h5>Daily cash by account</h5>
+                    <div class="o_fi_chart_canvas" style="height:340px;"><canvas data-chart="timeline"/></div>
+                </div>
+                <div class="o_fi_chart_card">
+                    <h5>Bank accounts</h5>
+                    <table class="o_fi_table">
+                        <thead><tr><th>Code</th><th>Account</th><th class="num">Balance</th><th class="num">Reconciled</th></tr></thead>
+                        <tbody>
+                            <t t-foreach="state.data.bank_status" t-as="b" t-key="b.id">
+                                <tr>
+                                    <td><span class="text-muted" t-esc="b.code"/></td>
+                                    <td t-esc="b.name"/>
+                                    <td class="num"><strong t-esc="formatAmount(b.balance)"/></td>
+                                    <td class="num">
+                                        <span class="o_fi_heat"
+                                              t-att-class="b.reconciled_pct &gt;= 90 ? 'heat-good' : (b.reconciled_pct &gt;= 70 ? 'heat-ok' : 'heat-bad')"
+                                              t-esc="b.reconciled_pct + '%'"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

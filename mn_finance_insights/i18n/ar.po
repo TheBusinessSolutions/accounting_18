@@ -1,0 +1,231 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* mn_finance_insights
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-01 00:00+0000\n"
+"PO-Revision-Date: 2026-06-01 00:00+0000\n"
+"Last-Translator: Moaz Nabil <moaaznaabilali@gmail.com>\n"
+"Language-Team: Arabic\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5);\n"
+
+# Menu items
+#. module: mn_finance_insights
+#: model:ir.ui.menu,name:mn_finance_insights.menu_finance_insights_root
+msgid "Finance Insights"
+msgstr "تحليلات مالية"
+
+#. module: mn_finance_insights
+#: model:ir.ui.menu,name:mn_finance_insights.menu_finance_dashboard
+msgid "Executive Dashboard"
+msgstr "لوحة المؤشرات التنفيذية"
+
+#. module: mn_finance_insights
+#: model:ir.ui.menu,name:mn_finance_insights.menu_cash_flow_forecast
+#: model:ir.actions.client,name:mn_finance_insights.action_cash_flow_forecast
+msgid "Cash Flow Forecast"
+msgstr "توقعات التدفق النقدي"
+
+#. module: mn_finance_insights
+#: model:ir.ui.menu,name:mn_finance_insights.menu_aged_receivable
+#: model:ir.actions.client,name:mn_finance_insights.action_aged_receivable
+msgid "Aged Receivable"
+msgstr "أعمار الذمم المدينة"
+
+#. module: mn_finance_insights
+#: model:ir.ui.menu,name:mn_finance_insights.menu_financial_ratios
+#: model:ir.actions.client,name:mn_finance_insights.action_financial_ratios
+msgid "Financial Ratios"
+msgstr "النسب المالية"
+
+#. module: mn_finance_insights
+#: model:ir.actions.client,name:mn_finance_insights.action_finance_dashboard
+msgid "Executive Finance Dashboard"
+msgstr "لوحة المؤشرات المالية التنفيذية"
+
+# Statement of Account report
+#. module: mn_finance_insights
+#: model:ir.actions.report,name:mn_finance_insights.action_report_statement_of_account
+msgid "Statement of Account"
+msgstr "كشف الحساب"
+
+# Security groups
+#. module: mn_finance_insights
+#: model:res.groups,name:mn_finance_insights.group_finance_insights_user
+msgid "User: View Dashboards & Reports"
+msgstr "مستخدم: عرض اللوحات والتقارير"
+
+#. module: mn_finance_insights
+#: model:res.groups,name:mn_finance_insights.group_finance_insights_manager
+msgid "Manager: Full Access"
+msgstr "مدير: صلاحية كاملة"
+
+#. module: mn_finance_insights
+#: model:res.groups.privilege,name:mn_finance_insights.privilege_finance_insights
+msgid "Finance Insights"
+msgstr "تحليلات مالية"
+
+# Code strings (_t)
+#. module: mn_finance_insights
+#: code:addons/mn_finance_insights/models/finance_dashboard.py:0
+msgid "vs previous year"
+msgstr "مقارنة بالسنة السابقة"
+
+#. module: mn_finance_insights
+#: code:addons/mn_finance_insights/models/finance_dashboard.py:0
+msgid "vs previous period"
+msgstr "مقارنة بالفترة السابقة"
+
+#. module: mn_finance_insights
+#: code:addons/mn_finance_insights/models/finance_dashboard.py:0
+msgid "Revenue"
+msgstr "الإيرادات"
+
+#. module: mn_finance_insights
+#: code:addons/mn_finance_insights/models/finance_dashboard.py:0
+msgid "Expenses"
+msgstr "المصروفات"
+
+#. module: mn_finance_insights
+#: code:addons/mn_finance_insights/models/finance_dashboard.py:0
+msgid "Cash"
+msgstr "النقدية"
+
+#. module: mn_finance_insights
+#: code:addons/mn_finance_insights/models/finance_dashboard.py:0
+msgid "AR Aging"
+msgstr "أعمار المدينين"
+
+#. module: mn_finance_insights
+#: code:addons/mn_finance_insights/models/finance_dashboard.py:0
+msgid "0-30"
+msgstr "0-30"
+
+#. module: mn_finance_insights
+#: code:addons/mn_finance_insights/models/finance_dashboard.py:0
+msgid "31-60"
+msgstr "31-60"
+
+#. module: mn_finance_insights
+#: code:addons/mn_finance_insights/models/finance_dashboard.py:0
+msgid "61-90"
+msgstr "61-90"
+
+#. module: mn_finance_insights
+#: code:addons/mn_finance_insights/models/finance_dashboard.py:0
+msgid "91+"
+msgstr "91+"
+
+#. module: mn_finance_insights
+#: code:addons/mn_finance_insights/models/aged_receivable.py:0
+msgid "Not due"
+msgstr "غير مستحق"
+
+#. module: mn_finance_insights
+#: code:addons/mn_finance_insights/models/aged_receivable.py:0
+msgid "Open receivables"
+msgstr "الذمم المدينة المفتوحة"
+
+#. module: mn_finance_insights
+#: code:addons/mn_finance_insights/models/aged_receivable.py:0
+msgid "Send statement"
+msgstr "إرسال كشف الحساب"
+
+# Financial ratios labels
+#. module: mn_finance_insights
+#: code:addons/mn_finance_insights/models/financial_ratios.py:0
+msgid "Current Ratio"
+msgstr "نسبة التداول"
+
+#. module: mn_finance_insights
+#: code:addons/mn_finance_insights/models/financial_ratios.py:0
+msgid "Cash Ratio"
+msgstr "نسبة النقدية"
+
+#. module: mn_finance_insights
+#: code:addons/mn_finance_insights/models/financial_ratios.py:0
+msgid "Gross Margin"
+msgstr "هامش الربح الإجمالي"
+
+#. module: mn_finance_insights
+#: code:addons/mn_finance_insights/models/financial_ratios.py:0
+msgid "Net Margin"
+msgstr "هامش صافي الربح"
+
+#. module: mn_finance_insights
+#: code:addons/mn_finance_insights/models/financial_ratios.py:0
+msgid "Return on Assets"
+msgstr "العائد على الأصول"
+
+#. module: mn_finance_insights
+#: code:addons/mn_finance_insights/models/financial_ratios.py:0
+msgid "Return on Equity"
+msgstr "العائد على حقوق الملكية"
+
+#. module: mn_finance_insights
+#: code:addons/mn_finance_insights/models/financial_ratios.py:0
+msgid "Days Sales Outstanding"
+msgstr "أيام تحصيل المبيعات"
+
+#. module: mn_finance_insights
+#: code:addons/mn_finance_insights/models/financial_ratios.py:0
+msgid "Days Payables Outstanding"
+msgstr "أيام سداد الموردين"
+
+#. module: mn_finance_insights
+#: code:addons/mn_finance_insights/models/financial_ratios.py:0
+msgid "days"
+msgstr "يوم"
+
+# JS-side strings (from _t in JS files - reference lines optional but harmless)
+#. module: mn_finance_insights
+#: code:addons/mn_finance_insights/static/src/dashboard/dashboard.js:0
+msgid "Failed to load dashboard data."
+msgstr "تعذّر تحميل بيانات اللوحة."
+
+#. module: mn_finance_insights
+#: code:addons/mn_finance_insights/static/src/cash_flow/cash_flow.js:0
+msgid "Failed to load cash flow forecast."
+msgstr "تعذّر تحميل توقعات التدفق النقدي."
+
+#. module: mn_finance_insights
+#: code:addons/mn_finance_insights/static/src/cash_flow/cash_flow.js:0
+msgid "Inflow"
+msgstr "التدفق الداخل"
+
+#. module: mn_finance_insights
+#: code:addons/mn_finance_insights/static/src/cash_flow/cash_flow.js:0
+msgid "Outflow"
+msgstr "التدفق الخارج"
+
+#. module: mn_finance_insights
+#: code:addons/mn_finance_insights/static/src/cash_flow/cash_flow.js:0
+msgid "Cumulative cash"
+msgstr "النقدية المتراكمة"
+
+#. module: mn_finance_insights
+#: code:addons/mn_finance_insights/static/src/cash_flow/cash_flow.js:0
+msgid "Weekly flow"
+msgstr "التدفق الأسبوعي"
+
+#. module: mn_finance_insights
+#: code:addons/mn_finance_insights/static/src/cash_flow/cash_flow.js:0
+msgid "Cumulative"
+msgstr "تراكمي"
+
+#. module: mn_finance_insights
+#: code:addons/mn_finance_insights/static/src/aged_receivable/aged_receivable.js:0
+msgid "Failed to load aged receivable."
+msgstr "تعذّر تحميل أعمار الذمم المدينة."
+
+#. module: mn_finance_insights
+#: code:addons/mn_finance_insights/static/src/ratios/ratios.js:0
+msgid "Failed to load ratios."
+msgstr "تعذّر تحميل النسب المالية."

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mn_finance_insights.MarginStability">
+        <div class="o_fi_dashboard">
+            <div class="o_fi_header">
+                <div class="o_fi_title"><h2><i class="fa fa-wave-square me-2"/>Gross Margin Stability</h2>
+                    <small class="text-muted" t-if="state.data" t-esc="state.data.company_name"/></div>
+                <div class="o_fi_filters">
+                    <label>As of</label><input type="date" t-att-value="state.options.as_of" t-on-change="(ev) => this.onFilterChange('as_of', ev)"/>
+                </div>
+            </div>
+            <div t-if="state.loading" class="o_fi_loading"><i class="fa fa-spinner fa-spin fa-2x"/></div>
+            <t t-if="!state.loading and state.data">
+                <div class="o_fi_kpi_grid">
+                    <div class="o_fi_kpi_card kpi-gm"><div class="o_fi_kpi_label">Stable Products</div>
+                        <div class="o_fi_kpi_value" t-esc="state.data.stable_count"/></div>
+                    <div class="o_fi_kpi_card kpi-expenses"><div class="o_fi_kpi_label">Volatile Products</div>
+                        <div class="o_fi_kpi_value" t-esc="state.data.volatile_count"/></div>
+                </div>
+                <div class="o_fi_chart_card">
+                    <h5>Product margin variance (12 months)</h5>
+                    <table class="o_fi_table">
+                        <thead><tr><th>Product</th><th class="num">Revenue (12 mo)</th>
+                            <th class="num">Avg Margin %</th><th class="num">Stddev</th><th>Stability</th></tr></thead>
+                        <tbody>
+                            <t t-foreach="state.data.rows" t-as="r" t-key="r.id">
+                                <tr><td><strong t-esc="r.name"/></td>
+                                    <td class="num" t-esc="formatAmount(r.total_revenue)"/>
+                                    <td class="num" t-esc="r.avg_margin + '%'"/>
+                                    <td class="num" t-esc="r.stddev + ' pts'"/>
+                                    <td>
+                                        <span class="o_fi_heat" t-att-class="r.stability === 'stable' ? 'heat-good' : (r.stability === 'moderate' ? 'heat-ok' : 'heat-bad')" t-esc="r.stability.toUpperCase()"/>
+                                    </td></tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

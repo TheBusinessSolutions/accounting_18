@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mn_finance_insights.PricingPower">
+        <div class="o_fi_dashboard" t-ref="root">
+            <div class="o_fi_header">
+                <div class="o_fi_title"><h2><i class="fa fa-gem me-2"/>Pricing Power Index</h2>
+                    <small class="text-muted" t-if="state.data" t-esc="state.data.company_name"/></div>
+                <div class="o_fi_filters">
+                    <label>As of</label><input type="date" t-att-value="state.options.as_of" t-on-change="(ev) => this.onFilterChange('as_of', ev)"/>
+                </div>
+            </div>
+            <div t-if="state.loading" class="o_fi_loading"><i class="fa fa-spinner fa-spin fa-2x"/></div>
+            <t t-if="!state.loading and state.data">
+                <div class="o_fi_kpi_grid">
+                    <div class="o_fi_kpi_card kpi-gm"><div class="o_fi_kpi_label">Pricing Power Index (higher = stronger)</div>
+                        <div class="o_fi_kpi_value">
+                            <span class="o_fi_heat" t-att-class="powerClass(state.data.power_index)" t-esc="state.data.power_index + ' / 100'"/>
+                        </div>
+                    </div>
+                    <div class="o_fi_kpi_card kpi-expenses"><div class="o_fi_kpi_label">Avg Discount % (12 mo)</div>
+                        <div class="o_fi_kpi_value" t-esc="state.data.avg_disc + '%'"/></div>
+                </div>
+                <div class="o_fi_chart_card"><h5>Discount % over time &#8212; lower is better</h5>
+                    <div class="o_fi_chart_canvas" style="height:300px;"><canvas data-chart="pp"/></div>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

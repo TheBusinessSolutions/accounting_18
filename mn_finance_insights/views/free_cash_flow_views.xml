@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_free_cash_flow" model="ir.actions.client">
+            <field name="name">Free Cash Flow</field>
+            <field name="tag">mn_finance_insights.free_cash_flow</field>
+        </record>
+    </data>
+</odoo>

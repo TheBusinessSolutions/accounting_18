@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mn_finance_insights.YearEndChecklist">
+        <div class="o_fi_dashboard">
+            <div class="o_fi_header">
+                <div class="o_fi_title"><h2><i class="fa fa-clipboard-check me-2"/>Year-End Closing Checklist</h2>
+                    <small class="text-muted" t-if="state.data"><t t-esc="state.data.company_name"/></small></div>
+                <div class="o_fi_filters">
+                    <label>Year</label>
+                    <input type="number" t-att-value="state.options.year" t-on-change="(ev) => this.onFilterChange('year', ev)" style="width:100px;"/>
+                </div>
+            </div>
+            <div t-if="state.loading" class="o_fi_loading"><i class="fa fa-spinner fa-spin fa-2x"/></div>
+            <t t-if="!state.loading and state.data">
+                <div class="o_fi_kpi_grid">
+                    <div class="o_fi_kpi_card kpi-gm"><div class="o_fi_kpi_label">Checks Passing</div>
+                        <div class="o_fi_kpi_value" t-esc="state.data.good_count + ' / ' + state.data.total_count"/></div>
+                </div>
+                <div class="o_fi_chart_card">
+                    <h5>Pre-close diagnostic</h5>
+                    <table class="o_fi_table">
+                        <thead><tr><th>Status</th><th>Check</th><th class="num">Value</th><th>What to do</th></tr></thead>
+                        <tbody>
+                            <t t-foreach="state.data.checks" t-as="c" t-key="c.id">
+                                <tr>
+                                    <td>
+                                        <t t-if="c.good"><i class="fa fa-check-circle text-success" style="font-size:18px;"/></t>
+                                        <t t-else=""><i class="fa fa-times-circle text-danger" style="font-size:18px;"/></t>
+                                    </td>
+                                    <td><strong t-esc="c.label"/></td>
+                                    <td class="num"><strong t-esc="c.value"/></td>
+                                    <td class="text-muted" t-esc="c.hint"/>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

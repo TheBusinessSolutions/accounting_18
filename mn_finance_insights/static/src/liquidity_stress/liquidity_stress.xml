@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mn_finance_insights.LiquidityStress">
+        <div class="o_fi_dashboard" t-ref="root">
+            <div class="o_fi_header">
+                <div class="o_fi_title"><h2><i class="fa fa-shield-virus me-2"/>Liquidity Stress Test</h2>
+                    <small class="text-muted" t-if="state.data" t-esc="state.data.company_name"/></div>
+                <div class="o_fi_filters">
+                    <label>As of</label>
+                    <input type="date" t-att-value="state.options.as_of" t-on-change="(ev) => this.onFilterChange('as_of', ev)"/>
+                </div>
+            </div>
+            <div t-if="state.loading" class="o_fi_loading"><i class="fa fa-spinner fa-spin fa-2x"/></div>
+            <t t-if="!state.loading and state.data">
+                <div class="o_fi_kpi_grid">
+                    <div class="o_fi_kpi_card kpi-cash"><div class="o_fi_kpi_label">Opening Cash</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.opening)"/></div>
+                    <div class="o_fi_kpi_card kpi-gm"><div class="o_fi_kpi_label">Min Cash &#8212; Base</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.scenarios.base.min_cash)"/></div>
+                    <div class="o_fi_kpi_card kpi-ar"><div class="o_fi_kpi_label">Min Cash &#8212; Mild Stress</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.scenarios.mild_stress.min_cash)"/></div>
+                    <div class="o_fi_kpi_card kpi-expenses"><div class="o_fi_kpi_label">Min Cash &#8212; Severe</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.scenarios.severe_stress.min_cash)"/></div>
+                </div>
+                <div class="o_fi_chart_card">
+                    <h5>Cumulative cash &#8212; <t t-esc="state.data.horizon"/>-week horizon</h5>
+                    <div class="o_fi_chart_canvas" style="height:340px;"><canvas data-chart="stress"/></div>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

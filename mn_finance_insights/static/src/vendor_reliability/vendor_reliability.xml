@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mn_finance_insights.VendorReliability">
+        <div class="o_fi_dashboard">
+            <div class="o_fi_header">
+                <div class="o_fi_title"><h2><i class="fa fa-handshake me-2"/>Vendor Reliability Score</h2>
+                    <small class="text-muted" t-if="state.data" t-esc="state.data.company_name"/></div>
+                <div class="o_fi_filters">
+                    <label>From</label><input type="date" t-att-value="state.options.date_from" t-on-change="(ev) => this.onFilterChange('date_from', ev)"/>
+                    <label>To</label><input type="date" t-att-value="state.options.date_to" t-on-change="(ev) => this.onFilterChange('date_to', ev)"/>
+                </div>
+            </div>
+            <div t-if="state.loading" class="o_fi_loading"><i class="fa fa-spinner fa-spin fa-2x"/></div>
+            <t t-if="!state.loading and state.data">
+                <div class="o_fi_kpi_grid">
+                    <div class="o_fi_kpi_card kpi-gm"><div class="o_fi_kpi_label">Reliable Vendors</div>
+                        <div class="o_fi_kpi_value" t-esc="state.data.good_count"/></div>
+                    <div class="o_fi_kpi_card kpi-ar"><div class="o_fi_kpi_label">Medium</div>
+                        <div class="o_fi_kpi_value" t-esc="state.data.ok_count"/></div>
+                    <div class="o_fi_kpi_card kpi-expenses"><div class="o_fi_kpi_label">Risky</div>
+                        <div class="o_fi_kpi_value" t-esc="state.data.bad_count"/></div>
+                </div>
+                <div class="o_fi_chart_card">
+                    <h5>Vendors ranked (worst score first)</h5>
+                    <table class="o_fi_table">
+                        <thead><tr><th>Score</th><th>Vendor</th><th class="num">Bills</th>
+                            <th class="num">Refunds</th><th class="num">Total Spend</th>
+                            <th class="num">Refund %</th><th class="num">Late Pmt %</th></tr></thead>
+                        <tbody>
+                            <t t-foreach="state.data.rows" t-as="r" t-key="r.id">
+                                <tr>
+                                    <td><span class="o_fi_score_pill" t-att-class="'score-' + r.severity">
+                                        <span class="o_fi_score_dot" t-esc="r.score"/>
+                                        <t t-esc="r.severity.toUpperCase()"/>
+                                    </span></td>
+                                    <td><strong t-esc="r.name"/></td>
+                                    <td class="num" t-esc="r.bill_count"/>
+                                    <td class="num text-danger" t-esc="r.refund_count"/>
+                                    <td class="num" t-esc="formatAmount(r.total_spend)"/>
+                                    <td class="num" t-esc="r.refund_rate + '%'"/>
+                                    <td class="num" t-esc="r.late_rate + '%'"/></tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

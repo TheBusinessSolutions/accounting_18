@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Report action: bilingual Statement of Account for a res.partner -->
+        <record id="action_report_statement_of_account" model="ir.actions.report">
+            <field name="name">Statement of Account</field>
+            <field name="model">res.partner</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">mn_finance_insights.statement_of_account_template</field>
+            <field name="report_file">mn_finance_insights.statement_of_account_template</field>
+            <field name="binding_model_id" ref="base.model_res_partner"/>
+            <field name="binding_type">report</field>
+            <field name="print_report_name">'Statement-%s' % (object.name)</field>
+        </record>
+
+        <template id="statement_of_account_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="partner">
+                    <t t-call="web.external_layout">
+                        <div class="page o_fi_statement">
+                            <h2 style="margin-bottom:0;">Statement of Account / كشف الحساب</h2>
+                            <div style="color:#64748b;margin-bottom:18px;">
+                                <span t-esc="partner.name"/> ·
+                                <span t-esc="partner.vat or ''"/> ·
+                                As of / حتى تاريخ <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d')"/>
+                            </div>
+
+                            <t t-set="lines"
+                               t-value="partner.env['account.move.line'].sudo().search([
+                                    ('partner_id','=',partner.id),
+                                    ('parent_state','=','posted'),
+                                    ('account_id.account_type','=','asset_receivable'),
+                                    ('reconciled','=',False),
+                                    ('amount_residual','!=',0),
+                               ], order='date_maturity, id')"/>
+
+                            <table class="table table-sm" style="margin-top:8px;">
+                                <thead style="background:#6366f1;color:#fff;">
+                                    <tr>
+                                        <th>Date / التاريخ</th>
+                                        <th>Document / المستند</th>
+                                        <th>Due / الاستحقاق</th>
+                                        <th class="text-end">Original / الأصلي</th>
+                                        <th class="text-end">Balance / الرصيد</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="lines" t-as="line">
+                                        <tr>
+                                            <td><span t-field="line.date"/></td>
+                                            <td><span t-field="line.move_id.name"/></td>
+                                            <td><span t-field="line.date_maturity"/></td>
+                                            <td class="text-end">
+                                                <span t-field="line.debit"
+                                                      t-options='{"widget": "monetary", "display_currency": line.currency_id or line.company_id.currency_id}'/>
+                                            </td>
+                                            <td class="text-end">
+                                                <span t-field="line.amount_residual"
+                                                      t-options='{"widget": "monetary", "display_currency": line.company_id.currency_id}'/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                                <tfoot>
+                                    <tr style="border-top:2px solid #6366f1;">
+                                        <th colspan="4" class="text-end">Total Outstanding / إجمالي المتبقي</th>
+                                        <th class="text-end">
+                                            <span t-esc="sum(lines.mapped('amount_residual'))"
+                                                  t-options='{"widget": "monetary", "display_currency": partner.company_id.currency_id or env.company.currency_id}'/>
+                                        </th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+
+                            <p style="margin-top:20px;color:#64748b;font-size:12px;">
+                                Please remit any outstanding balance at your earliest convenience. <br/>
+                                نرجو سداد أي مبالغ متبقية في أقرب وقت ممكن.
+                            </p>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

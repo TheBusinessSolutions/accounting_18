@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mn_finance_insights.CreditNotesAudit">
+        <div class="o_fi_dashboard">
+            <div class="o_fi_header">
+                <div class="o_fi_title"><h2><i class="fa fa-receipt me-2"/>Credit Notes Audit</h2>
+                    <small class="text-muted" t-if="state.data" t-esc="state.data.company_name"/></div>
+                <div class="o_fi_filters">
+                    <label>From</label><input type="date" t-att-value="state.options.date_from" t-on-change="(ev) => this.onFilterChange('date_from', ev)"/>
+                    <label>To</label><input type="date" t-att-value="state.options.date_to" t-on-change="(ev) => this.onFilterChange('date_to', ev)"/>
+                </div>
+            </div>
+            <div t-if="state.loading" class="o_fi_loading"><i class="fa fa-spinner fa-spin fa-2x"/></div>
+            <t t-if="!state.loading and state.data">
+                <div class="o_fi_kpi_grid">
+                    <div class="o_fi_kpi_card kpi-expenses"><div class="o_fi_kpi_label">Sales Credit Notes</div>
+                        <div class="o_fi_kpi_value" t-esc="state.data.out_count + ' • ' + formatAmount(state.data.out_total)"/></div>
+                    <div class="o_fi_kpi_card kpi-ap"><div class="o_fi_kpi_label">Purchase Credit Notes</div>
+                        <div class="o_fi_kpi_value" t-esc="state.data.in_count + ' • ' + formatAmount(state.data.in_total)"/></div>
+                </div>
+                <div class="o_fi_chart_card">
+                    <h5>Credit-note log</h5>
+                    <table class="o_fi_table">
+                        <thead><tr><th>Date</th><th>Document</th><th>Kind</th><th>Partner</th><th>User</th><th>Reason</th><th class="num">Amount</th></tr></thead>
+                        <tbody>
+                            <t t-foreach="state.data.rows" t-as="r" t-key="r.id">
+                                <tr><td t-esc="r.date"/>
+                                    <td><a href="#" t-on-click.prevent="() => this.openMove(r.id)" style="color:var(--fi-accent);font-weight:600;text-decoration:none;" t-esc="r.name"/></td>
+                                    <td><span class="o_fi_heat" t-att-class="r.kind === 'Sales' ? 'heat-bad' : 'heat-ok'" t-esc="r.kind"/></td>
+                                    <td t-esc="r.partner"/>
+                                    <td t-esc="r.user"/>
+                                    <td t-esc="r.reason"/>
+                                    <td class="num"><strong t-esc="formatAmount(r.amount)"/></td></tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mn_finance_insights.CustomerConcentration">
+        <div class="o_fi_dashboard">
+            <div class="o_fi_header">
+                <div class="o_fi_title"><h2><i class="fa fa-chart-bar me-2"/>Customer Concentration (80/20)</h2>
+                    <small class="text-muted" t-if="state.data" t-esc="state.data.company_name"/></div>
+                <div class="o_fi_filters">
+                    <label>From</label><input type="date" t-att-value="state.options.date_from" t-on-change="(ev) => this.onFilterChange('date_from', ev)"/>
+                    <label>To</label><input type="date" t-att-value="state.options.date_to" t-on-change="(ev) => this.onFilterChange('date_to', ev)"/>
+                </div>
+            </div>
+            <div t-if="state.loading" class="o_fi_loading"><i class="fa fa-spinner fa-spin fa-2x"/></div>
+            <t t-if="!state.loading and state.data">
+                <div class="o_fi_kpi_grid">
+                    <div class="o_fi_kpi_card kpi-revenue"><div class="o_fi_kpi_label">Total Revenue</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.total)"/></div>
+                    <div class="o_fi_kpi_card kpi-net"><div class="o_fi_kpi_label">Customer Count</div>
+                        <div class="o_fi_kpi_value" t-esc="state.data.customer_count"/></div>
+                    <div class="o_fi_kpi_card kpi-ar"><div class="o_fi_kpi_label"># customers to 80%</div>
+                        <div class="o_fi_kpi_value" t-esc="state.data.customers_to_80pct"/></div>
+                    <div class="o_fi_kpi_card kpi-gm"><div class="o_fi_kpi_label">Top 10 = %</div>
+                        <div class="o_fi_kpi_value" t-esc="state.data.top10_pct + '%'"/></div>
+                </div>
+                <div class="o_fi_chart_card">
+                    <h5>Customers ranked (Pareto)</h5>
+                    <table class="o_fi_table">
+                        <thead><tr><th>#</th><th>Customer</th><th class="num">Revenue</th><th class="num">% of total</th><th class="num">Cumulative</th></tr></thead>
+                        <tbody>
+                            <t t-foreach="state.data.rows" t-as="r" t-key="r.id">
+                                <tr><td t-esc="r_index + 1"/><td><strong t-esc="r.name"/></td>
+                                    <td class="num" t-esc="formatAmount(r.amount)"/>
+                                    <td class="num" t-esc="r.pct + '%'"/>
+                                    <td class="num"><span class="o_fi_heat"
+                                        t-att-class="r.cum_pct &lt; 50 ? 'heat-bad' : (r.cum_pct &lt; 80 ? 'heat-ok' : 'heat-good')"
+                                        t-esc="r.cum_pct + '%'"/></td></tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mn_finance_insights.AnalyticPL">
+        <div class="o_fi_dashboard">
+            <div class="o_fi_header">
+                <div class="o_fi_title"><h2><i class="fa fa-sitemap me-2"/>Analytic / Cost Center P&amp;L</h2>
+                    <small class="text-muted" t-if="state.data" t-esc="state.data.company_name"/></div>
+                <div class="o_fi_filters">
+                    <label>From</label><input type="date" t-att-value="state.options.date_from" t-on-change="(ev) => this.onFilterChange('date_from', ev)"/>
+                    <label>To</label><input type="date" t-att-value="state.options.date_to" t-on-change="(ev) => this.onFilterChange('date_to', ev)"/>
+                </div>
+            </div>
+            <div t-if="state.loading" class="o_fi_loading"><i class="fa fa-spinner fa-spin fa-2x"/></div>
+            <t t-if="!state.loading and state.data">
+                <div class="o_fi_kpi_grid">
+                    <div class="o_fi_kpi_card kpi-net"><div class="o_fi_kpi_label">Analytic Accounts</div>
+                        <div class="o_fi_kpi_value" t-esc="state.data.count"/></div>
+                    <div class="o_fi_kpi_card kpi-revenue"><div class="o_fi_kpi_label">Net Total</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.total)"/></div>
+                </div>
+                <div class="o_fi_chart_card">
+                    <h5>Per analytic account / cost center</h5>
+                    <table class="o_fi_table">
+                        <thead><tr><th>Code</th><th>Analytic Account</th><th class="num">Amount</th></tr></thead>
+                        <tbody>
+                            <tr t-if="!state.data.rows.length"><td colspan="3" class="text-center text-muted" style="padding:30px;">No analytic activity in period. Enable analytic accounting and assign moves.</td></tr>
+                            <t t-foreach="state.data.rows" t-as="r" t-key="r.id">
+                                <tr><td><span class="text-muted" t-esc="r.code"/></td>
+                                    <td><strong t-esc="r.name"/></td>
+                                    <td class="num" t-att-class="r.amount &gt;= 0 ? 'text-success' : 'text-danger'"
+                                        t-esc="formatAmount(r.amount)"/></tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

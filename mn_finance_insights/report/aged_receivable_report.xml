@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Reserved for an optional Aged Receivable PDF — Excel is the primary export. -->
+    <data>
+    </data>
+</odoo>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mn_finance_insights.JournalAudit">
+        <div class="o_fi_dashboard">
+            <div class="o_fi_header">
+                <div class="o_fi_title"><h2><i class="fa fa-history me-2"/>Journal Audit Trail</h2>
+                    <small class="text-muted" t-if="state.data">
+                        <t t-esc="state.data.company_name"/> ·
+                        <strong t-esc="state.data.anomaly_count"/> anomalies in last
+                        <t t-esc="state.options.days"/> days
+                    </small>
+                </div>
+                <div class="o_fi_filters">
+                    <label>Days</label>
+                    <input type="number" t-att-value="state.options.days" t-on-change="(ev) => this.onFilterChange('days', ev)" style="width:90px;"/>
+                    <button t-on-click="() => this.onToggle()">
+                        <t t-if="state.anomaliesOnly">All entries</t><t t-else="">Anomalies only</t>
+                    </button>
+                </div>
+            </div>
+            <div t-if="state.loading" class="o_fi_loading"><i class="fa fa-spinner fa-spin fa-2x"/></div>
+            <div t-if="!state.loading and state.data" class="o_fi_chart_card">
+                <h5>Recent posted entries</h5>
+                <table class="o_fi_table">
+                    <thead><tr><th>Move</th><th>Date</th><th>Created</th><th>Journal</th><th>User</th><th class="num">Amount</th><th>Flags</th></tr></thead>
+                    <tbody>
+                        <t t-foreach="rows" t-as="r" t-key="r.id">
+                            <tr>
+                                <td><strong t-esc="r.name"/></td>
+                                <td t-esc="r.date"/>
+                                <td t-esc="r.create_date and r.create_date.slice(0,10)"/>
+                                <td t-esc="r.journal"/>
+                                <td t-esc="r.user"/>
+                                <td class="num" t-esc="formatAmount(r.amount)"/>
+                                <td>
+                                    <t t-foreach="r.anomaly" t-as="a" t-key="a">
+                                        <span class="o_fi_heat heat-bad" t-esc="a" style="margin-right:4px;font-size:11px;"/>
+                                    </t>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </t>
+</templates>

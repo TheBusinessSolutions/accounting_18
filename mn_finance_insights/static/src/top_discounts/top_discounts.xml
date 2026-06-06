@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mn_finance_insights.TopDiscounts">
+        <div class="o_fi_dashboard">
+            <div class="o_fi_header">
+                <div class="o_fi_title"><h2><i class="fa fa-percent me-2"/>Top Discount Recipients</h2>
+                    <small class="text-muted" t-if="state.data" t-esc="state.data.company_name"/></div>
+                <div class="o_fi_filters">
+                    <label>From</label><input type="date" t-att-value="state.options.date_from" t-on-change="(ev) => this.onFilterChange('date_from', ev)"/>
+                    <label>To</label><input type="date" t-att-value="state.options.date_to" t-on-change="(ev) => this.onFilterChange('date_to', ev)"/>
+                </div>
+            </div>
+            <div t-if="state.loading" class="o_fi_loading"><i class="fa fa-spinner fa-spin fa-2x"/></div>
+            <t t-if="!state.loading and state.data">
+                <div class="o_fi_kpi_grid">
+                    <div class="o_fi_kpi_card kpi-expenses"><div class="o_fi_kpi_label">Total Discounts Given</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.total_discount)"/></div>
+                    <div class="o_fi_kpi_card kpi-net"><div class="o_fi_kpi_label">Invoices with Discount</div>
+                        <div class="o_fi_kpi_value" t-esc="state.data.count"/></div>
+                    <div class="o_fi_kpi_card kpi-ar"><div class="o_fi_kpi_label">Avg Discount %</div>
+                        <div class="o_fi_kpi_value" t-esc="state.data.avg_disc_pct + '%'"/></div>
+                </div>
+                <div class="o_fi_chart_card">
+                    <h5>Top discounted invoices</h5>
+                    <table class="o_fi_table">
+                        <thead><tr><th>Invoice</th><th>Date</th><th>Customer</th>
+                            <th class="num">Gross</th><th class="num">Net</th><th class="num">Discount</th><th class="num">Discount %</th></tr></thead>
+                        <tbody>
+                            <t t-foreach="state.data.rows" t-as="r" t-key="r.id">
+                                <tr><td><strong t-esc="r.name"/></td>
+                                    <td t-esc="r.date"/>
+                                    <td t-esc="r.partner"/>
+                                    <td class="num" t-esc="formatAmount(r.gross)"/>
+                                    <td class="num" t-esc="formatAmount(r.net)"/>
+                                    <td class="num text-danger" t-esc="formatAmount(r.discount)"/>
+                                    <td class="num"><span class="o_fi_heat" t-att-class="r.discount_pct &gt; 30 ? 'heat-bad' : (r.discount_pct &gt; 10 ? 'heat-ok' : 'heat-good')" t-esc="r.discount_pct + '%'"/></td></tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mn_finance_insights.PaymentMethodMix">
+        <div class="o_fi_dashboard" t-ref="root">
+            <div class="o_fi_header">
+                <div class="o_fi_title"><h2><i class="fa fa-credit-card me-2"/>Payment Method Mix</h2>
+                    <small class="text-muted" t-if="state.data" t-esc="state.data.company_name"/></div>
+                <div class="o_fi_filters">
+                    <label>From</label><input type="date" t-att-value="state.options.date_from" t-on-change="(ev) => this.onFilterChange('date_from', ev)"/>
+                    <label>To</label><input type="date" t-att-value="state.options.date_to" t-on-change="(ev) => this.onFilterChange('date_to', ev)"/>
+                </div>
+            </div>
+            <div t-if="state.loading" class="o_fi_loading"><i class="fa fa-spinner fa-spin fa-2x"/></div>
+            <t t-if="!state.loading and state.data">
+                <div class="o_fi_kpi_grid">
+                    <div class="o_fi_kpi_card kpi-revenue"><div class="o_fi_kpi_label">Inbound Total</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.in_total)"/></div>
+                    <div class="o_fi_kpi_card kpi-expenses"><div class="o_fi_kpi_label">Outbound Total</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.out_total)"/></div>
+                </div>
+                <div class="o_fi_charts_grid">
+                    <div class="o_fi_chart_card"><h5>Inbound by journal (customer payments)</h5>
+                        <div class="o_fi_chart_canvas" style="height:300px;"><canvas data-chart="inbound"/></div>
+                    </div>
+                    <div class="o_fi_chart_card"><h5>Outbound by journal (vendor payments)</h5>
+                        <div class="o_fi_chart_canvas" style="height:300px;"><canvas data-chart="outbound"/></div>
+                    </div>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

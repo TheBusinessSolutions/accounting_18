@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mn_finance_insights.TaxDashboard">
+        <div class="o_fi_dashboard" t-ref="root">
+            <div class="o_fi_header">
+                <div class="o_fi_title">
+                    <h2><i class="fa fa-receipt me-2"/>Tax &amp; VAT Dashboard</h2>
+                    <small class="text-muted" t-if="state.data" t-esc="state.data.company_name"/>
+                </div>
+                <div class="o_fi_filters">
+                    <label>From</label><input type="date" t-att-value="state.options.date_from" t-on-change="(ev) => this.onFilterChange('date_from', ev)"/>
+                    <label>To</label><input type="date" t-att-value="state.options.date_to" t-on-change="(ev) => this.onFilterChange('date_to', ev)"/>
+                </div>
+            </div>
+            <div t-if="state.loading" class="o_fi_loading"><i class="fa fa-spinner fa-spin fa-2x"/></div>
+            <t t-if="!state.loading and state.data">
+                <div class="o_fi_kpi_grid">
+                    <div class="o_fi_kpi_card kpi-revenue"><div class="o_fi_kpi_label">Output VAT (collected from customers)</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.output_vat)"/></div>
+                    <div class="o_fi_kpi_card kpi-cash"><div class="o_fi_kpi_label">Input VAT (paid to vendors)</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.input_vat)"/></div>
+                    <div class="o_fi_kpi_card kpi-net"><div class="o_fi_kpi_label">Net VAT Due to Authority</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.net_vat_due)"/></div>
+                </div>
+                <div class="o_fi_chart_card"><h5>Monthly trend</h5>
+                    <div class="o_fi_chart_canvas" style="height:280px;"><canvas data-chart="vat"/></div>
+                </div>
+                <div class="o_fi_chart_card" style="margin-top:14px;"><h5>By tax</h5>
+                    <table class="o_fi_table">
+                        <thead><tr><th>Tax</th><th class="num">Amount</th></tr></thead>
+                        <tbody>
+                            <t t-foreach="state.data.by_tax" t-as="t" t-key="t.id">
+                                <tr><td t-esc="t.name"/><td class="num" t-esc="formatAmount(t.amount)"/></tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

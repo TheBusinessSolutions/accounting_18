@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_income_expense_donut" model="ir.actions.client">
+            <field name="name">Income vs Expense Breakdown</field>
+            <field name="tag">mn_finance_insights.income_expense_donut</field>
+        </record>
+    </data>
+</odoo>

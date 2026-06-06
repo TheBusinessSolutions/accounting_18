@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_invoice_cycle_time" model="ir.actions.client">
+            <field name="name">Invoice Cycle Time</field>
+            <field name="tag">mn_finance_insights.invoice_cycle_time</field>
+        </record>
+    </data>
+</odoo>

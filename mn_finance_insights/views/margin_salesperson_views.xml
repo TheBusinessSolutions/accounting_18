@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_margin_salesperson" model="ir.actions.client">
+            <field name="name">Margin by Salesperson</field>
+            <field name="tag">mn_finance_insights.margin_salesperson</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mn_finance_insights.DaysToPay">
+        <div class="o_fi_dashboard">
+            <div class="o_fi_header">
+                <div class="o_fi_title"><h2><i class="fa fa-business-time me-2"/>Days to Pay Analytics</h2>
+                    <small class="text-muted" t-if="state.data" t-esc="state.data.company_name"/></div>
+                <div class="o_fi_filters">
+                    <label>From</label><input type="date" t-att-value="state.options.date_from" t-on-change="(ev) => this.onFilterChange('date_from', ev)"/>
+                    <label>To</label><input type="date" t-att-value="state.options.date_to" t-on-change="(ev) => this.onFilterChange('date_to', ev)"/>
+                    <input type="search" placeholder="Search..." t-on-input="(ev) => this.onSearch(ev)" style="min-width:200px;"/>
+                </div>
+            </div>
+            <div t-if="state.loading" class="o_fi_loading"><i class="fa fa-spinner fa-spin fa-2x"/></div>
+            <div t-if="!state.loading and state.data" class="o_fi_chart_card">
+                <h5>Per-customer actual vs term days</h5>
+                <table class="o_fi_table">
+                    <thead><tr><th>Customer</th><th class="num">Paid invoices</th><th class="num">Avg term</th>
+                        <th class="num">Avg actual</th><th class="num">Delta</th><th class="num">Late %</th></tr></thead>
+                    <tbody>
+                        <t t-foreach="rows" t-as="r" t-key="r.id">
+                            <tr><td><strong t-esc="r.name"/></td>
+                                <td class="num" t-esc="r.count"/>
+                                <td class="num text-muted" t-esc="r.avg_term + ' d'"/>
+                                <td class="num" t-esc="r.avg_actual + ' d'"/>
+                                <td class="num"><span class="o_fi_heat" t-att-class="deltaClass(r.delta)"
+                                    t-esc="(r.delta &gt;= 0 ? '+' : '') + r.delta + ' d'"/></td>
+                                <td class="num" t-esc="r.late_pct + '%'"/></tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </t>
+</templates>

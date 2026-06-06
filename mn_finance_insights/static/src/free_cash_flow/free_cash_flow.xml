@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mn_finance_insights.FreeCashFlow">
+        <div class="o_fi_dashboard">
+            <div class="o_fi_header">
+                <div class="o_fi_title"><h2><i class="fa fa-wave-square me-2"/>Free Cash Flow</h2>
+                    <small class="text-muted" t-if="state.data" t-esc="state.data.company_name"/></div>
+                <div class="o_fi_filters">
+                    <label>As of</label><input type="date" t-att-value="state.options.as_of" t-on-change="(ev) => this.onFilterChange('as_of', ev)"/>
+                </div>
+            </div>
+            <div t-if="state.loading" class="o_fi_loading"><i class="fa fa-spinner fa-spin fa-2x"/></div>
+            <t t-if="!state.loading and state.data">
+                <div class="o_fi_kpi_grid">
+                    <div class="o_fi_kpi_card kpi-revenue"><div class="o_fi_kpi_label">Operating Cash</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.operating_cash)"/></div>
+                    <div class="o_fi_kpi_card kpi-expenses"><div class="o_fi_kpi_label">Capex</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.capex)"/></div>
+                    <div class="o_fi_kpi_card kpi-net"><div class="o_fi_kpi_label">Free Cash Flow</div>
+                        <div class="o_fi_kpi_value" t-esc="formatAmount(state.data.free_cash_flow)"/></div>
+                </div>
+                <div class="o_fi_chart_card">
+                    <h5>Waterfall &#8212; net income to free cash flow</h5>
+                    <table class="o_fi_table">
+                        <tr><td>Net Income</td><td class="num"><strong t-esc="formatAmount(state.data.net_income)"/></td></tr>
+                        <tr><td>+ Depreciation</td><td class="num text-success" t-esc="formatAmount(state.data.depreciation)"/></tr>
+                        <tr><td>− Δ Accounts Receivable</td><td class="num text-danger" t-esc="formatAmount(state.data.ar_change)"/></tr>
+                        <tr><td>+ Δ Accounts Payable</td><td class="num text-success" t-esc="formatAmount(state.data.ap_change)"/></tr>
+                        <tr><td>− Δ Inventory</td><td class="num text-danger" t-esc="formatAmount(state.data.inv_change)"/></tr>
+                        <tr style="background:rgba(99,102,241,0.06);">
+                            <td><strong>= Operating Cash Flow</strong></td>
+                            <td class="num"><strong t-esc="formatAmount(state.data.operating_cash)"/></td>
+                        </tr>
+                        <tr><td>− Capex (Δ Fixed Assets)</td><td class="num text-danger" t-esc="formatAmount(state.data.capex)"/></tr>
+                        <tr style="background:rgba(99,102,241,0.1);">
+                            <td><strong>= FREE CASH FLOW</strong></td>
+                            <td class="num" t-att-class="state.data.free_cash_flow &gt;= 0 ? 'text-success' : 'text-danger'">
+                                <strong t-esc="formatAmount(state.data.free_cash_flow)"/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>
