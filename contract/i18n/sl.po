@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-11-21 18:22+0000\n"
-"PO-Revision-Date: 2026-06-07 17:03+0000\n"
+"PO-Revision-Date: 2026-06-07 20:46+0000\n"
 "Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: Slovenian (https://www.transifex.com/oca/teams/23907/sl/)\n"
 "Language: sl\n"
@@ -544,7 +544,7 @@ msgstr "Sestavi e-pošto"
 #: model:ir.model,name:contract.model_res_partner
 #: model_terms:ir.ui.view,arch_db:contract.portal_contract_page
 msgid "Contact"
-msgstr "Kontakt"
+msgstr "Stik"
 
 #. module: contract
 #: model:ir.actions.report,name:contract.report_contract
@@ -943,7 +943,7 @@ msgstr "Tip prikaza"
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_line__distribution_analytic_account_ids
 msgid "Distribution Analytic Account"
-msgstr "Analitični konto porazdelitve"
+msgstr "Distribucijski analitični konto"
 
 #. module: contract
 #: model:mail.template,name:contract.email_contract_template
@@ -1162,7 +1162,7 @@ msgstr "Dnevnik"
 #. module: contract
 #: model:ir.model,name:contract.model_account_move_line
 msgid "Journal Item"
-msgstr "Postavka dnevnika"
+msgstr "Dnevniška postavka"
 
 #. module: contract
 #. odoo-python
