@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-11-21 18:22+0000\n"
-"PO-Revision-Date: 2026-06-07 09:40+0000\n"
+"PO-Revision-Date: 2026-06-07 14:24+0000\n"
 "Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: Slovenian (https://www.transifex.com/oca/teams/23907/sl/)\n"
 "Language: sl\n"
@@ -389,7 +389,7 @@ msgstr "Aktivnosti"
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_contract__activity_exception_decoration
 msgid "Activity Exception Decoration"
-msgstr "Označba izjeme aktivnosti"
+msgstr "Dekoracija izjeme"
 
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_contract__activity_state
@@ -399,7 +399,7 @@ msgstr "Stanje aktivnosti"
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_contract__activity_type_icon
 msgid "Activity Type Icon"
-msgstr "Ikona vrste aktivnosti"
+msgstr "Ikona tipa aktivnosti"
 
 #. module: contract
 #: model_terms:ir.ui.view,arch_db:contract.contract_contract_form_view
@@ -449,7 +449,7 @@ msgstr "Povezani partner"
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_contract__message_attachment_count
 msgid "Attachment Count"
-msgstr "Število prilog"
+msgstr "Št. priponk"
 
 #. module: contract
 #. odoo-python
@@ -989,7 +989,7 @@ msgstr "Sledilci (partnerji)"
 #. module: contract
 #: model:ir.model.fields,help:contract.field_contract_contract__activity_type_icon
 msgid "Font awesome icon e.g. fa-tasks"
-msgstr "Ikona Font Awesome npr. fa-tasks"
+msgstr "Font awesome ikona, npr. fa-tasks"
 
 #. module: contract
 #: model:ir.actions.server,name:contract.contract_cron_for_invoice_ir_actions_server
@@ -1016,7 +1016,7 @@ msgstr "Združi po..."
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_contract__has_message
 msgid "Has Message"
-msgstr "Ima sporočilo"
+msgstr "Vsebuje sporočilo"
 
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_contract__id
@@ -1037,7 +1037,7 @@ msgstr "Ikona"
 #. module: contract
 #: model:ir.model.fields,help:contract.field_contract_contract__activity_exception_icon
 msgid "Icon to indicate an exception activity."
-msgstr "Ikona za označevanje izjeme aktivnosti."
+msgstr "Ikona za prikaz izjem pri aktivnostih."
 
 #. module: contract
 #: model:ir.model.fields,help:contract.field_contract_contract__message_needaction
@@ -1047,7 +1047,9 @@ msgstr "Če je označeno, nova sporočila zahtevajo vašo pozornost."
 #. module: contract
 #: model:ir.model.fields,help:contract.field_contract_contract__message_has_error
 msgid "If checked, some messages have a delivery error."
-msgstr "Če je označeno, imajo nekatera sporočila napako dostave."
+msgstr ""
+"Kadar je označeno, pomeni, da je pri nekaterih sporočilih prišlo do napake "
+"pri dostavi."
 
 #. module: contract
 #: model:ir.model.fields,help:contract.field_contract_line__automatic_price
@@ -1312,7 +1314,7 @@ msgstr "Povzetek naslednje aktivnosti"
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_contract__activity_type_id
 msgid "Next Activity Type"
-msgstr "Vrsta naslednje aktivnosti"
+msgstr "Tip naslednje aktivnosti"
 
 #. module: contract
 #: model_terms:ir.ui.view,arch_db:contract.contract_contract_search_view
@@ -1374,7 +1376,7 @@ msgstr "November"
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_contract__message_needaction_counter
 msgid "Number of Actions"
-msgstr "Število dejanj"
+msgstr "Število ukrepov"
 
 #. module: contract
 #: model:ir.model.fields,help:contract.field_contract_contract__recurring_invoicing_offset
@@ -1402,7 +1404,7 @@ msgstr "Število sporočil, ki zahtevajo ukrepanje"
 #. module: contract
 #: model:ir.model.fields,help:contract.field_contract_contract__message_has_error_counter
 msgid "Number of messages with delivery error"
-msgstr "Število sporočil z napako dostave"
+msgstr "Število sporočil, ki niso bila pravilno dostavljena"
 
 #. module: contract
 #. odoo-python
@@ -1729,7 +1731,7 @@ msgstr "Skupni mesečni ponavljajoči znesek"
 #. module: contract
 #: model:ir.model.fields,help:contract.field_contract_contract__activity_exception_decoration
 msgid "Type of the exception activity on record."
-msgstr "Vrsta izjeme aktivnosti na zapisu."
+msgstr "Tip izjeme pri aktivnosti na zapisu."
 
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_line__price_unit
@@ -1756,7 +1758,7 @@ msgstr "Sporočila spletne strani"
 #. module: contract
 #: model:ir.model.fields,help:contract.field_contract_contract__website_message_ids
 msgid "Website communication history"
-msgstr "Zgodovina komunikacije na spletni strani"
+msgstr "Kronologija komunikacij spletne strani"
 
 #. module: contract
 #: model:ir.model.fields.selection,name:contract.selection__contract_contract__recurring_rule_type__weekly
