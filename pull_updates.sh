@@ -21,7 +21,8 @@ echo "✅ Workspace is clean. Proceeding safely."
 echo "=========================================="
 echo "🚀 STEP 2: SYNCING ALL REGISTERED UPSTREAMS"
 echo "=========================================="
-git fetch --all
+# Optimized to only fetch the exact active branch mapping, ignoring old history maps
+git fetch --all --no-tags --depth=1
 
 # Automatically extracts all mapped nicknames except our own 'origin' cloud
 REMOTES=$(git remote | grep -v '^origin$')
