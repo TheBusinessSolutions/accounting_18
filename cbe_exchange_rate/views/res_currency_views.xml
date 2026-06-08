@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_currency_form_inherit_cbe" model="ir.ui.view">
+        <field name="name">res.currency.form.inherit.cbe</field>
+        <field name="model">res.currency</field>
+        <field name="inherit_id" ref="base.view_currency_form"/>
+        <field name="arch" type="xml">
+            <!-- 1. Add the Refresh Button at the top right of the sheet -->
+            <xpath expr="//sheet" position="inside">
+                <div class="d-flex justify-content-end mb-3">
+                    <button name="action_refresh_cbe_rate" 
+                            string="Refresh from CBE" 
+                            type="object" 
+                            class="btn-primary"
+                            confirm="This will fetch the latest selling rate from CBE website. Continue?"/>
+                </div>
+            </xpath>
+            
+            <!-- 2. Add the CBE Name Field. 
+                 We insert it after the first group in the sheet to ensure it appears prominently. 
+                 Using position='after' on the first group is safer than targeting specific strings. -->
+            <xpath expr="//sheet/group[1]" position="after">
+                <group string="CBE Integration">
+                    <field name="cbe_name" placeholder="e.g., US Dollar"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_cbe_currency_mapping_list" model="ir.ui.view">
+        <field name="name">cbe.currency.mapping.list</field>
+        <field name="model">cbe.currency.mapping</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="currency_id"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_cbe_currency_mapping_form" model="ir.ui.view">
+        <field name="name">cbe.currency.mapping.form</field>
+        <field name="model">cbe.currency.mapping</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" placeholder="e.g. US Dollar"/>
+                        <field name="currency_id"/>
+                        <field name="active"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_cbe_currency_mapping" model="ir.actions.act_window">
+        <field name="name">CBE Currency Mappings</field>
+        <field name="res_model">cbe.currency.mapping</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Create a new mapping
+          </p><p>
+            Map CBE website currency names to Odoo currencies.
+          </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_cbe_configuration" name="CBE Exchange Rates" parent="account.menu_finance_configuration" sequence="50"/>
+    <menuitem id="menu_cbe_mapping" name="Currency Mappings" parent="menu_cbe_configuration" action="action_cbe_currency_mapping" sequence="10"/>
+</odoo>

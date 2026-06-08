@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="ir_cron_update_cbe_rates" model="ir.cron">
+            <field name="name">CBE: Update Currency Rates Daily</field>
+            <field name="model_id" ref="base.model_res_currency_rate"/>
+            <field name="state">code</field>
+            <field name="code">model.cron_update_cbe_rates()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="active" eval="True"/>
+            <!-- Optional: Set a specific time to run, e.g., 2 AM -->
+            <!-- <field name="nextcall" eval="(datetime.now() + timedelta(days=1)).replace(hour=2, minute=0, second=0)"/> -->
+        </record>
+    </data>
+</odoo>

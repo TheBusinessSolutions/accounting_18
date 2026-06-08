@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- USD -->
+        <record id="base.USD" model="res.currency">
+            <field name="cbe_name">US Dollar</field>
+        </record>
+
+        <!-- EUR -->
+        <record id="base.EUR" model="res.currency">
+            <field name="cbe_name">Euro</field>
+        </record>
+
+        <!-- GBP -->
+        <record id="base.GBP" model="res.currency">
+            <field name="cbe_name">Pound Sterling</field>
+        </record>
+
+        <!-- SAR -->
+        <record id="base.SAR" model="res.currency">
+            <field name="cbe_name">Saudi Riyal</field>
+        </record>
+
+        <!-- AED -->
+        <record id="base.AED" model="res.currency">
+            <field name="cbe_name">UAE Dirham</field>
+        </record>
+
+        <!-- KWD -->
+        <record id="base.KWD" model="res.currency">
+            <field name="cbe_name">Kuwaiti Dinar</field>
+        </record>
+
+        <!-- JPY -->
+        <record id="base.JPY" model="res.currency">
+            <field name="cbe_name">Japanese Yen 100</field>
+        </record>
+
+        <!-- CHF -->
+        <record id="base.CHF" model="res.currency">
+            <field name="cbe_name">Swiss Franc</field>
+        </record>
+
+        <!-- CAD -->
+        <record id="base.CAD" model="res.currency">
+            <field name="cbe_name">Canadian Dollar</field>
+        </record>
+
+        <!-- CNY -->
+        <record id="base.CNY" model="res.currency">
+            <field name="cbe_name">Chinese Yuan</field>
+        </record>
+
+        <!-- CNH (Offshore Yuan) - Mapped to same CBE Name as CNY -->
+        <record id="base.CNH" model="res.currency">
+            <field name="cbe_name">Chinese Yuan</field>
+        </record>
+
+        <!-- SEK -->
+        <record id="base.SEK" model="res.currency">
+            <field name="cbe_name">Swedish Krona</field>
+        </record>
+
+        <!-- NOK -->
+        <record id="base.NOK" model="res.currency">
+            <field name="cbe_name">Norwegian Krone</field>
+        </record>
+
+        <!-- DKK -->
+        <record id="base.DKK" model="res.currency">
+            <field name="cbe_name">Danish Krone</field>
+        </record>
+
+        <!-- BHD -->
+        <record id="base.BHD" model="res.currency">
+            <field name="cbe_name">Bahraini Dinar</field>
+        </record>
+
+        <!-- OMR -->
+        <record id="base.OMR" model="res.currency">
+            <field name="cbe_name">Omani Riyal</field>
+        </record>
+
+        <!-- QAR -->
+        <record id="base.QAR" model="res.currency">
+            <field name="cbe_name">Qatari Riyal</field>
+        </record>
+
+        <!-- JOD -->
+        <record id="base.JOD" model="res.currency">
+            <field name="cbe_name">Jordanian Dinar</field>
+        </record>
+        
+        <!-- AUD (Added for completeness as it was in previous HTML, though not in your specific list) -->
+        <record id="base.AUD" model="res.currency">
+            <field name="cbe_name">Australian Dollar</field>
+        </record>
+    </data>
+</odoo>
