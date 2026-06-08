@@ -18,6 +18,7 @@ git remote add upstream_source_oca_reconcile https://github.com/OCA/account-reco
 git remote add account-financial-tools https://github.com/OCA/account-financial-tools.git 2>/dev/null
 git remote add account-invoicing https://github.com/OCA/account-invoicing.git 2>/dev/null
 git remote add account-payment https://github.com/OCA/account-payment.git 2>/dev/null
+git remote add contract https://github.com/OCA/contract.git 2>/dev/null
 # ------------------------------------------------------------------------------
 
 echo "✅ Git remote links mapped successfully!"
