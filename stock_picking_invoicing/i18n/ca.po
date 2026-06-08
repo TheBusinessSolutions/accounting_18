@@ -1,0 +1,315 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* stock_picking_invoicing
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2026-05-12 23:45+0000\n"
+"Last-Translator: QuiJoQuim <quim.rebull@gmail.com>\n"
+"Language-Team: none\n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.2\n"
+
+#. module: stock_picking_invoicing
+#: model_terms:ir.ui.view,arch_db:stock_picking_invoicing.stock_picking_type_kanban
+msgid "<span class=\"col-6\">To be Invoiced</span>"
+msgstr "<span class=\"col-6\">A ser facturat</span>"
+
+#. module: stock_picking_invoicing
+#. odoo-python
+#: code:addons/stock_picking_invoicing/wizards/stock_invoice_onshipping.py:0
+msgid "All pickings are not related to your company!"
+msgstr "Tots els albarans no estan relacionats amb la vostra empresa!"
+
+#. module: stock_picking_invoicing
+#: model_terms:ir.ui.view,arch_db:stock_picking_invoicing.view_stock_invoice_onshipping
+msgid "Cancel"
+msgstr "Cancel·lar"
+
+#. module: stock_picking_invoicing
+#: model:ir.model.fields,field_description:stock_picking_invoicing.field_stock_picking_type__count_picking_2binvoiced
+msgid "Count Picking 2Binvoiced"
+msgstr "Recompte d'albarans per facturar"
+
+#. module: stock_picking_invoicing
+#: model_terms:ir.ui.view,arch_db:stock_picking_invoicing.view_stock_invoice_onshipping
+msgid "Create"
+msgstr "Crear"
+
+#. module: stock_picking_invoicing
+#: model:ir.model.fields.selection,name:stock_picking_invoicing.selection__stock_invoice_onshipping__journal_type__sale
+msgid "Create Customer Invoice"
+msgstr "Crear factura de client"
+
+#. module: stock_picking_invoicing
+#: model:ir.actions.act_window,name:stock_picking_invoicing.action_stock_invoice_onshipping
+msgid "Create Draft Invoices"
+msgstr "Crear factures en esborrany"
+
+#. module: stock_picking_invoicing
+#: model_terms:ir.ui.view,arch_db:stock_picking_invoicing.view_picking_form
+msgid "Create Invoice"
+msgstr "Crear factura"
+
+#. module: stock_picking_invoicing
+#: model:ir.model.fields.selection,name:stock_picking_invoicing.selection__stock_invoice_onshipping__journal_type__purchase
+msgid "Create Supplier Invoice"
+msgstr "Crear factura de proveïdor"
+
+#. module: stock_picking_invoicing
+#: model_terms:ir.ui.view,arch_db:stock_picking_invoicing.view_stock_invoice_onshipping
+msgid "Create invoice"
+msgstr "Crear factura"
+
+#. module: stock_picking_invoicing
+#: model:ir.model.fields,field_description:stock_picking_invoicing.field_stock_invoice_onshipping__create_uid
+msgid "Created by"
+msgstr "Creat per"
+
+#. module: stock_picking_invoicing
+#: model:ir.model.fields,field_description:stock_picking_invoicing.field_stock_invoice_onshipping__create_date
+msgid "Created on"
+msgstr "Creat el"
+
+#. module: stock_picking_invoicing
+#: model:ir.model.fields,field_description:stock_picking_invoicing.field_stock_invoice_onshipping__display_name
+msgid "Display Name"
+msgstr "Nom a mostrar"
+
+#. module: stock_picking_invoicing
+#: model:ir.model.fields,field_description:stock_picking_invoicing.field_stock_invoice_onshipping__group
+msgid "Group"
+msgstr "Grup"
+
+#. module: stock_picking_invoicing
+#: model:ir.model.fields,help:stock_picking_invoicing.field_stock_invoice_onshipping__group
+msgid ""
+"Group pickings/moves to create invoice(s):\n"
+"Picking: One invoice per picking;\n"
+"Partner: One invoice for each picking's partner;\n"
+"Partner/Product: One invoice per picking's partner and group product into a "
+"single invoice line."
+msgstr ""
+"Agrupa albarans/moviments per crear factura(es):\n"
+"Albarà: Una factura per albarà;\n"
+"Empresa: Una factura per cada empresa de l'albarà;\n"
+"Empresa/Producte: Una factura per empresa de l'albarà i agrupa els productes "
+"en una sola línia de factura."
+
+#. module: stock_picking_invoicing
+#: model:ir.model.fields,field_description:stock_picking_invoicing.field_stock_invoice_onshipping__id
+msgid "ID"
+msgstr "ID"
+
+#. module: stock_picking_invoicing
+#: model:ir.model.fields,field_description:stock_picking_invoicing.field_stock_invoice_onshipping__invoice_date
+msgid "Invoice Date"
+msgstr "Data de factura"
+
+#. module: stock_picking_invoicing
+#: model:ir.model.fields,field_description:stock_picking_invoicing.field_stock_invoice_state_mixin__invoice_state
+#: model:ir.model.fields,field_description:stock_picking_invoicing.field_stock_move__invoice_state
+#: model:ir.model.fields,field_description:stock_picking_invoicing.field_stock_picking__invoice_state
+msgid "Invoice Status"
+msgstr "Estat de facturació"
+
+#. module: stock_picking_invoicing
+#: model:ir.model.fields.selection,name:stock_picking_invoicing.selection__stock_invoice_state_mixin__invoice_state__invoiced
+#: model:ir.model.fields.selection,name:stock_picking_invoicing.selection__stock_move__invoice_state__invoiced
+#: model:ir.model.fields.selection,name:stock_picking_invoicing.selection__stock_picking__invoice_state__invoiced
+msgid "Invoiced"
+msgstr "Facturat"
+
+#. module: stock_picking_invoicing
+#: model:ir.model.fields,help:stock_picking_invoicing.field_stock_invoice_state_mixin__invoice_state
+#: model:ir.model.fields,help:stock_picking_invoicing.field_stock_move__invoice_state
+#: model:ir.model.fields,help:stock_picking_invoicing.field_stock_picking__invoice_state
+msgid ""
+"Invoiced: an invoice already exists\n"
+"To Be Invoiced: need to be invoiced\n"
+"Not Applicable: no invoice to create"
+msgstr ""
+"Facturat: ja existeix una factura\n"
+"Per facturar: cal facturar\n"
+"No aplicable: no cal crear factura"
+
+#. module: stock_picking_invoicing
+#: model:ir.model.fields,field_description:stock_picking_invoicing.field_stock_return_picking__invoice_state
+#: model_terms:ir.ui.view,arch_db:stock_picking_invoicing.view_move_picking_form
+#: model_terms:ir.ui.view,arch_db:stock_picking_invoicing.view_picking_form
+msgid "Invoicing"
+msgstr "Facturació"
+
+#. module: stock_picking_invoicing
+#: model:ir.model,name:stock_picking_invoicing.model_account_move
+msgid "Journal Entry"
+msgstr "Assentament comptable"
+
+#. module: stock_picking_invoicing
+#: model:ir.model.fields,field_description:stock_picking_invoicing.field_stock_invoice_onshipping__journal_type
+msgid "Journal Type"
+msgstr "Tipus de diari"
+
+#. module: stock_picking_invoicing
+#: model:ir.model.fields,field_description:stock_picking_invoicing.field_stock_invoice_onshipping__write_uid
+msgid "Last Updated by"
+msgstr "Darrera actualització per"
+
+#. module: stock_picking_invoicing
+#: model:ir.model.fields,field_description:stock_picking_invoicing.field_stock_invoice_onshipping__write_date
+msgid "Last Updated on"
+msgstr "Darrera actualització el"
+
+#. module: stock_picking_invoicing
+#. odoo-python
+#: code:addons/stock_picking_invoicing/wizards/stock_invoice_onshipping.py:0
+msgid "No invoice created!"
+msgstr "No s'ha creat cap factura!"
+
+#. module: stock_picking_invoicing
+#: model:ir.model.fields.selection,name:stock_picking_invoicing.selection__stock_return_picking__invoice_state__none
+msgid "No invoicing"
+msgstr "Sense facturació"
+
+#. module: stock_picking_invoicing
+#: model:ir.model.fields.selection,name:stock_picking_invoicing.selection__stock_invoice_state_mixin__invoice_state__none
+#: model:ir.model.fields.selection,name:stock_picking_invoicing.selection__stock_move__invoice_state__none
+#: model:ir.model.fields.selection,name:stock_picking_invoicing.selection__stock_picking__invoice_state__none
+msgid "Not Applicable"
+msgstr "No aplicable"
+
+#. module: stock_picking_invoicing
+#: model:ir.model.fields.selection,name:stock_picking_invoicing.selection__stock_invoice_onshipping__group__partner
+msgid "Partner"
+msgstr "Empresa"
+
+#. module: stock_picking_invoicing
+#: model:ir.model.fields.selection,name:stock_picking_invoicing.selection__stock_invoice_onshipping__group__partner_product
+msgid "Partner/Product"
+msgstr "Empresa/Producte"
+
+#. module: stock_picking_invoicing
+#: model:ir.model.fields.selection,name:stock_picking_invoicing.selection__stock_invoice_onshipping__group__picking
+msgid "Picking"
+msgstr "Albarà"
+
+#. module: stock_picking_invoicing
+#: model:ir.model,name:stock_picking_invoicing.model_stock_picking_type
+msgid "Picking Type"
+msgstr "Tipus d'albarà"
+
+#. module: stock_picking_invoicing
+#: model:ir.actions.act_window,name:stock_picking_invoicing.2binvoiced_action_picking_dashboard
+msgid "Picking to Invoice"
+msgstr "Albarà per facturar"
+
+#. module: stock_picking_invoicing
+#: model:ir.model.fields,field_description:stock_picking_invoicing.field_stock_invoice_onshipping__purchase_journal
+msgid "Purchase Journal"
+msgstr "Diari de compres"
+
+#. module: stock_picking_invoicing
+#: model:ir.model,name:stock_picking_invoicing.model_stock_return_picking
+msgid "Return Picking"
+msgstr "Albarà de devolució"
+
+#. module: stock_picking_invoicing
+#: model:ir.model,name:stock_picking_invoicing.model_stock_return_picking_line
+msgid "Return Picking Line"
+msgstr ""
+
+#. module: stock_picking_invoicing
+#: model:ir.model.fields,field_description:stock_picking_invoicing.field_stock_invoice_onshipping__sale_journal
+msgid "Sale Journal"
+msgstr "Diari de vendes"
+
+#. module: stock_picking_invoicing
+#: model_terms:ir.ui.view,arch_db:stock_picking_invoicing.view_picking_form
+msgid "Set to Not Billable"
+msgstr "Establir com a no facturable"
+
+#. module: stock_picking_invoicing
+#: model_terms:ir.ui.view,arch_db:stock_picking_invoicing.view_picking_form
+msgid "Set to as invoiced"
+msgstr "Establir com a facturat"
+
+#. module: stock_picking_invoicing
+#: model_terms:ir.ui.view,arch_db:stock_picking_invoicing.view_picking_form
+msgid "Set to be invoiced"
+msgstr "Establir per facturar"
+
+#. module: stock_picking_invoicing
+#: model_terms:ir.ui.view,arch_db:stock_picking_invoicing.view_picking_invoicing_internal_search
+msgid "Shipments to Invoice"
+msgstr "Enviaments per facturar"
+
+#. module: stock_picking_invoicing
+#: model:ir.model.fields,field_description:stock_picking_invoicing.field_stock_invoice_onshipping__show_purchase_journal
+msgid "Show Purchase Journal"
+msgstr "Mostrar diari de compres"
+
+#. module: stock_picking_invoicing
+#: model:ir.model.fields,field_description:stock_picking_invoicing.field_stock_invoice_onshipping__show_sale_journal
+msgid "Show Sale Journal"
+msgstr "Mostrar diari de vendes"
+
+#. module: stock_picking_invoicing
+#: model:ir.model,name:stock_picking_invoicing.model_stock_invoice_onshipping
+msgid "Stock Invoice Onshipping"
+msgstr "Facturació d'estoc en enviament"
+
+#. module: stock_picking_invoicing
+#: model:ir.model,name:stock_picking_invoicing.model_stock_invoice_state_mixin
+msgid "Stock Invoice State Mixin"
+msgstr "Mixin d'estat de factura d'estoc"
+
+#. module: stock_picking_invoicing
+#: model:ir.model,name:stock_picking_invoicing.model_stock_move
+msgid "Stock Move"
+msgstr "Moviment d'estoc"
+
+#. module: stock_picking_invoicing
+#: model:ir.model,name:stock_picking_invoicing.model_stock_rule
+msgid "Stock Rule"
+msgstr ""
+
+#. module: stock_picking_invoicing
+#: model:account.fiscal.position,name:stock_picking_invoicing.fiscal_position_demo
+msgid "Test - Stock Picking Invocing"
+msgstr "Test - Facturació d'albarans"
+
+#. module: stock_picking_invoicing
+#: model:ir.model.fields.selection,name:stock_picking_invoicing.selection__stock_invoice_state_mixin__invoice_state__2binvoiced
+#: model:ir.model.fields.selection,name:stock_picking_invoicing.selection__stock_move__invoice_state__2binvoiced
+#: model:ir.model.fields.selection,name:stock_picking_invoicing.selection__stock_picking__invoice_state__2binvoiced
+msgid "To Be Invoiced"
+msgstr "Per facturar"
+
+#. module: stock_picking_invoicing
+#: model:ir.model.fields.selection,name:stock_picking_invoicing.selection__stock_return_picking__invoice_state__2binvoiced
+msgid "To be refunded/invoiced"
+msgstr "Per abonar/facturar"
+
+#. module: stock_picking_invoicing
+#: model:ir.model,name:stock_picking_invoicing.model_stock_picking
+msgid "Transfer"
+msgstr "Transferència"
+
+#. module: stock_picking_invoicing
+#: model_terms:ir.ui.view,arch_db:stock_picking_invoicing.view_picking_form
+msgid "True"
+msgstr "Cert"
+
+#. module: stock_picking_invoicing
+#: model_terms:ir.ui.view,arch_db:stock_picking_invoicing.view_stock_invoice_onshipping
+msgid "or"
+msgstr "o"
+
+#~ msgid "To be Invoiced"
+#~ msgstr "Per facturar"
